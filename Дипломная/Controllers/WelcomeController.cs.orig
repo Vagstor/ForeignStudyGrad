@@ -1,0 +1,61 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using RHSoft.Study.Monitoring.Models;
+<<<<<<< working copy
+using System.Web;
+=======
+using RHSoft.Study.Monitoring.Services;
+>>>>>>> merge rev
+
+namespace RHSoft.Study.Monitoring.Controllers
+{
+    
+    public class HomeController : Controller
+    {
+<<<<<<< working copy
+
+        [HttpGet]
+        public IActionResult Login()
+=======
+        private VisitService _service;
+        public HomeController( VisitService service )
+        {
+            _service = service;
+        }
+
+        public IActionResult Index()
+>>>>>>> merge rev
+        {
+            var data = _service.Test();
+            return View();
+        }
+        [HttpPost]
+        public void CheckLogin(UserModel user)
+        {
+            if (user.Email == "avagt@inbox.ru" && user.Password == "123")
+            {
+                Response.Redirect("https://localhost:5001/Website/Index/");
+            }
+            else
+            {
+                Response.Redirect("https://localhost:5001/");
+            }
+
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [ResponseCache( Duration = 0, Location = ResponseCacheLocation.None, NoStore = true )]
+        public IActionResult Error()
+        {
+            return View( new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier } );
+        }
+    }
+}

@@ -1,0 +1,3 @@
+﻿-- Table: "MyScheme"."Visits"
+
+-- DROP TABLE "MyScheme"."Visits";

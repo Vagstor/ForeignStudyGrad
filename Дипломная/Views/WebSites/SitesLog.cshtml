@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "SitesLog";
+}
+@model VisitsViewModel
+@using DataModels
+<p>Историю какого сайта вы бы хотели посмотреть?</p>
+<select id="testSelect" name="testSelect">
+    @foreach( Site site in ViewBag.DistinctSites )
+    {
+        <option><td><@Html.ActionLink( "@site.Url", "EditSite", new { url = site.Url } )</td></option>
+    }
+    </selectid="testSelect">
+    @*<td>@Html.ActionLink( "Обновить", "SiteLogs", new { url = site.Url } )</td>*@
+    @*<td><input type="submit" value="Отправить" /> </td>*@
+    <p></p>
+    <table class="table table-striped">
+        <tr>
+            <td>Сайт</td>
+            <td>Статус сайта</td>
+            <td>Время проверки</td>
+        </tr>
+        @foreach( Visit visit in @Model.visits )
+        {
+            <tr>
+                <td>@visit.Url</td>
+                <td>@visit.Status</td>
+                <td>@visit.VisitTime</td>
+            </tr>
+        }
+    </table>
+

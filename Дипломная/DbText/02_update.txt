@@ -1,0 +1,20 @@
+﻿CREATE TABLE "MyScheme"."Visits"
+(
+    id uuid NOT NULL,
+    name character varying COLLATE pg_catalog."default",
+    visit timestamp without time zone,
+    status character varying COLLATE pg_catalog."default",
+    "siteId" uuid NOT NULL,
+    CONSTRAINT "Visits_pkey" PRIMARY KEY (id),
+    CONSTRAINT "siteId" FOREIGN KEY ("siteId")
+        REFERENCES "MyScheme"."Sites" (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE "MyScheme"."Visits"
+    OWNER to postgres;

@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "SitesList";
+}
+@model SitesViewModel
+
+            <table>
+                <tr>
+                    <td>
+                        Автообновление:
+                        @{
+                            if( ViewBag.Status == true )
+                            {
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Button_Icon_Green.svg/200px-Button_Icon_Green.svg.png" alt="" border=3 height=20 width=20 />
+                            }
+                            else
+                            {
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Button_Icon_Red.svg/50px-Button_Icon_Red.svg.png" alt="" border=3 height=20 width=20 />
+                            }
+                        }
+                    </td>
+                    <td>@Html.ActionLink( "Остановить автообновление", "StopUpdate" )</td>
+                    <td>@Html.ActionLink( "Возобновить автообновление", "StartUpdate" )</td>
+                </tr>
+            </table>
+
+<table class="table table-striped">
+    <tr>
+        <td>Сайт</td>
+        <td>Статус сайта</td>
+        <td>@ViewBag.Status</td>
+    </tr>
+    @*@foreach (WebSiteModel site in @Model.WebSites)
+        {
+            <tr>
+                <td>@site.siteURL</td>
+                @if ((site.siteStatus == "Site is working, status: OK") || (site.siteStatus == "Site is working, status: 200 - OK"))
+                {
+                    <td><img src="https://spng.pngfly.com/20180308/qge/kisspng-green-area-pattern-green-tick-png-file-5aa1fca3f21122.7358749715205654119915.jpg" alt="" border=3 height=20 width=20 /></td>
+                }
+                else
+                {
+                    <td><img src="https://www.pinclipart.com/picdir/middle/61-615350_red-cross-mark-clipart-mistake-red-x-mark.png" alt="" border=3 height=20 width=20 /></td>
+                }
+                <td>@Html.ActionLink("Редактировать", "EditSite", new { id = site.siteID })</td>
+            </tr>
+        }*@
+    @*@foreach (Site site in Model.WebSites)
+    {
+        <tr>
+            <td>@site.Url</td>
+            @if (ViewBag.Status() == true)
+            {
+                <td><img src="https://spng.pngfly.com/20180308/qge/kisspng-green-area-pattern-green-tick-png-file-5aa1fca3f21122.7358749715205654119915.jpg" alt="" border=3 height=20 width=20 /></td>
+            }
+            else
+            {
+                <td><img src="https://www.pinclipart.com/picdir/middle/61-615350_red-cross-mark-clipart-mistake-red-x-mark.png" alt="" border=3 height=20 width=20 /></td>
+            }
+            <td>@Html.ActionLink("Редактировать", "EditSite", new { id = site.Id })</td>
+            <td>@Html.ActionLink("Обновить", "UpdateSiteState", new { id = site.Id })</td>
+            <td><form>
+                    <button asp-controller="WebSites" value="" asp-action="UpdateSiteState">Обновить</button>
+                </form></td>
+        </tr>
+    }*@
+
+    @for (int i = 0; i < Model.Sites.Count; i++)
+    {
+    <tr>
+        <td>@Html.ActionLink( @Model.Sites.ElementAt( i ).Url, "Details", new { id = Model.Sites[i].Id } )@*@Model.WebSites.ElementAt(i).Url*@</td>
+        @if( Model.Sites[i].LastStatus < 400 )
+        {
+            <td><img src="https://spng.pngfly.com/20180308/qge/kisspng-green-area-pattern-green-tick-png-file-5aa1fca3f21122.7358749715205654119915.jpg" alt="" border=3 height=20 width=20 /></td>
+        }
+        else if( Model.Sites[i].LastStatus >= 400 )
+        {
+            <td><img src="https://www.pinclipart.com/picdir/middle/61-615350_red-cross-mark-clipart-mistake-red-x-mark.png" alt="" border=3 height=20 width=20 /></td>
+        }
+        else if( Model.Sites[i].LastStatus == null )
+        {
+            <td><img src="https://ui-ex.com/images/circle-transparent-yellow.png" alt="" border=3 height=20 width=20 /></td>
+        }
+        <td>@Html.ActionLink( "Редактировать", "EditSite", new { id = Model.Sites[i].Id } )</td>
+        <td>@Html.ActionLink( "Обновить", "UpdateSiteState", new { id = Model.Sites[i].Id } )</td>
+    </tr>
+    }
+</table>

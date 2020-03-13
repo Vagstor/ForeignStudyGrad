@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewData["Title"] = "AddSite";
+}
+@model SiteModel
+<form method="post">
+    <label>Введите адрес сайта</label><br />
+    <input asp-for="url" type="text" />
+    <span asp-validation-for="url"></span><br>
+    <input type="submit" value="Отправить" />
+</form>

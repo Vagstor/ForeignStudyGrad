@@ -1,0 +1,17 @@
+﻿@model LoginModel
+<link href="~/css/LoginStyle.css" rel="stylesheet" type="text/css" />
+<div class="logincontainer">
+    <div class="addinfobox">
+        <p>Нет учетной записи? <a asp-action="Register" asp-controller="Welcome">Зарегистрируйтесь здесь</a></p>
+        <p>Уже вошли? <a asp-action="SitesList" asp-controller="WebSites">Перейти на домашнюю страницу</a></p>
+    </div>
+    <form asp-action="login" method="post">
+        <label asp-for="Login">Имя пользователя или e-mail:</label>
+        <input type="text" asp-for="Login" placeholder="Введите логин или e-mail">
+        <span asp-validation-for="Login"></span><br>
+        <label asp-for="Password">Пароль: </label>
+        <input type="password" asp-for="Password" placeholder="Пароль">
+        <span asp-validation-for="Password"></span><br>
+        <button type="submit" class="btn btn-primary" asp-controller="Welcome" asp-action="Login">Подтвердить</button>
+    </form>
+</div>

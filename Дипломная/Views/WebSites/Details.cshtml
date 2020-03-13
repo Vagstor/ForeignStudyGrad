@@ -1,0 +1,39 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model VisitsViewModel
+<link href="~/css/DetailsStyle.css" rel="stylesheet" type="text/css" />
+<div class="detailscontainer">
+    <p>Cтатус: @ViewBag.SiteStatus</p>
+    <p>Время последней проверки: @ViewBag.SiteLastCheck</p>
+    <p>Пользователь: @User.Identity.Name</p>
+    <p>Дата создания: @ViewBag.SiteAddTime</p>
+</div>
+<details>
+    <summary>Список всех посещений</summary>
+    <table class="table table-striped">
+        <tr>
+            <td>Время посещения</td>
+            <td>Статус сайта</td>
+            <td>Описание статуса</td>
+        </tr>
+            @foreach (DataModels.Visit v in Model.visits)
+            {
+        <tr>
+            <td>@v.VisitTime</td>
+            <td>@v.Status</td>
+            <td>
+                @if (v.ErrorDesc == null)
+                {
+                    <p>Нет</p>
+                }
+                else
+                {
+                    @v.ErrorDesc
+                }
+            </td>
+        </tr>
+            }
+    </table>
+</details>
