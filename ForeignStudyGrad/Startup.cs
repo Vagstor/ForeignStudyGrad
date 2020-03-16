@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Http;
+using DataModels;
 
 namespace ForeignStudyGrad
 {
@@ -34,7 +35,7 @@ namespace ForeignStudyGrad
                 ConnString = Configuration.GetConnectionString("DefaultConnection")
             };
 
-            //services.AddScoped<MainDb>();
+            services.AddScoped<MainDb>();
             services.AddScoped<SiteService>();
             //services.AddScoped<HttpService>();
             services.AddSingleton<IConfiguration>(Configuration);
@@ -73,14 +74,14 @@ namespace ForeignStudyGrad
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+            app.UseRouting();
 
-            app.UseMvc(routes =>
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Welcome}/{action=Login}/{id?}");
+                    pattern: "{controller=Welcome}/{action=Login}/{id?}");
             });
-
             //app.ApplicationServices.GetService<MonitoringService>().Run();
         }
     }
