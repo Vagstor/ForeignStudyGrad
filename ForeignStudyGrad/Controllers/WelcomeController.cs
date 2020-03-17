@@ -97,11 +97,21 @@ namespace ForeignStudyGrad.Controllers
 
                 var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-                if (User.HasClaim("Role", "Преподаватель"))
-                return RedirectToAction("TeacherMM", "MainMenu");
-                else return RedirectToAction("StudentMM", "MainMenu");
+                return MMRedirect();
+
+                //if (User.HasClaim("Role", "Преподаватель"))
+                //return RedirectToAction("TeacherMM", "MainMenu");
+                //else return RedirectToAction("StudentMM", "MainMenu");
             }
             return View(currentUser);
+        }
+
+        [HttpPost]
+        public IActionResult MMRedirect()
+        {
+            if (Thread.CurrentPrincipal.IsInRole("Преподаватель"))
+                return RedirectToAction("TeacherMM", "MainMenu");
+            else return RedirectToAction("StudentMM", "MainMenu");
         }
 
         [HttpGet]
