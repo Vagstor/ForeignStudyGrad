@@ -136,13 +136,14 @@ namespace ForeignStudyGrad.Services
             return time.VisitTime;
         }
 
-        public void AddNewUser(string login, string password, string email)
+        public void AddNewUser(string login, string password, string email, string role)
         {
             User user = new User();
             user.Email = email;
             user.Id = Guid.NewGuid();
             user.Login = login;
             user.Password = password;
+            user.Role = role;
             _db.Insert(user);
         }
 

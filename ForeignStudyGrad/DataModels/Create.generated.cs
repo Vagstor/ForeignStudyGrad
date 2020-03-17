@@ -77,10 +77,11 @@ namespace DataModels
 	[Table(Schema="monitoring", Name="users")]
 	public partial class User
 	{
-		[Column("id"),       PrimaryKey, NotNull] public Guid   Id       { get; set; } // uuid
-		[Column("login"),                NotNull] public string Login    { get; set; } // character varying
-		[Column("password"),             NotNull] public string Password { get; set; } // character varying
-		[Column("email"),                NotNull] public string Email    { get; set; } // character varying
+		[Column("id"),       PrimaryKey,  NotNull] public Guid   Id       { get; set; } // uuid
+		[Column("login"),                 NotNull] public string Login    { get; set; } // character varying
+		[Column("password"),              NotNull] public string Password { get; set; } // character varying
+		[Column("email"),                 NotNull] public string Email    { get; set; } // character varying
+		[Column("role"),        Nullable         ] public string Role     { get; set; } // character varying
 
 		#region Associations
 

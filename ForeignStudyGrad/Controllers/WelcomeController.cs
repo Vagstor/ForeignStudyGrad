@@ -54,7 +54,7 @@ namespace ForeignStudyGrad.Controllers
             else
 
             {
-                _service.AddNewUser(currentUser.Login, currentUser.Password, currentUser.Email);
+                _service.AddNewUser(currentUser.Login, currentUser.Password, currentUser.Email, currentUser.Role);
                 return RedirectToAction("Login", "Welcome");
             }
 
@@ -87,7 +87,8 @@ namespace ForeignStudyGrad.Controllers
             {
                 var identity = new ClaimsIdentity(new[] {
                         new Claim(ClaimTypes.Name, user.Login),
-                        new Claim("userId", Convert.ToString(user.Id))
+                        new Claim("userId", Convert.ToString(user.Id)),
+                        new Claim(ClaimTypes.Role, user.Role)
                     }, CookieAuthenticationDefaults.AuthenticationScheme);
 
                 var principal = new ClaimsPrincipal(identity);
@@ -96,7 +97,9 @@ namespace ForeignStudyGrad.Controllers
 
                 var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-                return RedirectToAction("SitesList", "WebSites");
+                if (User.HasClaim("Role", "Преподаватель"))
+                return RedirectToAction("TeacherMM", "MainMenu");
+                else return RedirectToAction("StudentMM", "MainMenu");
             }
             return View(currentUser);
         }

@@ -18,6 +18,11 @@
         <label asp-for="Password">Пароль: </label>
         <input type="password" asp-for="Password" placeholder="Пароль">
         <span asp-validation-for="Password"></span><br>
+        <label>Вы преподаватель?</label>
+        <select asp-for="Role">
+            <option>Преподаватель</option>
+            <option>Студент</option>
+        </select>
         <button type="submit" class="btn btn-primary" asp-controller="Welcome" asp-action="Register">Подтвердить</button><br>
     </form>
 </div>

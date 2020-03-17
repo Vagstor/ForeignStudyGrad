@@ -3,7 +3,7 @@
 <div class="logincontainer">
     <div class="addinfobox">
         <p>Нет учетной записи? <a asp-action="Register" asp-controller="Welcome">Зарегистрируйтесь здесь</a></p>
-        <p>Уже вошли? <a asp-action="SitesList" asp-controller="WebSites">Перейти на домашнюю страницу</a></p>
+        <p>Уже вошли? <a asp-controller="MainMenu">Перейти на домашнюю страницу</a></p>
     </div>
     <form asp-action="login" method="post">
         <label asp-for="Login">Имя пользователя или e-mail:</label>
