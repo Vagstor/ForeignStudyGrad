@@ -8,7 +8,6 @@
 #pragma warning disable 1591
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 using LinqToDB;
@@ -17,15 +16,13 @@ using LinqToDB.Mapping;
 namespace DataModels
 {
 	/// <summary>
-	/// Database       : monitoring
+	/// Database       : foreignstudy
 	/// Data Source    : tcp://localhost:5432
 	/// Server Version : 10.3
 	/// </summary>
 	public partial class MainDb : LinqToDB.Data.DataConnection
 	{
-		public ITable<Site>  Sites  { get { return this.GetTable<Site>(); } }
-		public ITable<User>  Users  { get { return this.GetTable<User>(); } }
-		public ITable<Visit> Visits { get { return this.GetTable<Visit>(); } }
+		public ITable<User> Users { get { return this.GetTable<User>(); } }
 
 		partial void InitMappingSchema()
 		{
@@ -48,33 +45,7 @@ namespace DataModels
 		partial void InitMappingSchema();
 	}
 
-	[Table(Schema="monitoring", Name="sites")]
-	public partial class Site
-	{
-		[Column("id"),          PrimaryKey,  NotNull] public Guid     Id         { get; set; } // uuid
-		[Column("url"),            Nullable         ] public string   Url        { get; set; } // character varying
-		[Column("user_id"),        Nullable         ] public Guid?    UserId     { get; set; } // uuid
-		[Column("add_time"),                 NotNull] public DateTime AddTime    { get; set; } // timestamp (0) without time zone
-		[Column("last_status"),    Nullable         ] public int?     LastStatus { get; set; } // integer
-
-		#region Associations
-
-		/// <summary>
-		/// sites_user_id_fk
-		/// </summary>
-		[Association(ThisKey="UserId", OtherKey="Id", CanBeNull=true, Relationship=Relationship.ManyToOne, KeyName="sites_user_id_fk", BackReferenceName="Sitesuseridfks")]
-		public User User { get; set; }
-
-		/// <summary>
-		/// visits_site_id_fk_BackReference
-		/// </summary>
-		[Association(ThisKey="Id", OtherKey="SiteId", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true)]
-		public IEnumerable<Visit> Visitssiteidfks { get; set; }
-
-		#endregion
-	}
-
-	[Table(Schema="monitoring", Name="users")]
+	[Table(Schema="foreignstudy", Name="users")]
 	public partial class User
 	{
 		[Column("id"),       PrimaryKey,  NotNull] public Guid   Id       { get; set; } // uuid
@@ -82,54 +53,11 @@ namespace DataModels
 		[Column("password"),              NotNull] public string Password { get; set; } // character varying
 		[Column("email"),                 NotNull] public string Email    { get; set; } // character varying
 		[Column("role"),        Nullable         ] public string Role     { get; set; } // character varying
-
-		#region Associations
-
-		/// <summary>
-		/// sites_user_id_fk_BackReference
-		/// </summary>
-		[Association(ThisKey="Id", OtherKey="UserId", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true)]
-		public IEnumerable<Site> Sitesuseridfks { get; set; }
-
-		#endregion
-	}
-
-	[Table(Schema="monitoring", Name="visits")]
-	public partial class Visit
-	{
-		[Column("id"),         PrimaryKey,  NotNull] public Guid     Id        { get; set; } // uuid
-		[Column("url"),           Nullable         ] public string   Url       { get; set; } // character varying
-		[Column("visit_time"),              NotNull] public DateTime VisitTime { get; set; } // timestamp (0) without time zone
-		[Column("status"),                  NotNull] public int      Status    { get; set; } // integer
-		[Column("site_id"),                 NotNull] public Guid     SiteId    { get; set; } // uuid
-		[Column("error_desc"),    Nullable         ] public string   ErrorDesc { get; set; } // character varying
-
-		#region Associations
-
-		/// <summary>
-		/// visits_site_id_fk
-		/// </summary>
-		[Association(ThisKey="SiteId", OtherKey="Id", CanBeNull=false, Relationship=Relationship.ManyToOne, KeyName="visits_site_id_fk", BackReferenceName="Visitssiteidfks")]
-		public Site Site { get; set; }
-
-		#endregion
 	}
 
 	public static partial class TableExtensions
 	{
-		public static Site Find(this ITable<Site> table, Guid Id)
-		{
-			return table.FirstOrDefault(t =>
-				t.Id == Id);
-		}
-
 		public static User Find(this ITable<User> table, Guid Id)
-		{
-			return table.FirstOrDefault(t =>
-				t.Id == Id);
-		}
-
-		public static Visit Find(this ITable<Visit> table, Guid Id)
 		{
 			return table.FirstOrDefault(t =>
 				t.Id == Id);

@@ -21,15 +21,15 @@ namespace ForeignStudyGrad.Services
         {
             _db = db;
         }
-        public bool IsUsersSiteAlreadyInDB(Site site)
-        {
-            return _db.Sites.Where(p => p.UserId == site.UserId).Any(o => o.Url == site.Url);
-        }
+        //public bool IsUsersSiteAlreadyInDB(Site site)
+        //{
+        //    return _db.Sites.Where(p => p.UserId == site.UserId).Any(o => o.Url == site.Url);
+        //}
 
-        public Site GetSite(Guid id)
-        {
-            return _db.Sites.Find(id);
-        }
+        //public Site GetSite(Guid id)
+        //{
+        //    return _db.Sites.Find(id);
+        //}
         public List<String> CheckLogin(string username, string password)
         {
             var users = new List<User>();
@@ -83,58 +83,58 @@ namespace ForeignStudyGrad.Services
                 return false;
         }
 
-        public DateTime AddTime(Guid userId, Guid siteId)
-        {
-            return _db.Sites.Where(p => p.UserId == userId).Where(p => p.Id == siteId).FirstOrDefault().AddTime;
-        }
-        public List<Site> GetSites(Guid userId)
-        {
-            var query = from sites in _db.Sites
-                        where sites.UserId == userId
-                        select sites;
-            return query.ToList();
-        }
-        public List<Site> GetAllSites()
-        {
-            return _db.Sites.ToList();
-        }
-        public List<Visit> GetSiteVisits(string url)
-        {
-            var visits = _db.Visits.Where(p => p.Url == url).OrderBy(p => p.VisitTime);
-            return visits.ToList();
-        }
-        public void EditSite(Site site)
-        {
-            if (_db.Sites.Where(p => p.Url == site.Url).FirstOrDefault() == null)
-            {
-                _db.Sites.Where(p => p.Id == site.Id)
-            .Set(p => p.Url, site.Url)
-            .Update();
-            }
-        }
-        public void UpdateLastStatus(Guid id, int status)
-        {
-            _db.Sites.Where(p => p.Id == id)
-            .Set(p => p.LastStatus, status)
-            .Update();
-        }
-        public void UpdateSite(Site site, int status)
-        {
-            _db.Sites.Where(p => p.Id == site.Id)
-         .Set(p => p.LastStatus, status)
-         .Update();
-        }
-        public DateTime FirstVisit(Guid userId, Guid siteId)
-        {
-            var query = from v in _db.Visits
-                        join vr in _db.Sites on v.SiteId equals vr.Id
-                        where vr.UserId == userId
-                        where vr.Id == siteId
-                        orderby v.VisitTime
-                        select v;
-            var time = query.OrderBy(p => p.VisitTime).FirstOrDefault();
-            return time.VisitTime;
-        }
+        //public DateTime AddTime(Guid userId, Guid siteId)
+        //{
+        //    return _db.Sites.Where(p => p.UserId == userId).Where(p => p.Id == siteId).FirstOrDefault().AddTime;
+        //}
+        //public List<Site> GetSites(Guid userId)
+        //{
+        //    var query = from sites in _db.Sites
+        //                where sites.UserId == userId
+        //                select sites;
+        //    return query.ToList();
+        //}
+        //public List<Site> GetAllSites()
+        //{
+        //    return _db.Sites.ToList();
+        //}
+        //public List<Visit> GetSiteVisits(string url)
+        //{
+        //    var visits = _db.Visits.Where(p => p.Url == url).OrderBy(p => p.VisitTime);
+        //    return visits.ToList();
+        //}
+        //public void EditSite(Site site)
+        //{
+        //    if (_db.Sites.Where(p => p.Url == site.Url).FirstOrDefault() == null)
+        //    {
+        //        _db.Sites.Where(p => p.Id == site.Id)
+        //    .Set(p => p.Url, site.Url)
+        //    .Update();
+        //    }
+        //}
+        //public void UpdateLastStatus(Guid id, int status)
+        //{
+        //    _db.Sites.Where(p => p.Id == id)
+        //    .Set(p => p.LastStatus, status)
+        //    .Update();
+        //}
+        //public void UpdateSite(Site site, int status)
+        //{
+        //    _db.Sites.Where(p => p.Id == site.Id)
+        // .Set(p => p.LastStatus, status)
+        // .Update();
+        //}
+        //public DateTime FirstVisit(Guid userId, Guid siteId)
+        //{
+        //    var query = from v in _db.Visits
+        //                join vr in _db.Sites on v.SiteId equals vr.Id
+        //                where vr.UserId == userId
+        //                where vr.Id == siteId
+        //                orderby v.VisitTime
+        //                select v;
+        //    var time = query.OrderBy(p => p.VisitTime).FirstOrDefault();
+        //    return time.VisitTime;
+        //}
 
         public void AddNewUser(string login, string password, string email, string role)
         {
