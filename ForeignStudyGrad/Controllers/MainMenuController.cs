@@ -8,9 +8,27 @@ namespace ForeignStudyGrad.Controllers
 {
     public class MainMenuController : Controller
     {
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult Courses()
+        {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult Dictionary()
+        {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult Timetable()
+        {
+            return View();
+        }
+
+
     }
 }

@@ -31,7 +31,8 @@ ALTER TABLE foreignstudy.users
 
         public override void Revert()
         {
-            base.Revert();
+            var revert_script = $@"DROP TABLE foreignstudy.users;";
+            Database.ExecuteNonQuery(revert_script);
         }
     }
 }
