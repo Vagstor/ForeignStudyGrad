@@ -109,9 +109,7 @@ namespace ForeignStudyGrad.Controllers
         [HttpPost]
         public IActionResult MMRedirect()
         {
-            if (Thread.CurrentPrincipal.IsInRole("Преподаватель"))
-                return RedirectToAction("TeacherMM", "MainMenu");
-            else return RedirectToAction("StudentMM", "MainMenu");
+                return RedirectToAction("Index", "MainMenu");
         }
 
         [HttpGet]

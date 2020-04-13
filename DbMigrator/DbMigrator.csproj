@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ThinkingHome.Migrator.Framework" Version="3.0.0" />
+    <PackageReference Include="ThinkingHome.Migrator.Providers.PostgreSQL" Version="3.0.0" />
+  </ItemGroup>
+
+</Project>

@@ -7,6 +7,6 @@
 	NamespaceName = "DataModels";
 	DataContextName = "MainDb";
 	GetSchemaOptions.IncludedSchemas = new[] { "foreignstudy" };
-	LoadPostgreSQLMetadata("localhost", "5432", "foreignstudy", "postgres", "th3d4t4b4s3");
+	LoadPostgreSQLMetadata("localhost", "5432", "foreignstudy", "postgres", "123");
 	GenerateModel();
 #>

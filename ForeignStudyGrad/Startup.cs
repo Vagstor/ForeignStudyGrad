@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Http;
 using DataModels;
+using DbMigrator;
 
 namespace ForeignStudyGrad
 {
@@ -29,7 +30,7 @@ namespace ForeignStudyGrad
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddRazorPages();
             LinqToDB.Data.DataConnection.DefaultSettings = new MySettings
             {
                 ConnString = Configuration.GetConnectionString("DefaultConnection")
@@ -48,12 +49,10 @@ namespace ForeignStudyGrad
                     options.AccessDeniedPath = new PathString("/Welcome/Login");
                 });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -65,11 +64,13 @@ namespace ForeignStudyGrad
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            //MigrationRunner migrationRunner = new MigrationRunner();
-            var connStr = Configuration["ConnectionStrings:DefaultConnection"];
-            //migrationRunner.MigrationConnection(connStr);
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            MigrationRunner migrationRunner = new MigrationRunner();
+            var connStr = Configuration["ConnectionStrings:DefaultConnection"];
+            migrationRunner.MigrationConnection(connStr);
 
             app.UseCookiePolicy();
 
@@ -82,7 +83,6 @@ namespace ForeignStudyGrad
                     name: "default",
                     pattern: "{controller=Welcome}/{action=Login}/{id?}");
             });
-            //app.ApplicationServices.GetService<MonitoringService>().Run();
         }
     }
 }

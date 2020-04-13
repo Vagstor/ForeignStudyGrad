@@ -8,11 +8,7 @@ namespace ForeignStudyGrad.Controllers
 {
     public class MainMenuController : Controller
     {
-        public IActionResult TeacherMM()
-        {
-            return View();
-        }
-        public IActionResult StudentMM()
+        public IActionResult Index()
         {
             return View();
         }

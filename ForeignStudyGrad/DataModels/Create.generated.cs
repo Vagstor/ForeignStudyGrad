@@ -18,7 +18,7 @@ namespace DataModels
 	/// <summary>
 	/// Database       : foreignstudy
 	/// Data Source    : tcp://localhost:5432
-	/// Server Version : 10.3
+	/// Server Version : 9.4.26
 	/// </summary>
 	public partial class MainDb : LinqToDB.Data.DataConnection
 	{
@@ -49,9 +49,9 @@ namespace DataModels
 	public partial class User
 	{
 		[Column("id"),       PrimaryKey,  NotNull] public Guid   Id       { get; set; } // uuid
-		[Column("login"),                 NotNull] public string Login    { get; set; } // character varying
-		[Column("password"),              NotNull] public string Password { get; set; } // character varying
-		[Column("email"),                 NotNull] public string Email    { get; set; } // character varying
+		[Column("email"),       Nullable         ] public string Email    { get; set; } // character varying
+		[Column("login"),       Nullable         ] public string Login    { get; set; } // character varying
+		[Column("password"),    Nullable         ] public string Password { get; set; } // character varying
 		[Column("role"),        Nullable         ] public string Role     { get; set; } // character varying
 	}
 
