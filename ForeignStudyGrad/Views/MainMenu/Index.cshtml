@@ -1,24 +1,30 @@
-﻿
+﻿@using DataModels;
+@model MainMenuViewModel;
 @{
-    ViewData["Title"] = "StudentMM";
+    ViewData["Title"] = "Главная страница";
 }
-
-    <p>
-        <h1 align ="center"> Главная страница </h1>
-    </p>
-    <p>
-        <h1 align ="center">Список курсов, на которые Вы подписаны:</h1>
-    </p>
-    @*Проверка если сутдент подписан на курс, то вывести его название*@
-    @*При нажатии на курс нужно перейти на страницу этого курса*@
-    <ul>
-        <li class="student_kurs">
-            Курс 1
-        </li>
-        <li class="student_kurs">
-            Курс 2
-        </li>
-        <li class="student_kurs">
-            Курс 3
-        </li>
-    </ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ForeignStudyGrad</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="body">
+        Главная страница
+        Список курсов, на которые Вы подписаны:
+        <ul>
+            @foreach (Cours cours in Model.Courses)
+            {
+                <li>
+                    <p>Уникальный номер курса: @cours.CourseId</p>
+                    <p>@cours.CourseName</p>
+                </li>
+            }
+        </ul>
+    </div>
+</body>
+</html>
