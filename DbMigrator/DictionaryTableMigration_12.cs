@@ -10,21 +10,20 @@ namespace DbMigrator
     {
         public override void Apply()
         {
-            var script = $@"CREATE TABLE foreignstudy.answers
+            var script = $@"CREATE TABLE foreignstudy.dictionary
 (
-  answer_id uuid NOT NULL,
-  answer_body character varying,
-  question_id uuid,
-  answer_ifcorrect boolean,
-  CONSTRAINT answers_pkey PRIMARY KEY (answer_id),
-  CONSTRAINT answers_question_id_fkey FOREIGN KEY (question_id)
-      REFERENCES foreignstudy.questions (question_id) MATCH SIMPLE
+  word_id uuid NOT NULL,
+  user_id uuid,
+  word_body character varying,
+  CONSTRAINT dictionary_pkey PRIMARY KEY (word_id),
+  CONSTRAINT dictionary_user_id_fkey FOREIGN KEY (user_id)
+      REFERENCES foreignstudy.users (user_id) MATCH SIMPLE
       ON UPDATE CASCADE ON DELETE CASCADE
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE foreignstudy.answers
+ALTER TABLE foreignstudy.dictionary
   OWNER TO postgres;
 ";
             Database.ExecuteNonQuery(script);
