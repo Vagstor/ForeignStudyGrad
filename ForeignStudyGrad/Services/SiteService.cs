@@ -36,14 +36,14 @@ namespace ForeignStudyGrad.Services
             users = _db.Users.ToList();
             foreach (var user in users)
             {
-                if ((username == user.Login) && (password == user.Password))
+                if ((username == user.UserLogin) && (password == user.UserPassword))
                 {
-                    return new List<String> { user.Login, user.Password, Convert.ToString(user.Id) };
+                    return new List<String> { user.UserLogin, user.UserPassword, Convert.ToString(user.UserId) };
                 }
                 else
-                    if ((username == user.Email) && (password == user.Password))
+                    if ((username == user.UserEmail) && (password == user.UserPassword))
                 {
-                    return new List<String> { user.Login, user.Password, Convert.ToString(user.Id) };
+                    return new List<String> { user.UserLogin, user.UserPassword, Convert.ToString(user.UserId) };
                 }
             }
             return null;
@@ -52,7 +52,7 @@ namespace ForeignStudyGrad.Services
         public User GetByLogin(string username)
         {
             var q = from u in _db.Users
-                    where u.Login == username || u.Email == username
+                    where u.UserLogin == username || u.UserEmail == username
                     select u;
             return q.FirstOrDefault();
         }
@@ -60,7 +60,7 @@ namespace ForeignStudyGrad.Services
         public bool CheckIfEmailVacant(string email)
         {
             var q = from u in _db.Users
-                    where u.Email == email
+                    where u.UserEmail == email
                     select u;
             if (q.FirstOrDefault() == null)
             {
@@ -73,7 +73,7 @@ namespace ForeignStudyGrad.Services
         public bool CheckIfLoginVacant(string login)
         {
             var q = from u in _db.Users
-                    where u.Login == login
+                    where u.UserLogin == login
                     select u;
             if (q.FirstOrDefault() == null)
             {
@@ -139,11 +139,10 @@ namespace ForeignStudyGrad.Services
         public void AddNewUser(string login, string password, string email, string role)
         {
             User user = new User();
-            user.Email = email;
-            user.Id = Guid.NewGuid();
-            user.Login = login;
-            user.Password = password;
-            user.Role = role;
+            user.UserEmail = email;
+            user.UserId = Guid.NewGuid();
+            user.UserLogin = login;
+            user.UserPassword = password;
             _db.Insert(user);
         }
 

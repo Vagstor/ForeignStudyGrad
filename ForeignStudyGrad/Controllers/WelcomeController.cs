@@ -79,16 +79,16 @@ namespace ForeignStudyGrad.Controllers
             {
                 ModelState.AddModelError("Login", "Неправильно введено имя пользователя");
             }
-            else if (user.Password != currentUser.Password)
+            else if (user.UserPassword != currentUser.Password)
             {
                 ModelState.AddModelError("Password", "Неправильно введен пароль");
             }
             else
             {
                 var identity = new ClaimsIdentity(new[] {
-                        new Claim(ClaimTypes.Name, user.Login),
-                        new Claim("userId", Convert.ToString(user.Id)),
-                        new Claim(ClaimTypes.Role, user.Role)
+                        new Claim(ClaimTypes.Name, user.UserLogin),
+                        new Claim("userId", Convert.ToString(user.UserId))
+                        //new Claim(ClaimTypes.Role, user.UserRole)
                     }, CookieAuthenticationDefaults.AuthenticationScheme);
 
                 var principal = new ClaimsPrincipal(identity);

@@ -8,6 +8,7 @@
 #pragma warning disable 1591
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using LinqToDB;
@@ -22,7 +23,15 @@ namespace DataModels
 	/// </summary>
 	public partial class MainDb : LinqToDB.Data.DataConnection
 	{
-		public ITable<User> Users { get { return this.GetTable<User>(); } }
+		public ITable<Answer>       Answers       { get { return this.GetTable<Answer>(); } }
+		public ITable<Cours>        Courses       { get { return this.GetTable<Cours>(); } }
+		public ITable<Dictionary>   Dictionaries  { get { return this.GetTable<Dictionary>(); } }
+		public ITable<Lecture>      Lectures      { get { return this.GetTable<Lecture>(); } }
+		public ITable<Question>     Questions     { get { return this.GetTable<Question>(); } }
+		public ITable<Subscription> Subscriptions { get { return this.GetTable<Subscription>(); } }
+		public ITable<Test>         Tests         { get { return this.GetTable<Test>(); } }
+		public ITable<Theme>        Themes        { get { return this.GetTable<Theme>(); } }
+		public ITable<User>         Users         { get { return this.GetTable<User>(); } }
 
 		partial void InitMappingSchema()
 		{
@@ -45,22 +54,266 @@ namespace DataModels
 		partial void InitMappingSchema();
 	}
 
+	[Table(Schema="foreignstudy", Name="answers")]
+	public partial class Answer
+	{
+		[Column("answer_id"),        PrimaryKey,  NotNull] public Guid   AnswerId        { get; set; } // uuid
+		[Column("answer_body"),         Nullable         ] public string AnswerBody      { get; set; } // character varying
+		[Column("question_id"),         Nullable         ] public Guid?  QuestionId      { get; set; } // uuid
+		[Column("answer_ifcorrect"),    Nullable         ] public bool?  AnswerIfcorrect { get; set; } // boolean
+
+		#region Associations
+
+		/// <summary>
+		/// answers_question_id_fkey
+		/// </summary>
+		[Association(ThisKey="QuestionId", OtherKey="QuestionId", CanBeNull=true, Relationship=Relationship.ManyToOne, KeyName="answers_question_id_fkey", BackReferenceName="Answersquestionidfkeys")]
+		public Question Question { get; set; }
+
+		#endregion
+	}
+
+	[Table(Schema="foreignstudy", Name="courses")]
+	public partial class Cours
+	{
+		[Column("course_id"),   PrimaryKey,  NotNull] public Guid   CourseId   { get; set; } // uuid
+		[Column("course_name"),    Nullable         ] public string CourseName { get; set; } // character varying
+
+		#region Associations
+
+		/// <summary>
+		/// subscriptions_course_id_fkey_BackReference
+		/// </summary>
+		[Association(ThisKey="CourseId", OtherKey="CourseId", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true)]
+		public IEnumerable<Subscription> Subscriptionscourseidfkeys { get; set; }
+
+		/// <summary>
+		/// themes_course_id_fkey_BackReference
+		/// </summary>
+		[Association(ThisKey="CourseId", OtherKey="CourseId", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true)]
+		public IEnumerable<Theme> Themescourseidfkeys { get; set; }
+
+		#endregion
+	}
+
+	[Table(Schema="foreignstudy", Name="dictionary")]
+	public partial class Dictionary
+	{
+		[Column("word_id"),   PrimaryKey,  NotNull] public Guid   WordId   { get; set; } // uuid
+		[Column("user_id"),      Nullable         ] public Guid?  UserId   { get; set; } // uuid
+		[Column("word_body"),    Nullable         ] public string WordBody { get; set; } // character varying
+
+		#region Associations
+
+		/// <summary>
+		/// dictionary_user_id_fkey
+		/// </summary>
+		[Association(ThisKey="UserId", OtherKey="UserId", CanBeNull=true, Relationship=Relationship.ManyToOne, KeyName="dictionary_user_id_fkey", BackReferenceName="Dictionaryuseridfkeys")]
+		public User User { get; set; }
+
+		#endregion
+	}
+
+	[Table(Schema="foreignstudy", Name="lectures")]
+	public partial class Lecture
+	{
+		[Column("lecture_id"),       PrimaryKey,  NotNull] public Guid   LectureId       { get; set; } // uuid
+		[Column("theme_id"),            Nullable         ] public Guid?  ThemeId         { get; set; } // uuid
+		[Column("lecture_filelink"),    Nullable         ] public string LectureFilelink { get; set; } // character varying
+
+		#region Associations
+
+		/// <summary>
+		/// lectures_theme_id_fkey
+		/// </summary>
+		[Association(ThisKey="ThemeId", OtherKey="ThemeId", CanBeNull=true, Relationship=Relationship.ManyToOne, KeyName="lectures_theme_id_fkey", BackReferenceName="Lecturesthemeidfkeys")]
+		public Theme Theme { get; set; }
+
+		#endregion
+	}
+
+	[Table(Schema="foreignstudy", Name="questions")]
+	public partial class Question
+	{
+		[Column("question_id"),   PrimaryKey,  NotNull] public Guid   QuestionId   { get; set; } // uuid
+		[Column("question_body"),    Nullable         ] public string QuestionBody { get; set; } // character varying
+		[Column("test_id"),          Nullable         ] public Guid?  TestId       { get; set; } // uuid
+
+		#region Associations
+
+		/// <summary>
+		/// answers_question_id_fkey_BackReference
+		/// </summary>
+		[Association(ThisKey="QuestionId", OtherKey="QuestionId", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true)]
+		public IEnumerable<Answer> Answersquestionidfkeys { get; set; }
+
+		/// <summary>
+		/// questions_test_id_fkey
+		/// </summary>
+		[Association(ThisKey="TestId", OtherKey="TestId", CanBeNull=true, Relationship=Relationship.ManyToOne, KeyName="questions_test_id_fkey", BackReferenceName="Questionstestidfkeys")]
+		public Test Test { get; set; }
+
+		#endregion
+	}
+
+	[Table(Schema="foreignstudy", Name="subscriptions")]
+	public partial class Subscription
+	{
+		[Column("user_id"),   PrimaryKey(1), NotNull] public Guid UserId   { get; set; } // uuid
+		[Column("course_id"), PrimaryKey(2), NotNull] public Guid CourseId { get; set; } // uuid
+
+		#region Associations
+
+		/// <summary>
+		/// subscriptions_course_id_fkey
+		/// </summary>
+		[Association(ThisKey="CourseId", OtherKey="CourseId", CanBeNull=false, Relationship=Relationship.ManyToOne, KeyName="subscriptions_course_id_fkey", BackReferenceName="Subscriptionscourseidfkeys")]
+		public Cours Course { get; set; }
+
+		/// <summary>
+		/// subscriptions_user_id_fkey
+		/// </summary>
+		[Association(ThisKey="UserId", OtherKey="UserId", CanBeNull=false, Relationship=Relationship.ManyToOne, KeyName="subscriptions_user_id_fkey", BackReferenceName="Subscriptionsuseridfkeys")]
+		public User User { get; set; }
+
+		#endregion
+	}
+
+	[Table(Schema="foreignstudy", Name="tests")]
+	public partial class Test
+	{
+		[Column("test_id"),   PrimaryKey,  NotNull] public Guid   TestId   { get; set; } // uuid
+		[Column("theme_id"),     Nullable         ] public Guid?  ThemeId  { get; set; } // uuid
+		[Column("test_name"),    Nullable         ] public string TestName { get; set; } // character varying
+
+		#region Associations
+
+		/// <summary>
+		/// questions_test_id_fkey_BackReference
+		/// </summary>
+		[Association(ThisKey="TestId", OtherKey="TestId", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true)]
+		public IEnumerable<Question> Questionstestidfkeys { get; set; }
+
+		/// <summary>
+		/// tests_theme_id_fkey
+		/// </summary>
+		[Association(ThisKey="ThemeId", OtherKey="ThemeId", CanBeNull=true, Relationship=Relationship.ManyToOne, KeyName="tests_theme_id_fkey", BackReferenceName="Teststhemeidfkeys")]
+		public Theme Theme { get; set; }
+
+		#endregion
+	}
+
+	[Table(Schema="foreignstudy", Name="themes")]
+	public partial class Theme
+	{
+		[Column("theme_id"),   PrimaryKey,  NotNull] public Guid   ThemeId   { get; set; } // uuid
+		[Column("theme_name"),    Nullable         ] public string ThemeName { get; set; } // character varying
+		[Column("course_id"),     Nullable         ] public Guid?  CourseId  { get; set; } // uuid
+
+		#region Associations
+
+		/// <summary>
+		/// themes_course_id_fkey
+		/// </summary>
+		[Association(ThisKey="CourseId", OtherKey="CourseId", CanBeNull=true, Relationship=Relationship.ManyToOne, KeyName="themes_course_id_fkey", BackReferenceName="Themescourseidfkeys")]
+		public Cours Course { get; set; }
+
+		/// <summary>
+		/// lectures_theme_id_fkey_BackReference
+		/// </summary>
+		[Association(ThisKey="ThemeId", OtherKey="ThemeId", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true)]
+		public IEnumerable<Lecture> Lecturesthemeidfkeys { get; set; }
+
+		/// <summary>
+		/// tests_theme_id_fkey_BackReference
+		/// </summary>
+		[Association(ThisKey="ThemeId", OtherKey="ThemeId", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true)]
+		public IEnumerable<Test> Teststhemeidfkeys { get; set; }
+
+		#endregion
+	}
+
 	[Table(Schema="foreignstudy", Name="users")]
 	public partial class User
 	{
-		[Column("id"),       PrimaryKey,  NotNull] public Guid   Id       { get; set; } // uuid
-		[Column("email"),       Nullable         ] public string Email    { get; set; } // character varying
-		[Column("login"),       Nullable         ] public string Login    { get; set; } // character varying
-		[Column("password"),    Nullable         ] public string Password { get; set; } // character varying
-		[Column("role"),        Nullable         ] public string Role     { get; set; } // character varying
+		[Column("user_id"),          PrimaryKey,  NotNull] public Guid   UserId          { get; set; } // uuid
+		[Column("user_email"),          Nullable         ] public string UserEmail       { get; set; } // character varying
+		[Column("user_login"),          Nullable         ] public string UserLogin       { get; set; } // character varying
+		[Column("user_password"),       Nullable         ] public string UserPassword    { get; set; } // character varying
+		[Column("user_credentials"),    Nullable         ] public string UserCredentials { get; set; } // character varying
+
+		#region Associations
+
+		/// <summary>
+		/// dictionary_user_id_fkey_BackReference
+		/// </summary>
+		[Association(ThisKey="UserId", OtherKey="UserId", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true)]
+		public IEnumerable<Dictionary> Dictionaryuseridfkeys { get; set; }
+
+		/// <summary>
+		/// subscriptions_user_id_fkey_BackReference
+		/// </summary>
+		[Association(ThisKey="UserId", OtherKey="UserId", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true)]
+		public IEnumerable<Subscription> Subscriptionsuseridfkeys { get; set; }
+
+		#endregion
 	}
 
 	public static partial class TableExtensions
 	{
-		public static User Find(this ITable<User> table, Guid Id)
+		public static Answer Find(this ITable<Answer> table, Guid AnswerId)
 		{
 			return table.FirstOrDefault(t =>
-				t.Id == Id);
+				t.AnswerId == AnswerId);
+		}
+
+		public static Cours Find(this ITable<Cours> table, Guid CourseId)
+		{
+			return table.FirstOrDefault(t =>
+				t.CourseId == CourseId);
+		}
+
+		public static Dictionary Find(this ITable<Dictionary> table, Guid WordId)
+		{
+			return table.FirstOrDefault(t =>
+				t.WordId == WordId);
+		}
+
+		public static Lecture Find(this ITable<Lecture> table, Guid LectureId)
+		{
+			return table.FirstOrDefault(t =>
+				t.LectureId == LectureId);
+		}
+
+		public static Question Find(this ITable<Question> table, Guid QuestionId)
+		{
+			return table.FirstOrDefault(t =>
+				t.QuestionId == QuestionId);
+		}
+
+		public static Subscription Find(this ITable<Subscription> table, Guid UserId, Guid CourseId)
+		{
+			return table.FirstOrDefault(t =>
+				t.UserId   == UserId &&
+				t.CourseId == CourseId);
+		}
+
+		public static Test Find(this ITable<Test> table, Guid TestId)
+		{
+			return table.FirstOrDefault(t =>
+				t.TestId == TestId);
+		}
+
+		public static Theme Find(this ITable<Theme> table, Guid ThemeId)
+		{
+			return table.FirstOrDefault(t =>
+				t.ThemeId == ThemeId);
+		}
+
+		public static User Find(this ITable<User> table, Guid UserId)
+		{
+			return table.FirstOrDefault(t =>
+				t.UserId == UserId);
 		}
 	}
 }
