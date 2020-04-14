@@ -1,6 +1,7 @@
-﻿
+﻿@using DataModels;
+@model MainMenuViewModel;
 @{
-    ViewData["Title"] = "StudentMM";
+    ViewData["Title"] = "Главная страница";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +16,15 @@
     <div class="body">
         Главная страница
         Список курсов, на которые Вы подписаны:
+        <ul>
+            @foreach (Cours cours in Model.Courses)
+            {
+                <li>
+                    <p>Уникальный номер курса: @cours.CourseId</p>
+                    <p>@cours.CourseName</p>
+                </li>
+            }
+        </ul>
     </div>
 </body>
 </html>

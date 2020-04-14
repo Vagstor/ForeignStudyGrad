@@ -38,6 +38,7 @@ namespace ForeignStudyGrad
 
             services.AddScoped<MainDb>();
             services.AddScoped<SiteService>();
+            services.AddScoped<CourseService>();
             //services.AddScoped<HttpService>();
             services.AddSingleton<IConfiguration>(Configuration);
             //services.AddSingleton<MonitoringService>();
