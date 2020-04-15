@@ -12,7 +12,14 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Welcome" asp-action="Login">ForeignStudyGrad</a>
+                @if (@User.Identity.Name == null)
+                {
+                    <a class="navbar-brand" asp-area="" asp-controller="Welcome" asp-action="Login">ForeignStudyGrad</a>;
+                }
+                else
+                { 
+            <a class="navbar-brand" asp-area="" asp-controller="MainMenu" asp-action="Index">ForeignStudyGrad</a>;
+                }
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,20 +29,20 @@
 
                         @if (@User.Identity.Name != null)
                         {
-                            <li class="nav-item" text-align = center>
+                            <li class="nav-item" text-align=center>
                                 <a class="nav-link text-dark" asp-area="" asp-controller="MainMenu" asp-action="Courses">Записаться на курс</a>
                             </li>
 
-                            <li class="nav-item" text-align = center>
+                            <li class="nav-item" text-align=center>
                                 <a class="nav-link text-dark" asp-area="" asp-controller="MainMenu" asp-action="Dictionary">Словарь</a>
                             </li>
 
-                            <li class="nav-item" text-align = center>
+                            <li class="nav-item" text-align=center>
                                 <a class="nav-link text-dark" asp-area="" asp-controller="MainMenu" asp-action="Timetable">Расписание</a>
                             </li>
 
 
-                            <li class="nav-link text-dark" text-align = center>Добро пожаловать, @User.Identity.Name! </li>
+                            <li class="nav-link text-dark" text-align=center>Добро пожаловать, @User.Identity.Name! </li>
                             <li>
                                 <a class="nav-link text-dark" asp-action="Logout" asp-controller="Welcome">Выйти</a>
                             </li>
