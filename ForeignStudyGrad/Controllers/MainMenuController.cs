@@ -20,14 +20,21 @@ namespace ForeignStudyGrad.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            MainMenuViewModel mmvm = new MainMenuViewModel();
-            mmvm.Courses = _courseService.GetUserCourses(User.Identity.Name);
+            MMIndexViewModel mmvm = new MMIndexViewModel();
+            mmvm.Courses = _courseService.ConvertDBCourseToModel(_courseService.GetUserCourses(User.Identity.Name));
             return View(mmvm);
         }
         [HttpGet]
         public IActionResult Courses()
         {
             return View();
+        }
+        [HttpGet]
+        public IActionResult Course(Guid courseid)
+        {
+            CoursViewModel cvm = new CoursViewModel();
+            cvm.themes = _courseService.ConvertDBThemeToModel(_courseService.GetCourseThemes(courseid));
+            return View(cvm);
         }
         [HttpGet]
         public IActionResult Dictionary()

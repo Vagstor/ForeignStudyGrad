@@ -1,5 +1,5 @@
 ﻿@using DataModels;
-@model MainMenuViewModel;
+@model MMIndexViewModel;
 @{
     ViewData["Title"] = "Главная страница";
 }
@@ -13,12 +13,11 @@
 @*Проверка если сутдент подписан на курс, то вывести его название*@
 @*При нажатии на курс нужно перейти на страницу этого курса*@
 <ul>
-    @foreach (Cours cours in Model.Courses)
+    @foreach (CourseModel course in Model.Courses)
     {
-        <li class="student_kurs">
-            <p>Уникальный номер курса: @cours.CourseId</p>
-            <p>@cours.CourseName</p>
-        </li>
+    <li class="student_kurs">
+        @Html.ActionLink(course.name, "Course", new { courseid = course.id })
+    </li>
     }
 </ul>
 
