@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewData["Title"] = "";
+}
+@model CoursViewModel;
+@using DataModels; 
+
+@foreach (ThemeModel themes in Model.themes)
+{
+    <li class="student_kurs">
+        <p>@themes.themeName</p>
+    </li>
+}
