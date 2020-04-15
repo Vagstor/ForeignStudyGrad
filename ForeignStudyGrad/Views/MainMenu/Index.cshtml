@@ -15,9 +15,9 @@
 <ul>
     @foreach (Cours cours in Model.Courses)
     {
-        <li class="student_kurs">
-            <p>Уникальный номер курса: @cours.CourseId</p>
-            <p>@cours.CourseName</p>
+        <li class="courses">
+            <p class="size_text_courses">@cours.CourseName</p>
+            <p>Преподаватель:</p>
         </li>
     }
 </ul>

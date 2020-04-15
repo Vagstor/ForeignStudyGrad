@@ -17,25 +17,25 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" align="right">
                     <ul class="navbar-nav flex-grow-1">
 
                         @if (@User.Identity.Name != null)
                         {
-                            <li class="nav-item" text-align = center>
+                            <li class="nav-item" align = "center">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Записаться на курс</a>
                             </li>
 
-                            <li class="nav-item" text-align = center>
+                            <li class="nav-item" align = "center">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Словарь</a>
                             </li>
 
-                            <li class="nav-item" text-align = center>
+                            <li class="nav-item" align = "center">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Расписание</a>
                             </li>
 
 
-                            <li class="nav-link text-dark" text-align = center>Добро пожаловать, @User.Identity.Name! </li>
+                            <li class="navbar-brand" align = "center">Добро пожаловать, @User.Identity.Name! </li>
                             <li>
                                 <a class="nav-link text-dark" asp-action="Logout" asp-controller="Welcome">Выйти</a>
                             </li>

@@ -1,8 +1,16 @@
-﻿li.student_kurs {
+﻿p.size_number_courses {
+    font-size: small;
+}
+p.size_text_courses {
+    font-size: x-large;
+    text-align: center;
+}
+
+li.courses {
     padding: 5px;
     padding-right: 20px;
-    border: solid 1px black;
-    margin-top: 10px;
+    border: 1px solid #dee2e6;
+    margin-top: 5px;
 }
 
 li {
