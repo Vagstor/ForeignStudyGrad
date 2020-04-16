@@ -10,12 +10,13 @@ namespace ForeignStudyGrad.Models
     public class CoursViewModel
     {
         public List<ThemeModel> themes { get; set; }
+        public string courseName { get; set; }
 
     }
 
     public class ThemeModel
     { 
         public string themeName { get; set; }
-        //public Guid currentCourse { get; set; }
+        public Guid themeId { get; set; }
     }
 }

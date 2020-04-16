@@ -30,11 +30,21 @@ namespace ForeignStudyGrad.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult Course(Guid courseid)
+        public IActionResult Course(Guid courseid, string coursename)
         {
             CoursViewModel cvm = new CoursViewModel();
+            cvm.courseName = coursename;
             cvm.themes = _courseService.ConvertDBThemeToModel(_courseService.GetCourseThemes(courseid));
             return View(cvm);
+        }
+        [HttpGet]
+        public IActionResult Theme(Guid themeid, string themename)
+        {
+            ThemeViewModel tvm = new ThemeViewModel();
+            tvm.themename = themename;
+            tvm.tests = _courseService.ConvertDBTestToModel(_courseService.GetThemeTests(themeid));
+            tvm.lectures = _courseService.ConvertDBLectureToModel(_courseService.GetThemeLectures(themeid));
+            return View(tvm);
         }
         [HttpGet]
         public IActionResult Dictionary()

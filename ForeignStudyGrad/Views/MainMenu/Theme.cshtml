@@ -2,16 +2,21 @@
 @{
     ViewData["Title"] = "Theme";
 }
-
-@*Вывод названия темы*@
-<p><h1 align="center">Название темы: </h1></p>
-<ul class="my_padding">
-    <li class="courses">@*Вывод ссылок на лекции по теме*@
-        <p class="site_padding">Лекция 1</p>
-        <p class="site_padding">Лекция 2</p>
+@using DataModels;
+@model ThemeViewModel;
+<h1>Theme</h1>
+<h1>@Model.themename</h1>
+<p>Доступные тесты по теме:</p>
+@foreach (TestModel test in Model.tests)
+{
+    <li class="student_kurs">
+        <p>@Html.ActionLink(test.testname, "Test", new { testid = test.testid }, new { testname = test.testname })</p>
     </li>
-    <li class="courses">@*вывод ссылок на тесты по теме*@
-        <p class="site_padding">Тест 1</p>
-        <p class="site_padding">Тест 2</p>
+}
+<p>Доступные лекции по теме:</p>
+@foreach (LectureModel lecture in Model.lectures)
+{
+    <li class="student_kurs">
+        <a href="@lecture.lecturefile">@lecture.lectureid</a>
     </li>
-</ul>
+}
