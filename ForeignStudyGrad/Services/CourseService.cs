@@ -15,7 +15,6 @@ namespace ForeignStudyGrad.Services
         {
             _db = db;
         }
-
         public List<Cours> GetAllCourses()
         {
             return _db.Courses.ToList();
@@ -47,14 +46,37 @@ namespace ForeignStudyGrad.Services
             {
                 ThemeModel element = new ThemeModel();
                 element.themeName = theme.ThemeName;
+                element.themeId = theme.ThemeId;
                 themeModel.Add(element);
             }
             return themeModel;
         }
+        public List<TestModel> ConvertDBTestToModel(List<Test> testlist)
+        {
+            List<TestModel> testModel = new List<TestModel>();
+            foreach (Test test in testlist)
+            {
+                TestModel element = new TestModel();
+                element.testname = test.TestName;
+                testModel.Add(element);
+            }
+            return testModel;
+        }
+
+        public List<LectureModel> ConvertDBLectureToModel(List<Lecture> lecturelist)
+        {
+            List<LectureModel> lectureModel = new List<LectureModel>();
+            foreach (Lecture lecture in lecturelist)
+            {
+                LectureModel element = new LectureModel();
+                element.lecturefile = lecture.LectureFilelink;
+                lectureModel.Add(element);
+            }
+            return lectureModel;
+        }
         public List<Cours> GetUserCourses(string login)
         {
             var _siteService = new SiteService(_db);
-            //return GetCoursesById(GetUserSubs(login, _siteService));
             return GetCoursesInfoById(GetUserSubs(login, _siteService));
         }
         public List<Guid> GetUserSubs(string login, SiteService _siteService)
@@ -73,6 +95,22 @@ namespace ForeignStudyGrad.Services
                     select c;
             if (q.ToList() != null) return q.ToList();
             else { return new List<Theme>(); }
+        }
+        public List<Test> GetThemeTests(Guid theme)
+        {
+            var q = from c in _db.Tests
+                    where c.ThemeId == theme
+                    select c;
+            if (q.ToList() != null) return q.ToList();
+            else { return new List<Test>(); }
+        }
+        public List<Lecture> GetThemeLectures(Guid theme)
+        {
+            var q = from c in _db.Lectures
+                    where c.ThemeId == theme
+                    select c;
+            if (q.ToList() != null) return q.ToList();
+            else { return new List<Lecture>(); }
         }
     }
 }

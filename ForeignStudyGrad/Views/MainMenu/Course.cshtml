@@ -5,9 +5,10 @@
 @model CoursViewModel;
 @using DataModels; 
 
-@foreach (ThemeModel themes in Model.themes)
+<h1>@Model.courseName</h1>
+@foreach (ThemeModel theme in Model.themes)
 {
     <li class="student_kurs">
-        <p>@themes.themeName</p>
+        <p>@Html.ActionLink(theme.themeName, "Theme", new { themeid = theme.themeId }, new { themename = theme.themeName })</p>
     </li>
 }

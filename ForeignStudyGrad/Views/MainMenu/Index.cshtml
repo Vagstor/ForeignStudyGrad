@@ -16,7 +16,7 @@
     @foreach (CourseModel course in Model.Courses)
     {
     <li class="courses">
-        <p class="size_text_courses">@Html.ActionLink(course.name, "Course", new { courseid = course.id })</p>
+        <p class="size_text_courses">@Html.ActionLink(course.name, "Course", new { courseid = course.id, coursename = course.name })</p>
     </li>
     }
 </ul>

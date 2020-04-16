@@ -9,6 +9,7 @@ namespace ForeignStudyGrad.Models
     {
         public List<LectureModel> lectures { get; set; }
         public List<TestModel> tests { get; set; }
+        public string themename { get; set; }
 
     }
 
