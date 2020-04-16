@@ -17,11 +17,11 @@
             <div class="container">
                 @if (@User.Identity.Name == null)
                 {
-                <a class="navbar-brand" asp-area="" asp-controller="Welcome" asp-action="Login">ForeignStudyGrad</a>
+                    <a class="navbar-brand" asp-area="" asp-controller="Welcome" asp-action="Login">ForeignStudyGrad</a>
                 }
                 else
-                {
-                <a class="navbar-brand" asp-area="" asp-controller="MainMenu" asp-action="Index">ForeignStudyGrad</a>
+                { 
+            <a class="navbar-brand" asp-area="" asp-controller="MainMenu" asp-action="Index">ForeignStudyGrad</a>
                 }
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">

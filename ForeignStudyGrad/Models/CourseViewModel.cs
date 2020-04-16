@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ForeignStudyGrad.Models
 {
-    public class CoursViewModel
+    public class CourseViewModel
     {
         public List<ThemeModel> themes { get; set; }
         public string courseName { get; set; }

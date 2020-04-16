@@ -1,28 +1,21 @@
 ﻿
+@{
+    ViewData["Title"] = Model.themename;
+}
 @using DataModels;
 @model ThemeViewModel;
-@{
-    ViewData["Title"] = @Model.themename;
+<h1>@Model.themename</h1>
+<p>Доступные тесты по теме:</p>
+@foreach (TestModel test in Model.tests)
+{
+    <li class="student_kurs">
+        <p>@Html.ActionLink(test.testname, "Test", new { testid = test.testid, testname = test.testname })</p>
+    </li>
 }
-
-<h3 align="center">Название темы: @Model.themename</h3>
-<ul class="my_padding">
-    <li><p class="size_title_course site_padding">Доступные лекции по теме:</p></li>
-    <li class="courses">
-        @foreach (LectureModel lecture in Model.lectures)
-        {
-
-            <p class=" size_text_course site_padding"><a href="@lecture.lecturefile">@lecture.lectureid</a></p>
-
-        }
+<p>Доступные лекции по теме:</p>
+@foreach (LectureModel lecture in Model.lectures)
+{
+    <li class="student_kurs">
+        <a href="@lecture.lecturefile">@lecture.lecturename</a>
     </li>
-    <li><p class="size_title_course site_padding">Доступные тесты по теме:</p></li>
-    <li class="courses">
-        @foreach (TestModel test in Model.tests)
-        {
-
-            <p class="size_text_course site_padding">@Html.ActionLink(test.testname, "Test", new { testid = test.testid }, new { testname = test.testname })</p>
-
-        }
-    </li>
-</ul>
+}
