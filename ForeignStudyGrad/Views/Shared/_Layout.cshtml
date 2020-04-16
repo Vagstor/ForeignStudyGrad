@@ -12,13 +12,13 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                @User.Identity.Name == null
+                @if (@User.Identity.Name == null)
                 {
-                <a class="navbar-brand" asp-area="" asp-controller="Welcome" asp-action="Login">ForeignStudyGrad</a>;
+                <a class="navbar-brand" asp-area="" asp-controller="Welcome" asp-action="Login">ForeignStudyGrad</a>
                 }
                 else
                 {
-                <a class="navbar-brand" asp-area="" asp-controller="MainMenu" asp-action="Index">ForeignStudyGrad</a>;
+                <a class="navbar-brand" asp-area="" asp-controller="MainMenu" asp-action="Index">ForeignStudyGrad</a>
                 }
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
