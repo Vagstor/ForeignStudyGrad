@@ -32,7 +32,7 @@ namespace ForeignStudyGrad.Controllers
         [HttpGet]
         public IActionResult Course(Guid courseid, string coursename)
         {
-            CoursViewModel cvm = new CoursViewModel();
+            CourseViewModel cvm = new CourseViewModel();
             cvm.courseName = coursename;
             cvm.themes = _courseService.ConvertDBThemeToModel(_courseService.GetCourseThemes(courseid));
             return View(cvm);

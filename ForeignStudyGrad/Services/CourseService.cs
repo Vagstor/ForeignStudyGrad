@@ -70,6 +70,7 @@ namespace ForeignStudyGrad.Services
             {
                 LectureModel element = new LectureModel();
                 element.lecturefile = lecture.LectureFilelink;
+                element.lecturename = lecture.LectureName;
                 lectureModel.Add(element);
             }
             return lectureModel;

@@ -1,14 +1,13 @@
 ﻿
+@model CourseViewModel;
+@using DataModels;
 @{
-    ViewData["Title"] = "";
+    ViewData["Title"] = Model.courseName;
 }
-@model CoursViewModel;
-@using DataModels; 
-
 <h1>@Model.courseName</h1>
 @foreach (ThemeModel theme in Model.themes)
 {
     <li class="student_kurs">
-        <p>@Html.ActionLink(theme.themeName, "Theme", new { themeid = theme.themeId }, new { themename = theme.themeName })</p>
+        <p>@Html.ActionLink(theme.themeName, "Theme", new { themeid = theme.themeId, themename = theme.themeName })</p>
     </li>
 }

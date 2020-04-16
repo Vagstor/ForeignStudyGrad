@@ -16,6 +16,7 @@ namespace ForeignStudyGrad.Models
     public class LectureModel
     { 
         public Guid lectureid { get; set; }
+        public string lecturename { get; set; }
         public string lecturefile { get; set; }
     }
 
