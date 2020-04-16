@@ -9,12 +9,21 @@ p.site_titletema {
     text-align: center;
 }
 p.size_text_course {
-    font-size: x-large;
+    font-size: medium;
+    text-align: left;
+}
+p.size_title_course {
+    font-size: large;
     text-align: left;
 }
 p.site_padding {
     padding-left: 20px;
     margin: 0;
+}
+
+div.courses {
+    border: 1px solid #dee2e6;
+    margin-top: 5px;
 }
 
 li.courses {

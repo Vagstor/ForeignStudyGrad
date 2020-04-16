@@ -3,12 +3,8 @@
 @{
     ViewData["Title"] = "Главная страница";
 }
-
-<p>
-    <h1 align="center"> Главная страница </h1>
-</p>
-<p>
-    <h1 align="center">Список курсов, на которые Вы подписаны:</h1>
+<p class="size_title_course site_padding">
+    Список курсов, на которые Вы подписаны:
 </p>
 @*Проверка если сутдент подписан на курс, то вывести его название*@
 @*При нажатии на курс нужно перейти на страницу этого курса*@
@@ -16,7 +12,7 @@
     @foreach (CourseModel course in Model.Courses)
     {
     <li class="courses">
-        <p class="size_text_courses">@Html.ActionLink(course.name, "Course", new { courseid = course.id, coursename = course.name })</p>
+        <p class="size_text_course site_padding">@Html.ActionLink(course.name, "Course", new { courseid = course.id, coursename = course.name })</p>
     </li>
     }
 </ul>
