@@ -27,6 +27,8 @@ namespace ForeignStudyGrad.Controllers
         [HttpGet]
         public IActionResult Courses()
         {
+            AllCoursesViewModel acvm = new AllCoursesViewModel();
+            acvm.courses = _courseService.
             return View();
         }
         [HttpGet]
