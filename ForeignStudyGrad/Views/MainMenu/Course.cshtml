@@ -1,13 +1,28 @@
-﻿
-@model CourseViewModel;
+﻿@model CourseViewModel;
+
 @using DataModels;
+
 @{
     ViewData["Title"] = Model.courseName;
+
 }
-<h1>@Model.courseName</h1>
-@foreach (ThemeModel theme in Model.themes)
-{
-    <li class="student_kurs">
-        <p>@Html.ActionLink(theme.themeName, "Theme", new { themeid = theme.themeId, themename = theme.themeName })</p>
-    </li>
-}
+
+
+
+@*Вывод названия курса*@
+<p><h3 align="center">Название курса: @Model.courseName</h3></p>
+
+@*Вывод фамилии преподавателя*@
+<p class="site_padding size_title_course">Преподаватель: </p>
+<p class="site_padding size_title_course">Доступные темы курса: </p>
+<ul class="my_padding">
+    @foreach (ThemeModel theme in Model.themes)
+    {
+        <li class="courses">
+            <p class="size_text_course site_padding">)</p>
+
+        </li>
+    }
+</ul>
+
+
