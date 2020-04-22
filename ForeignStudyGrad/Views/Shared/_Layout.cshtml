@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/sytecss.css" />
-    <link rel="stylesheet" href="stylebutton.css"/>
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="~/css/stylebutton.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="~/js/scriptbutton.js"></script>
     <script src="https://www.google.com/jsapi"></script>
+
 </head>
 <body>
     <header>
@@ -20,8 +22,8 @@
                     <a class="navbar-brand" asp-area="" asp-controller="Welcome" asp-action="Login">ForeignStudyGrad</a>
                 }
                 else
-                { 
-            <a class="navbar-brand" asp-area="" asp-controller="MainMenu" asp-action="Index">ForeignStudyGrad</a>
+                {
+                    <a class="navbar-brand" asp-area="" asp-controller="MainMenu" asp-action="Index">ForeignStudyGrad</a>
                 }
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -61,6 +63,7 @@
             @RenderBody()
         </main>
     </div>
+    <a id="back2Top" title="Back to top" href="#">&#10148;</a>
 
     <footer class="border-top footer text-muted">
         <div class="container">
