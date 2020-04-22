@@ -18,10 +18,10 @@
 <ul class="my_padding">
     @foreach (ThemeModel theme in Model.themes)
     {
-        <li class="courses">
-            <p class="size_text_course site_padding">)</p>
-
-        </li>
+    <li class="courses">
+        <p class="size_text_course site_padding">@Html.ActionLink(theme.themeName, "Theme", new { themeid = theme.themeId, themename = theme.themeName })</p>
+        
+    </li>
     }
 </ul>
 

@@ -1,4 +1,4 @@
-﻿<<<<<<< HEAD
+﻿
 @using DataModels;
 @model ThemeViewModel;
 @{
@@ -12,7 +12,7 @@
         @foreach (LectureModel lecture in Model.lectures)
         {
 
-            <p class=" size_text_course site_padding"><a href="@lecture.lecturefile">@lecture.lectureid</a></p>
+            <p class=" size_text_course site_padding"><a href="@lecture.lecturefile">@lecture.lecturename</a></p>
 
         }
     </li>
