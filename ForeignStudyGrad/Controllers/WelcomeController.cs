@@ -17,8 +17,8 @@ namespace ForeignStudyGrad.Controllers
 {
     public class WelcomeController : Controller
     {
-        private SiteService _service;
-        public WelcomeController(SiteService service)
+        private AccountService _service;
+        public WelcomeController(AccountService service)
         {
             _service = service;
         }
@@ -29,32 +29,29 @@ namespace ForeignStudyGrad.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(RegisterModel currentUser)
+        public IActionResult Register(RegisterViewModel currentUser)
         {
+            //регистрация пользователя. Первое условие проверяет, валидны ли значения на форме, 2-3 - свободны ли Login и Email, если всё в порядке, 
+            //происходит передача данных в бд
 
             if (!ModelState.IsValid)
             {
                 return View(currentUser);
             }
 
-            else
-
-            if (!_service.CheckIfLoginVacant(currentUser.Login))
+            else if (!_service.CheckIfLoginVacant(currentUser.user.Login))
             {
                 ModelState.AddModelError("Login", "Такой логин уже существует");
             }
 
-            else
-
-            if (!_service.CheckIfEmailVacant(currentUser.Email))
+            else if (!_service.CheckIfEmailVacant(currentUser.user.Email))
             {
                 ModelState.AddModelError("Email", "Такой Email уже существует");
             }
 
             else
-
             {
-                _service.AddNewUser(currentUser.Login, currentUser.Password, currentUser.Email, currentUser.Role);
+                _service.AddNewUser(currentUser.user.Login, currentUser.user.Password, currentUser.user.Email, currentUser.user.Role);
                 return RedirectToAction("Login", "Welcome");
             }
 
@@ -63,31 +60,34 @@ namespace ForeignStudyGrad.Controllers
 
         public IActionResult Logout()
         {
-            var login = HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            //выход из учетной записи и перенаправление на страницу входа
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Welcome");
         }
         [HttpPost]
-        public IActionResult Login(LoginModel currentUser)
+        public IActionResult Login(LoginViewModel currentUser)
         {
-            var user = _service.GetByLogin(currentUser.Login);
+            //проверка данных на странице логина 
+            bool userCheck = _service.CheckLogin(currentUser);
 
+            //если модель не валидна, возвращается вью с ошибками
             if (!ModelState.IsValid)
             {
                 return View(currentUser);
             }
-            else if (user == null)
+
+            //если пользователей с такими параметрами нет в бд
+            else if (!userCheck)
             {
-                ModelState.AddModelError("Login", "Неправильно введено имя пользователя");
+                ModelState.AddModelError("Login", "Неправильно введены данные");
             }
-            else if (user.UserPassword != currentUser.Password)
-            {
-                ModelState.AddModelError("Password", "Неправильно введен пароль");
-            }
+            
+            //если данные верны, создаём новую Identity для пользователя и перенаправляем на главное меню
             else
             {
                 var identity = new ClaimsIdentity(new[] {
-                        new Claim(ClaimTypes.Name, user.UserLogin),
-                        new Claim("userId", Convert.ToString(user.UserId))
+                        new Claim(ClaimTypes.Name, currentUser.user.Login),
+                        //new Claim("userId", Convert.ToString(user.UserId))
                         //new Claim(ClaimTypes.Role, user.UserRole)
                     }, CookieAuthenticationDefaults.AuthenticationScheme);
 
@@ -95,7 +95,7 @@ namespace ForeignStudyGrad.Controllers
 
                 Thread.CurrentPrincipal = principal;
 
-                var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
                 return MMRedirect();
 

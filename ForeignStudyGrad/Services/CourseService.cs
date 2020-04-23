@@ -9,9 +9,9 @@ namespace ForeignStudyGrad.Services
 {
     public class CourseService
     {
-        private MainDb _db;
+        private ForeignstudyDB _db;
 
-        public CourseService(MainDb db)
+        public CourseService(ForeignstudyDB db)
         {
             _db = db;
         }
@@ -20,6 +20,13 @@ namespace ForeignStudyGrad.Services
             return _db.Courses.ToList();
         }
 
+        public List<Cours> SearchCoursesWith(string text)
+        {
+            var q = from c in _db.Courses
+                    where c.CourseName.Contains(text)
+                    select c;
+            return q.ToList();
+        }
         public List<Cours> GetCoursesInfoById(List<Guid> courseidlist)
         {
             var q = from c in _db.Courses
@@ -77,10 +84,10 @@ namespace ForeignStudyGrad.Services
         }
         public List<Cours> GetUserCourses(string login)
         {
-            var _siteService = new SiteService(_db);
+            var _siteService = new AccountService(_db);
             return GetCoursesInfoById(GetUserSubs(login, _siteService));
         }
-        public List<Guid> GetUserSubs(string login, SiteService _siteService)
+        public List<Guid> GetUserSubs(string login, AccountService _siteService)
         {
             _siteService.GetByLogin(login);
             var q = from s in _db.Subscriptions

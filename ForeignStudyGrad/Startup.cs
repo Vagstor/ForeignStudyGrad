@@ -33,11 +33,12 @@ namespace ForeignStudyGrad
             services.AddRazorPages();
             LinqToDB.Data.DataConnection.DefaultSettings = new MySettings
             {
-                ConnString = Configuration.GetConnectionString("DefaultConnection")
+                //ConnString = Configuration.GetConnectionString("DefaultConnection")
+                ConnString = "server=ASKOLD-ой\\sqlexpress;database=foreignstudy;Trusted_Connection=True;"
             };
 
-            services.AddScoped<MainDb>();
-            services.AddScoped<SiteService>();
+            services.AddScoped<ForeignstudyDB>();
+            services.AddScoped<AccountService>();
             services.AddScoped<CourseService>();
             //services.AddScoped<HttpService>();
             services.AddSingleton<IConfiguration>(Configuration);
@@ -69,9 +70,9 @@ namespace ForeignStudyGrad
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            MigrationRunner migrationRunner = new MigrationRunner();
-            var connStr = Configuration["ConnectionStrings:DefaultConnection"];
-            migrationRunner.MigrationConnection(connStr);
+            //MigrationRunner migrationRunner = new MigrationRunner();
+            //var connStr = Configuration["ConnectionStrings:DefaultConnection"];
+            //migrationRunner.MigrationConnection(connStr);
 
             app.UseCookiePolicy();
 

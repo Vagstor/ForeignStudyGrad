@@ -2,24 +2,24 @@
 @{
     ViewData["Title"] = "Register";
 }
-@model RegisterModel
+@model RegisterViewModel
 <link href="~/css/LoginStyle.css" rel="stylesheet" type="text/css" />
 <h1>Страница регистрации</h1>
 
 <div class="logincontainer">
 
     <form asp-action="register" method="post">
-        <label asp-for="Login">Имя пользователя (логин):</label>
-        <input type="text" asp-for="Login" placeholder="Введите имя пользователя">
-        <span asp-validation-for="Login"></span><br>
-        <label asp-for="Email">E-mail: </label>
-        <input type="text" asp-for="Email" placeholder="E-mail">
-        <span asp-validation-for="Email"></span><br>
-        <label asp-for="Password">Пароль: </label>
-        <input type="password" asp-for="Password" placeholder="Пароль">
-        <span asp-validation-for="Password"></span><br>
+        <label>Имя пользователя (логин):</label>
+        <input type="text" asp-for="user.Login" placeholder="Введите имя пользователя">
+        <span asp-validation-for="user.Login"></span><br>
+        <label>E-mail: </label>
+        <input type="text" asp-for="user.Email" placeholder="E-mail">
+        <span asp-validation-for="user.Email"></span><br>
+        <label>Пароль: </label>
+        <input type="password" asp-for="user.Password" placeholder="Пароль">
+        <span asp-validation-for="user.Password"></span><br>
         <label>Вы преподаватель?</label>
-        <select asp-for="Role">
+        <select asp-for="user.Role">
             <option>Преподаватель</option>
             <option>Студент</option>
         </select>

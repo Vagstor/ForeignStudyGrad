@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace ForeignStudyGrad.Models
 {
-    public class RegisterModel
+    public class RegisterViewModel
+    {
+       public UserRegModel user { get; set; }
+    }
+
+    public class UserRegModel
     {
         [Required(ErrorMessage = "Не указан логин")]
         [StringLength(32, MinimumLength = 3, ErrorMessage = "Длина строки должна быть от 3 до 32 символов")]
@@ -20,7 +25,6 @@ namespace ForeignStudyGrad.Models
         [DataType(DataType.Password)]
         [StringLength(32, MinimumLength = 3, ErrorMessage = "Длина строки должна быть от 3 до 32 символов")]
         public string Password { get; set; }
-
         public string Role { get; set; }
     }
 }

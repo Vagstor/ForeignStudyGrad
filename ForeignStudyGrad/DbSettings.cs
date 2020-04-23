@@ -18,8 +18,8 @@ namespace ForeignStudyGrad
         {
             public IEnumerable<IDataProviderSettings> DataProviders => Enumerable.Empty<IDataProviderSettings>();
 
-            public string DefaultConfiguration => "PostgreSQL";
-            public string DefaultDataProvider => "PostgreSQL";
+            public string DefaultConfiguration => "SqlServer";
+            public string DefaultDataProvider => "SqlServer";
             public string ConnString;
 
             public IEnumerable<IConnectionStringSettings> ConnectionStrings
@@ -29,8 +29,8 @@ namespace ForeignStudyGrad
                     yield return
                         new DbSettings
                         {
-                            Name = "PostgreSQL",
-                            ProviderName = "PostgreSQL",
+                            Name = "SqlServer",
+                            ProviderName = "SqlServer",
                             ConnectionString = ConnString
                         };
                 }

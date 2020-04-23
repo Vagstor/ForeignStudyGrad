@@ -24,12 +24,19 @@ namespace ForeignStudyGrad.Controllers
             mmvm.Courses = _courseService.ConvertDBCourseToModel(_courseService.GetUserCourses(User.Identity.Name));
             return View(mmvm);
         }
+        [HttpPost]
+        public IActionResult SearchCourse(AllCoursesViewModel currentModel)
+        {
+            AllCoursesViewModel acvm = new AllCoursesViewModel();
+            acvm.courses = _courseService.ConvertDBCourseToModel(_courseService.SearchCoursesWith(currentModel.searchString));
+            return View("Courses", acvm);
+        }
         [HttpGet]
         public IActionResult Courses()
         {
             AllCoursesViewModel acvm = new AllCoursesViewModel();
-            acvm.courses = _courseService.
-            return View();
+            acvm.courses = _courseService.ConvertDBCourseToModel(_courseService.GetAllCourses());
+            return View(acvm);
         }
         [HttpGet]
         public IActionResult Course(Guid courseid, string coursename)

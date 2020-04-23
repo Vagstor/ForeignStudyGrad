@@ -1,4 +1,4 @@
-﻿@model LoginModel
+﻿@model LoginViewModel
 @{
     ViewData["Title"] = "ForeignStudyGrad";
 }
@@ -10,12 +10,12 @@
         { <p>Уже вошли? <a asp-controller="MainMenu" asp-action="Index">Перейти на домашнюю страницу</a></p>}
     </div>
     <form asp-action="login" method="post">
-        <label asp-for="Login">Имя пользователя или e-mail:</label>
-        <input type="text" asp-for="Login" placeholder="Введите логин или e-mail">
-        <span asp-validation-for="Login"></span><br>
-        <label asp-for="Password">Пароль: </label>
-        <input type="password" asp-for="Password" placeholder="Пароль">
-        <span asp-validation-for="Password"></span><br>
+        <label>Имя пользователя или e-mail:</label>
+        <input type="text" asp-for="user.Login" placeholder="Введите логин или e-mail">
+        <span asp-validation-for="user.Login"></span><br>
+        <label>Пароль: </label>
+        <input type="password" asp-for="user.Password" placeholder="Пароль">
+        <span asp-validation-for="user.Password"></span><br>
         <button type="submit" class="btn btn-primary" asp-controller="Welcome" asp-action="Login">Подтвердить</button>
     </form>
 </div>
