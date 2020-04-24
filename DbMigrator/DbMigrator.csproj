@@ -10,6 +10,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
     <PackageReference Include="ThinkingHome.Migrator.Framework" Version="3.0.0" />
     <PackageReference Include="ThinkingHome.Migrator.Providers.PostgreSQL" Version="3.0.0" />
+    <PackageReference Include="ThinkingHome.Migrator.Providers.SqlServer" Version="3.0.0" />
   </ItemGroup>
 
 </Project>
