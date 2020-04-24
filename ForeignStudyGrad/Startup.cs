@@ -70,9 +70,11 @@ namespace ForeignStudyGrad
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            //MigrationRunner migrationRunner = new MigrationRunner();
-            //var connStr = Configuration["ConnectionStrings:DefaultConnection"];
-            //migrationRunner.MigrationConnection(connStr);
+            MigrationRunner migrationRunner = new MigrationRunner();
+
+            //вставить под connStr строку подключения для миграции
+            var connStr = "server=ASKOLD-ПК\\sqlexpress;database=foreignstudy;Trusted_Connection=True;";
+            migrationRunner.MigrationConnection(connStr);
 
             app.UseCookiePolicy();
 

@@ -5,15 +5,15 @@ using ThinkingHome.Migrator.Framework;
 
 namespace DbMigrator
 {
-    [Migration(7)]
-    public class TestsTableMigration_07 : Migration
+    [Migration(2)]
+    public class CoursesTableMigration_02 : Migration
     {
         public override void Apply()
         {
             var script = $@"USE [foreignstudy]
 GO
 
-/****** Object:  Table [dbo].[tests]    Script Date: 24.04.2020 12:56:30 ******/
+/****** Object:  Table [dbo].[courses]    Script Date: 24.04.2020 12:52:12 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -23,28 +23,19 @@ GO
 SET ANSI_PADDING ON
 GO
 
-CREATE TABLE [dbo].[tests](
-	[theme_id] [uniqueidentifier] NOT NULL,
-	[test_name] [varchar](50) NOT NULL,
-	[test_id] [uniqueidentifier] NOT NULL,
- CONSTRAINT [PK_tests] PRIMARY KEY CLUSTERED 
+CREATE TABLE [dbo].[courses](
+	[course_id] [uniqueidentifier] NOT NULL,
+	[course_name] [varchar](max) NULL,
+ CONSTRAINT [courses_pkey] PRIMARY KEY CLUSTERED 
 (
-	[test_id] ASC
+	[course_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
 
 SET ANSI_PADDING OFF
 GO
-
-ALTER TABLE [dbo].[tests]  WITH CHECK ADD  CONSTRAINT [FK_tests_themes] FOREIGN KEY([theme_id])
-REFERENCES [dbo].[themes] ([theme_id])
-GO
-
-ALTER TABLE [dbo].[tests] CHECK CONSTRAINT [FK_tests_themes]
-GO
-
 
 
 ";
@@ -56,10 +47,9 @@ GO
             var revert_script = $@"USE [foreignstudy]
 GO
 
-/****** Object:  Table [dbo].[tests]    Script Date: 24.04.2020 12:56:40 ******/
-DROP TABLE [dbo].[tests]
+/****** Object:  Table [dbo].[courses]    Script Date: 24.04.2020 12:52:39 ******/
+DROP TABLE [dbo].[courses]
 GO
-
 
 ";
             Database.ExecuteNonQuery(revert_script);

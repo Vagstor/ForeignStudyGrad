@@ -15,7 +15,7 @@ namespace DbMigrator
             //"Server=localhost;Port=5432;Database=test_migration;UserId=postgres;Password=postgres"
             Console.WriteLine(conn.FullState);
             var assembly = typeof(Program).Assembly;
-            var migrator = new Migrator("postgres", conn, assembly);
+            var migrator = new Migrator("mssql", conn, assembly);
             migrator.Migrate();
         }
     }

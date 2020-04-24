@@ -5,15 +5,15 @@ using ThinkingHome.Migrator.Framework;
 
 namespace DbMigrator
 {
-    [Migration(7)]
-    public class TestsTableMigration_07 : Migration
+    [Migration(4)]
+    public class DictionaryTableMigration_04 : Migration
     {
         public override void Apply()
         {
             var script = $@"USE [foreignstudy]
 GO
 
-/****** Object:  Table [dbo].[tests]    Script Date: 24.04.2020 12:56:30 ******/
+/****** Object:  Table [dbo].[dictionaries]    Script Date: 24.04.2020 12:54:09 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -23,13 +23,13 @@ GO
 SET ANSI_PADDING ON
 GO
 
-CREATE TABLE [dbo].[tests](
-	[theme_id] [uniqueidentifier] NOT NULL,
-	[test_name] [varchar](50) NOT NULL,
-	[test_id] [uniqueidentifier] NOT NULL,
- CONSTRAINT [PK_tests] PRIMARY KEY CLUSTERED 
+CREATE TABLE [dbo].[dictionaries](
+	[word_id] [uniqueidentifier] NOT NULL,
+	[word_body] [varchar](50) NOT NULL,
+	[user_id] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_dictionaries] PRIMARY KEY CLUSTERED 
 (
-	[test_id] ASC
+	[word_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
@@ -38,11 +38,11 @@ GO
 SET ANSI_PADDING OFF
 GO
 
-ALTER TABLE [dbo].[tests]  WITH CHECK ADD  CONSTRAINT [FK_tests_themes] FOREIGN KEY([theme_id])
-REFERENCES [dbo].[themes] ([theme_id])
+ALTER TABLE [dbo].[dictionaries]  WITH CHECK ADD  CONSTRAINT [FK_dictionaries_users] FOREIGN KEY([word_id])
+REFERENCES [dbo].[users] ([user_id])
 GO
 
-ALTER TABLE [dbo].[tests] CHECK CONSTRAINT [FK_tests_themes]
+ALTER TABLE [dbo].[dictionaries] CHECK CONSTRAINT [FK_dictionaries_users]
 GO
 
 
@@ -56,9 +56,10 @@ GO
             var revert_script = $@"USE [foreignstudy]
 GO
 
-/****** Object:  Table [dbo].[tests]    Script Date: 24.04.2020 12:56:40 ******/
-DROP TABLE [dbo].[tests]
+/****** Object:  Table [dbo].[dictionaries]    Script Date: 24.04.2020 12:54:24 ******/
+DROP TABLE [dbo].[dictionaries]
 GO
+
 
 
 ";

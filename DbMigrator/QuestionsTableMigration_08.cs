@@ -10,28 +10,58 @@ namespace DbMigrator
     {
         public override void Apply()
         {
-            var script = $@"CREATE TABLE foreignstudy.questions
+            var script = $@"USE [foreignstudy]
+GO
+
+/****** Object:  Table [dbo].[questions]    Script Date: 24.04.2020 12:57:07 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[questions](
+	[test_id] [uniqueidentifier] NOT NULL,
+	[question_id] [uniqueidentifier] NOT NULL,
+	[question_body] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_questions] PRIMARY KEY CLUSTERED 
 (
-  question_id uuid NOT NULL,
-  question_body character varying,
-  test_id uuid,
-  CONSTRAINT questions_pkey PRIMARY KEY (question_id),
-  CONSTRAINT questions_test_id_fkey FOREIGN KEY (test_id)
-      REFERENCES foreignstudy.tests (test_id) MATCH SIMPLE
-      ON UPDATE CASCADE ON DELETE CASCADE
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE foreignstudy.questions
-  OWNER TO postgres;
+	[question_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[questions]  WITH CHECK ADD  CONSTRAINT [FK_questions_tests] FOREIGN KEY([test_id])
+REFERENCES [dbo].[tests] ([test_id])
+GO
+
+ALTER TABLE [dbo].[questions] CHECK CONSTRAINT [FK_questions_tests]
+GO
+
+
+
 ";
             Database.ExecuteNonQuery(script);
         }
 
         public override void Revert()
         {
-            var revert_script = $@"DROP TABLE foreignstudy.questions;";
+            var revert_script = $@"USE [foreignstudy]
+GO
+
+/****** Object:  Table [dbo].[questions]    Script Date: 24.04.2020 12:57:18 ******/
+DROP TABLE [dbo].[questions]
+GO
+
+
+";
             Database.ExecuteNonQuery(revert_script);
         }
     }
