@@ -1,21 +1,23 @@
 ﻿
 @{
-    ViewData["Title"] = "View";
+    ViewData["Title"] = "Записаться на курс";
 }
 @model AllCoursesViewModel;
-<h1>Найти курс по имени:</h1>
-<form asp-action="SearchSourse" method="post">
-    <input asp-for="searchString" type="text" />
-    <span asp-validation-for="searchString"></span><br>
-    <button type="submit" class="btn btn-primary" asp-controller="MainMenu" asp-action="SearchCourse">Найти курс</button>
-</form>
-
-<h1>Все курсы: </h1>
-<ul class="my_padding">
-    @foreach (CourseModel course in Model.courses)
-    {
-        <li class="courses">
-            <p class="size_text_course site_padding">@Html.ActionLink(course.name, "Course", new { courseid = course.id, coursename = course.name })</p>
+    <link href="~/css/LoginStyle.css" rel="stylesheet" type="text/css" />
+    <p class="size_title_course site_padding">Найти курс по имени:</p>
+    <div class="logincontainer">
+        <form asp-action="SearchSourse" method="post">
+            <input asp-for="searchString" type="text" placeholder="Введите название курса">
+            <span asp-validation-for="searchString"></span><br>
+            <button type="submit" class="btn btn-primary" asp-controller="MainMenu" asp-action="SearchCourse">Найти курс</button>
+        </form>
+    </div>
+        <p class="size_title_course site_padding">Найденые курсы: </p>
+        <ul class="my_padding">
+            @foreach (CourseModel course in Model.courses)
+            {
+                <li class="courses">
+<p class="size_text_course site_padding">@Html.ActionLink(course.name, "Course", new { courseid = course.id, coursename = course.name })</p>
         </li>
     }
 </ul>

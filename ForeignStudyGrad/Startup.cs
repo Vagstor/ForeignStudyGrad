@@ -34,7 +34,8 @@ namespace ForeignStudyGrad
             LinqToDB.Data.DataConnection.DefaultSettings = new MySettings
             {
                 //ConnString = Configuration.GetConnectionString("DefaultConnection")
-                ConnString = "server=ASKOLD-ПК\\sqlexpress;database=foreignstudy;Trusted_Connection=True;"
+                //  ConnString = "server=ASKOLD-ПК\\sqlexpress;database=foreignstudy;Trusted_Connection=True;"
+                ConnString = "server=LAPTOP-2I0E2SNC\\sqlexpress;database=foreignstudy;Trusted_Connection=True;"
             };
 
             services.AddScoped<ForeignstudyDB>();
@@ -73,7 +74,7 @@ namespace ForeignStudyGrad
             MigrationRunner migrationRunner = new MigrationRunner();
 
             //вставить под connStr строку подключения для миграции
-            var connStr = "server=ASKOLD-ПК\\sqlexpress;database=foreignstudy;Trusted_Connection=True;";
+            var connStr = "server=LAPTOP-2I0E2SNC\\sqlexpress;database=foreignstudy;Trusted_Connection=True;";
             migrationRunner.MigrationConnection(connStr);
 
             app.UseCookiePolicy();
