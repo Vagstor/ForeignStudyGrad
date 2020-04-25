@@ -39,8 +39,8 @@ namespace ForeignStudyGrad.Services
         {
             //конвертирует список ORM объектов (из базы данных) в список моделей UserLogModel
             UserLogModel userLogModel = new UserLogModel();
-                userLogModel.Password = user.Password;
-                userLogModel.Login = user.Login;
+            userLogModel.Password = user.Password;
+            userLogModel.Login = user.Login;
             return userLogModel;
         }
 
@@ -107,6 +107,6 @@ namespace ForeignStudyGrad.Services
             _db.Insert(user);
         }
 
-        
+
     }
 }

@@ -1,19 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ForeignStudyGrad.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Http;
-using DataModels;
 using DbMigrator;
+using DataModels;
+using ForeignStudyGrad.Services;
 
 namespace ForeignStudyGrad
 {
@@ -34,7 +28,8 @@ namespace ForeignStudyGrad
             LinqToDB.Data.DataConnection.DefaultSettings = new MySettings
             {
                 //ConnString = Configuration.GetConnectionString("DefaultConnection")
-                ConnString = "server=ASKOLD-ПК\\sqlexpress;database=foreignstudy;Trusted_Connection=True;"
+                ConnString = 
+                "Server=tcp:foreignstudygraddbserver.database.windows.net,1433;Initial Catalog=foreignstudy;Persist Security Info=False;User ID=fs;Password=Foreignstudy123!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
             };
 
             services.AddScoped<ForeignstudyDB>();
@@ -73,8 +68,8 @@ namespace ForeignStudyGrad
             MigrationRunner migrationRunner = new MigrationRunner();
 
             //вставить под connStr строку подключения для миграции
-            var connStr = "server=ASKOLD-ПК\\sqlexpress;database=foreignstudy;Trusted_Connection=True;";
-            migrationRunner.MigrationConnection(connStr);
+            //var connStr = "Server=tcp:foreignstudygraddbserver.database.windows.net,1433;Initial Catalog=foreignstudy;Persist Security Info=False;User ID=fs;Password=Foreignstudy123!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            //migrationRunner.MigrationConnection(connStr);
 
             app.UseCookiePolicy();
 
