@@ -16,7 +16,7 @@ p.size_title_course {
     font-size: large;
     text-align: left;
 }
-p.site_padding {
+.site_padding {
     padding-left: 20px;
     margin: 0;
 }

@@ -9,22 +9,20 @@
 <ul class="my_padding">
     <li><p class="size_title_course site_padding">Доступные лекции по теме:</p></li>
     <li class="courses size_text_course ">
-        <ul>
-            @foreach (LectureModel lecture in Model.lectures)
-            {
-                <li>
-                    <p class=" site_padding"><a href="@lecture.lecturefile">@lecture.lecturename</a></p>
-                </li>
-                <li>
-                    @*Просмотр лекииц на другой странице*@
-                    <p class=" site_padding">Просмотреть</p>
-                </li>
-                <li>
-                    @*Скачивание файла с лекцией*@
-                    <p class="site_padding">Скачать</p>
-                </li>
-            }
-        </ul>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <ul class="navbar-nav flex-grow-1">
+                @foreach (LectureModel lecture in Model.lectures)
+                {
+                    <li>
+                        <a class=" site_padding" href="@lecture.lecturefile">@lecture.lecturename</a>
+                    </li>
+                    <li>
+                        @*Просмотр лекицb на другой странице*@
+                        <a href="file:///C:/Users/%D0%92%D0%B0%D0%BB%D0%B5%D1%80%D0%B8%D1%8F/Google%20%D0%94%D0%B8%D1%81%D0%BA/%D0%A3%D1%87%D0%B5%D0%B1%D0%B0/3%20%D1%81%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80/%D0%92%D0%B5%D0%B1/%D0%A3%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5%20%D0%BF%D0%BE%D1%81%D0%BE%D0%B1%D0%B8%D0%B5/Uchebnoe_poobie_webprog.pdf" class=" site_padding">Просмотреть</a>
+                    </li>
+                }
+            </ul>
+        </div>
     </li>
         <li><p class="size_title_course site_padding">Доступные тесты по теме:</p></li>
         <li class="courses">

@@ -18,7 +18,8 @@ namespace DbMigrator
             //"Server=localhost;Port=5432;Database=test_migration;UserId=postgres;Password=postgres"
             //Console.WriteLine(conn.FullState);
             var assembly = typeof(Program).Assembly;
-            var migrator = new Migrator("sqlserver", "server=ASKOLD-ПК\\sqlexpress;database=foreignstudy;Trusted_Connection=True;", assembly);
+            //var migrator = new Migrator("sqlserver", "server=ASKOLD-ПК\\sqlexpress;database=foreignstudy;Trusted_Connection=True;", assembly);
+            var migrator = new Migrator("sqlserver", "server=LAPTOP-2I0E2SNC\\sqlexpress;database=foreignstudy;Trusted_Connection=True;", assembly);
             migrator.Migrate();
         }
     }
