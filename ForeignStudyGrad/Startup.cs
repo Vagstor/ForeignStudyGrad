@@ -35,7 +35,7 @@ namespace ForeignStudyGrad
             {
                 //ConnString = Configuration.GetConnectionString("DefaultConnection")
                 //  ConnString = "server=ASKOLD-ПК\\sqlexpress;database=foreignstudy;Trusted_Connection=True;"
-                ConnString = "server=LAPTOP-2I0E2SNC\\sqlexpress;database=foreignstudy;Trusted_Connection=True;"
+                ConnString = "Server=tcp:foreignstudygraddbserver.database.windows.net,1433;Initial Catalog=foreignstudy;Persist Security Info=False;User ID=fs;Password=Foreignstudy123!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
             };
 
             services.AddScoped<ForeignstudyDB>();
@@ -74,7 +74,7 @@ namespace ForeignStudyGrad
             MigrationRunner migrationRunner = new MigrationRunner();
 
             //вставить под connStr строку подключения для миграции
-            var connStr = "server=LAPTOP-2I0E2SNC\\sqlexpress;database=foreignstudy;Trusted_Connection=True;";
+            var connStr = "Server=tcp:foreignstudygraddbserver.database.windows.net,1433;Initial Catalog=foreignstudy;Persist Security Info=False;User ID=fs;Password=Foreignstudy123!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             migrationRunner.MigrationConnection(connStr);
 
             app.UseCookiePolicy();
