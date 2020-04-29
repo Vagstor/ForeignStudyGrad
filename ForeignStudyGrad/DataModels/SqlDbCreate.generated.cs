@@ -21,20 +21,23 @@ namespace DataModels
 {
 	/// <summary>
 	/// Database       : foreignstudy
-	/// Data Source    : ASKOLD-ПК\sqlexpress
+	/// Data Source    : tcp:foreignstudygraddbserver.database.windows.net,1433
 	/// Server Version : 12.00.2000
 	/// </summary>
 	public partial class ForeignstudyDB : LinqToDB.Data.DataConnection
 	{
-		public ITable<Answer>       Answers       { get { return this.GetTable<Answer>(); } }
-		public ITable<Cours>        Courses       { get { return this.GetTable<Cours>(); } }
-		public ITable<Dictionary>   Dictionaries  { get { return this.GetTable<Dictionary>(); } }
-		public ITable<Lecture>      Lectures      { get { return this.GetTable<Lecture>(); } }
-		public ITable<Question>     Questions     { get { return this.GetTable<Question>(); } }
-		public ITable<Subscription> Subscriptions { get { return this.GetTable<Subscription>(); } }
-		public ITable<Test>         Tests         { get { return this.GetTable<Test>(); } }
-		public ITable<Theme>        Themes        { get { return this.GetTable<Theme>(); } }
-		public ITable<User>         Users         { get { return this.GetTable<User>(); } }
+		public ITable<Answer>                   Answers               { get { return this.GetTable<Answer>(); } }
+		public ITable<Cours>                    Courses               { get { return this.GetTable<Cours>(); } }
+		public ITable<sys_DatabaseFirewallRule> DatabaseFirewallRules { get { return this.GetTable<sys_DatabaseFirewallRule>(); } }
+		public ITable<Dictionary>               Dictionaries          { get { return this.GetTable<Dictionary>(); } }
+		public ITable<Lecture>                  Lectures              { get { return this.GetTable<Lecture>(); } }
+		public ITable<Question>                 Questions             { get { return this.GetTable<Question>(); } }
+		public ITable<SchemaInfo>               SchemaInfo            { get { return this.GetTable<SchemaInfo>(); } }
+		public ITable<Subscription>             Subscriptions         { get { return this.GetTable<Subscription>(); } }
+		public ITable<Sysdiagram>               Sysdiagrams           { get { return this.GetTable<Sysdiagram>(); } }
+		public ITable<Test>                     Tests                 { get { return this.GetTable<Test>(); } }
+		public ITable<Theme>                    Themes                { get { return this.GetTable<Theme>(); } }
+		public ITable<User>                     Users                 { get { return this.GetTable<User>(); } }
 
 		public ForeignstudyDB()
 		{
@@ -64,9 +67,9 @@ namespace DataModels
 		#region Associations
 
 		/// <summary>
-		/// FK_answers_questions
+		/// FK_answers_questions1
 		/// </summary>
-		[Association(ThisKey="QuestionId", OtherKey="QuestionId", CanBeNull=false, Relationship=Relationship.ManyToOne, KeyName="FK_answers_questions", BackReferenceName="Answers")]
+		[Association(ThisKey="QuestionId", OtherKey="QuestionId", CanBeNull=false, Relationship=Relationship.ManyToOne, KeyName="FK_answers_questions1", BackReferenceName="Answersquestions")]
 		public Question Question { get; set; }
 
 		#endregion
@@ -81,18 +84,29 @@ namespace DataModels
 		#region Associations
 
 		/// <summary>
-		/// FK_subscriptions_courses1_BackReference
+		/// FK_subscriptions_courses_BackReference
 		/// </summary>
-		[Association(ThisKey="CourseId", OtherKey="UserId", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true)]
-		public IEnumerable<Subscription> Subscriptionscourses { get; set; }
+		[Association(ThisKey="CourseId", OtherKey="CourseId", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true)]
+		public IEnumerable<Subscription> Subscriptions { get; set; }
 
 		/// <summary>
-		/// FK_themes_courses_BackReference
+		/// FK_themes_courses1_BackReference
 		/// </summary>
-		[Association(ThisKey="CourseId", OtherKey="ThemeId", CanBeNull=true, Relationship=Relationship.OneToOne, IsBackReference=true)]
-		public Theme Theme { get; set; }
+		[Association(ThisKey="CourseId", OtherKey="CourseId", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true)]
+		public IEnumerable<Theme> Themescourses { get; set; }
 
 		#endregion
+	}
+
+	[Table(Schema="sys", Name="database_firewall_rules", IsView=true)]
+	public partial class sys_DatabaseFirewallRule
+	{
+		[Column("id"),               Identity] public int      Id             { get; set; } // int
+		[Column("name"),             NotNull ] public string   Name           { get; set; } // nvarchar(128)
+		[Column("start_ip_address"), NotNull ] public string   StartIpAddress { get; set; } // varchar(45)
+		[Column("end_ip_address"),   NotNull ] public string   EndIpAddress   { get; set; } // varchar(45)
+		[Column("create_date"),      NotNull ] public DateTime CreateDate     { get; set; } // datetime
+		[Column("modify_date"),      NotNull ] public DateTime ModifyDate     { get; set; } // datetime
 	}
 
 	[Table(Schema="dbo", Name="dictionaries")]
@@ -105,10 +119,10 @@ namespace DataModels
 		#region Associations
 
 		/// <summary>
-		/// FK_dictionaries_users
+		/// FK_dictionaries_users1
 		/// </summary>
-		[Association(ThisKey="WordId", OtherKey="UserId", CanBeNull=false, Relationship=Relationship.OneToOne, KeyName="FK_dictionaries_users", BackReferenceName="Dictionary")]
-		public User Word { get; set; }
+		[Association(ThisKey="UserId", OtherKey="UserId", CanBeNull=false, Relationship=Relationship.ManyToOne, KeyName="FK_dictionaries_users1", BackReferenceName="Dictionariesusers")]
+		public User User { get; set; }
 
 		#endregion
 	}
@@ -116,18 +130,18 @@ namespace DataModels
 	[Table(Schema="dbo", Name="lectures")]
 	public partial class Lecture
 	{
-		[Column("lecture_id"),       PrimaryKey, NotNull] public Guid   LectureId       { get; set; } // uniqueidentifier
-		[Column("lecture_filelink"),             NotNull] public string LectureFilelink { get; set; } // varchar(50)
-		[Column("lecture_name"),                 NotNull] public string LectureName     { get; set; } // varchar(50)
-		[Column("theme_id"),                     NotNull] public Guid   ThemeId         { get; set; } // uniqueidentifier
+		[Column("lecture_id"),       PrimaryKey,  NotNull] public Guid   LectureId       { get; set; } // uniqueidentifier
+		[Column("lecture_filelink"),    Nullable         ] public string LectureFilelink { get; set; } // varchar(50)
+		[Column("lecture_name"),                  NotNull] public string LectureName     { get; set; } // varchar(50)
+		[Column("theme_id"),                      NotNull] public Guid   ThemeId         { get; set; } // uniqueidentifier
 
 		#region Associations
 
 		/// <summary>
-		/// FK_lectures_themes
+		/// FK_lectures_themes1
 		/// </summary>
-		[Association(ThisKey="LectureId", OtherKey="ThemeId", CanBeNull=false, Relationship=Relationship.OneToOne, KeyName="FK_lectures_themes", BackReferenceName="Lecture")]
-		public Theme Lecture_FK { get; set; }
+		[Association(ThisKey="ThemeId", OtherKey="ThemeId", CanBeNull=false, Relationship=Relationship.ManyToOne, KeyName="FK_lectures_themes1", BackReferenceName="Lecturesthemes")]
+		public Theme Theme { get; set; }
 
 		#endregion
 	}
@@ -142,18 +156,25 @@ namespace DataModels
 		#region Associations
 
 		/// <summary>
-		/// FK_answers_questions_BackReference
+		/// FK_answers_questions1_BackReference
 		/// </summary>
 		[Association(ThisKey="QuestionId", OtherKey="QuestionId", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true)]
-		public IEnumerable<Answer> Answers { get; set; }
+		public IEnumerable<Answer> Answersquestions { get; set; }
 
 		/// <summary>
-		/// FK_questions_tests
+		/// FK_questions_tests1
 		/// </summary>
-		[Association(ThisKey="TestId", OtherKey="TestId", CanBeNull=false, Relationship=Relationship.ManyToOne, KeyName="FK_questions_tests", BackReferenceName="Questions")]
+		[Association(ThisKey="TestId", OtherKey="TestId", CanBeNull=false, Relationship=Relationship.ManyToOne, KeyName="FK_questions_tests1", BackReferenceName="Questionstests")]
 		public Test Test { get; set; }
 
 		#endregion
+	}
+
+	[Table(Schema="dbo", Name="SchemaInfo")]
+	public partial class SchemaInfo
+	{
+		[PrimaryKey(1), NotNull] public long   Version     { get; set; } // bigint
+		[PrimaryKey(2), NotNull] public string AssemblyKey { get; set; } // nvarchar(200)
 	}
 
 	[Table(Schema="dbo", Name="subscriptions")]
@@ -166,10 +187,10 @@ namespace DataModels
 		#region Associations
 
 		/// <summary>
-		/// FK_subscriptions_courses1
+		/// FK_subscriptions_courses
 		/// </summary>
-		[Association(ThisKey="UserId", OtherKey="CourseId", CanBeNull=false, Relationship=Relationship.ManyToOne, KeyName="FK_subscriptions_courses1", BackReferenceName="Subscriptionscourses")]
-		public Cours Cours { get; set; }
+		[Association(ThisKey="CourseId", OtherKey="CourseId", CanBeNull=false, Relationship=Relationship.ManyToOne, KeyName="FK_subscriptions_courses", BackReferenceName="Subscriptions")]
+		public Cours Course { get; set; }
 
 		/// <summary>
 		/// FK_subscriptions_users1
@@ -178,6 +199,16 @@ namespace DataModels
 		public User User { get; set; }
 
 		#endregion
+	}
+
+	[Table(Schema="dbo", Name="sysdiagrams")]
+	public partial class Sysdiagram
+	{
+		[Column("name"),         NotNull              ] public string Name        { get; set; } // nvarchar(128)
+		[Column("principal_id"), NotNull              ] public int    PrincipalId { get; set; } // int
+		[Column("diagram_id"),   PrimaryKey,  Identity] public int    DiagramId   { get; set; } // int
+		[Column("version"),         Nullable          ] public int?   Version     { get; set; } // int
+		[Column("definition"),      Nullable          ] public byte[] Definition  { get; set; } // varbinary(max)
 	}
 
 	[Table(Schema="dbo", Name="tests")]
@@ -190,15 +221,15 @@ namespace DataModels
 		#region Associations
 
 		/// <summary>
-		/// FK_questions_tests_BackReference
+		/// FK_questions_tests1_BackReference
 		/// </summary>
 		[Association(ThisKey="TestId", OtherKey="TestId", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true)]
-		public IEnumerable<Question> Questions { get; set; }
+		public IEnumerable<Question> Questionstests { get; set; }
 
 		/// <summary>
-		/// FK_tests_themes
+		/// FK_tests_themes1
 		/// </summary>
-		[Association(ThisKey="ThemeId", OtherKey="ThemeId", CanBeNull=false, Relationship=Relationship.ManyToOne, KeyName="FK_tests_themes", BackReferenceName="Tests")]
+		[Association(ThisKey="ThemeId", OtherKey="ThemeId", CanBeNull=false, Relationship=Relationship.ManyToOne, KeyName="FK_tests_themes1", BackReferenceName="Teststhemes")]
 		public Theme Theme { get; set; }
 
 		#endregion
@@ -207,29 +238,30 @@ namespace DataModels
 	[Table(Schema="dbo", Name="themes")]
 	public partial class Theme
 	{
-		[Column("theme_id"),   PrimaryKey, NotNull] public Guid   ThemeId   { get; set; } // uniqueidentifier
-		[Column("theme_name"),             NotNull] public string ThemeName { get; set; } // varchar(50)
-		[Column("course_id"),              NotNull] public Guid   CourseId  { get; set; } // uniqueidentifier
+		[Column("theme_id"),   PrimaryKey,  NotNull] public Guid   ThemeId   { get; set; } // uniqueidentifier
+		[Column("theme_name"),              NotNull] public string ThemeName { get; set; } // varchar(50)
+		[Column("course_id"),               NotNull] public Guid   CourseId  { get; set; } // uniqueidentifier
+		[Column("viewname"),      Nullable         ] public string Viewname  { get; set; } // varchar(max)
 
 		#region Associations
 
 		/// <summary>
-		/// FK_lectures_themes_BackReference
+		/// FK_themes_courses1
 		/// </summary>
-		[Association(ThisKey="ThemeId", OtherKey="LectureId", CanBeNull=true, Relationship=Relationship.OneToOne, IsBackReference=true)]
-		public Lecture Lecture { get; set; }
+		[Association(ThisKey="CourseId", OtherKey="CourseId", CanBeNull=false, Relationship=Relationship.ManyToOne, KeyName="FK_themes_courses1", BackReferenceName="Themescourses")]
+		public Cours Course { get; set; }
 
 		/// <summary>
-		/// FK_tests_themes_BackReference
+		/// FK_lectures_themes1_BackReference
 		/// </summary>
 		[Association(ThisKey="ThemeId", OtherKey="ThemeId", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true)]
-		public IEnumerable<Test> Tests { get; set; }
+		public IEnumerable<Lecture> Lecturesthemes { get; set; }
 
 		/// <summary>
-		/// FK_themes_courses
+		/// FK_tests_themes1_BackReference
 		/// </summary>
-		[Association(ThisKey="ThemeId", OtherKey="CourseId", CanBeNull=false, Relationship=Relationship.OneToOne, KeyName="FK_themes_courses", BackReferenceName="Theme")]
-		public Cours Theme_FK { get; set; }
+		[Association(ThisKey="ThemeId", OtherKey="ThemeId", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true)]
+		public IEnumerable<Test> Teststhemes { get; set; }
 
 		#endregion
 	}
@@ -246,10 +278,10 @@ namespace DataModels
 		#region Associations
 
 		/// <summary>
-		/// FK_dictionaries_users_BackReference
+		/// FK_dictionaries_users1_BackReference
 		/// </summary>
-		[Association(ThisKey="UserId", OtherKey="WordId", CanBeNull=true, Relationship=Relationship.OneToOne, IsBackReference=true)]
-		public Dictionary Dictionary { get; set; }
+		[Association(ThisKey="UserId", OtherKey="UserId", CanBeNull=true, Relationship=Relationship.OneToMany, IsBackReference=true)]
+		public IEnumerable<Dictionary> Dictionariesusers { get; set; }
 
 		/// <summary>
 		/// FK_subscriptions_users1_BackReference
@@ -262,22 +294,39 @@ namespace DataModels
 
 	public static partial class ForeignstudyDBStoredProcedures
 	{
-		#region SpHelpdiagrams
+		#region SpAlterdiagram
 
-		public static IEnumerable<SpHelpdiagramsResult> SpHelpdiagrams(this ForeignstudyDB dataConnection, string @diagramname, int? @owner_id)
+		public static int SpAlterdiagram(this ForeignstudyDB dataConnection, string @diagramname, int? @owner_id, int? @version, byte[] @definition)
 		{
-			return dataConnection.QueryProc<SpHelpdiagramsResult>("[dbo].[sp_helpdiagrams]",
+			return dataConnection.ExecuteProc("[dbo].[sp_alterdiagram]",
 				new DataParameter("@diagramname", @diagramname, DataType.NVarChar),
-				new DataParameter("@owner_id",    @owner_id,    DataType.Int32));
+				new DataParameter("@owner_id",    @owner_id,    DataType.Int32),
+				new DataParameter("@version",     @version,     DataType.Int32),
+				new DataParameter("@definition",  @definition,  DataType.VarBinary));
 		}
 
-		public partial class SpHelpdiagramsResult
+		#endregion
+
+		#region SpCreatediagram
+
+		public static int SpCreatediagram(this ForeignstudyDB dataConnection, string @diagramname, int? @owner_id, int? @version, byte[] @definition)
 		{
-			public string Database { get; set; }
-			public string Name     { get; set; }
-			public int    ID       { get; set; }
-			public string Owner    { get; set; }
-			public int    OwnerID  { get; set; }
+			return dataConnection.ExecuteProc("[dbo].[sp_creatediagram]",
+				new DataParameter("@diagramname", @diagramname, DataType.NVarChar),
+				new DataParameter("@owner_id",    @owner_id,    DataType.Int32),
+				new DataParameter("@version",     @version,     DataType.Int32),
+				new DataParameter("@definition",  @definition,  DataType.VarBinary));
+		}
+
+		#endregion
+
+		#region SpDropdiagram
+
+		public static int SpDropdiagram(this ForeignstudyDB dataConnection, string @diagramname, int? @owner_id)
+		{
+			return dataConnection.ExecuteProc("[dbo].[sp_dropdiagram]",
+				new DataParameter("@diagramname", @diagramname, DataType.NVarChar),
+				new DataParameter("@owner_id",    @owner_id,    DataType.Int32));
 		}
 
 		#endregion
@@ -299,15 +348,22 @@ namespace DataModels
 
 		#endregion
 
-		#region SpCreatediagram
+		#region SpHelpdiagrams
 
-		public static int SpCreatediagram(this ForeignstudyDB dataConnection, string @diagramname, int? @owner_id, int? @version, byte[] @definition)
+		public static IEnumerable<SpHelpdiagramsResult> SpHelpdiagrams(this ForeignstudyDB dataConnection, string @diagramname, int? @owner_id)
 		{
-			return dataConnection.ExecuteProc("[dbo].[sp_creatediagram]",
+			return dataConnection.QueryProc<SpHelpdiagramsResult>("[dbo].[sp_helpdiagrams]",
 				new DataParameter("@diagramname", @diagramname, DataType.NVarChar),
-				new DataParameter("@owner_id",    @owner_id,    DataType.Int32),
-				new DataParameter("@version",     @version,     DataType.Int32),
-				new DataParameter("@definition",  @definition,  DataType.VarBinary));
+				new DataParameter("@owner_id",    @owner_id,    DataType.Int32));
+		}
+
+		public partial class SpHelpdiagramsResult
+		{
+			public string Database { get; set; }
+			public string Name     { get; set; }
+			public int    ID       { get; set; }
+			public string Owner    { get; set; }
+			public int    OwnerID  { get; set; }
 		}
 
 		#endregion
@@ -320,30 +376,6 @@ namespace DataModels
 				new DataParameter("@diagramname",     @diagramname,     DataType.NVarChar),
 				new DataParameter("@owner_id",        @owner_id,        DataType.Int32),
 				new DataParameter("@new_diagramname", @new_diagramname, DataType.NVarChar));
-		}
-
-		#endregion
-
-		#region SpAlterdiagram
-
-		public static int SpAlterdiagram(this ForeignstudyDB dataConnection, string @diagramname, int? @owner_id, int? @version, byte[] @definition)
-		{
-			return dataConnection.ExecuteProc("[dbo].[sp_alterdiagram]",
-				new DataParameter("@diagramname", @diagramname, DataType.NVarChar),
-				new DataParameter("@owner_id",    @owner_id,    DataType.Int32),
-				new DataParameter("@version",     @version,     DataType.Int32),
-				new DataParameter("@definition",  @definition,  DataType.VarBinary));
-		}
-
-		#endregion
-
-		#region SpDropdiagram
-
-		public static int SpDropdiagram(this ForeignstudyDB dataConnection, string @diagramname, int? @owner_id)
-		{
-			return dataConnection.ExecuteProc("[dbo].[sp_dropdiagram]",
-				new DataParameter("@diagramname", @diagramname, DataType.NVarChar),
-				new DataParameter("@owner_id",    @owner_id,    DataType.Int32));
 		}
 
 		#endregion
@@ -394,10 +426,23 @@ namespace DataModels
 				t.QuestionId == QuestionId);
 		}
 
+		public static SchemaInfo Find(this ITable<SchemaInfo> table, long Version, string AssemblyKey)
+		{
+			return table.FirstOrDefault(t =>
+				t.Version     == Version &&
+				t.AssemblyKey == AssemblyKey);
+		}
+
 		public static Subscription Find(this ITable<Subscription> table, Guid SubId)
 		{
 			return table.FirstOrDefault(t =>
 				t.SubId == SubId);
+		}
+
+		public static Sysdiagram Find(this ITable<Sysdiagram> table, int DiagramId)
+		{
+			return table.FirstOrDefault(t =>
+				t.DiagramId == DiagramId);
 		}
 
 		public static Test Find(this ITable<Test> table, Guid TestId)

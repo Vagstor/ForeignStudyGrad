@@ -104,21 +104,21 @@ namespace ForeignStudyGrad.Services
             if (q.ToList() != null) return q.ToList();
             else { return new List<Theme>(); }
         }
-        public List<Test> GetThemeTests(Guid theme)
-        {
-            var q = from c in _db.Tests
-                    where c.ThemeId == theme
-                    select c;
-            if (q.ToList() != null) return q.ToList();
-            else { return new List<Test>(); }
-        }
-        public List<Lecture> GetThemeLectures(Guid theme)
-        {
-            var q = from c in _db.Lectures
-                    where c.ThemeId == theme
-                    select c;
-            if (q.ToList() != null) return q.ToList();
-            else { return new List<Lecture>(); }
-        }
+        //public List<Test> GetThemeTests(Guid theme)
+        //{
+        //    var q = from c in _db.Tests
+        //            where c.ThemeId == theme
+        //            select c;
+        //    if (q.ToList() != null) return q.ToList();
+        //    else { return new List<Test>(); }
+        //}
+        //public List<Lecture> GetThemeLectures(Guid theme)
+        //{
+        //    var q = from c in _db.Lectures
+        //            where c.ThemeId == theme
+        //            select c;
+        //    if (q.ToList() != null) return q.ToList();
+        //    else { return new List<Lecture>(); }
+        //}
     }
 }
