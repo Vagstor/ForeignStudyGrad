@@ -7,6 +7,6 @@
 <#
 	NamespaceName = "DataModels";
 
-	LoadSqlServerMetadata("ASKOLD-ПК\\sqlexpress", "foreignstudy", "sa", "123");
+	LoadSqlServerMetadata("tcp:foreignstudygraddbserver.database.windows.net,1433", "foreignstudy", "fs", "Foreignstudy123!");
 	GenerateModel();
 #>

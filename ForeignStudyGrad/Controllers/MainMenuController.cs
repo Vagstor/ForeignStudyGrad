@@ -52,13 +52,13 @@ namespace ForeignStudyGrad.Controllers
             return View(cvm);
         }
         [HttpGet]
-        public IActionResult Theme(Guid themeid, string themename)
+        public IActionResult Theme(Guid themeid)
         {
-            ThemeViewModel tvm = new ThemeViewModel();
-            tvm.themename = themename;
-            tvm.tests = _courseService.ConvertDBTestToModel(_courseService.GetThemeTests(themeid));
-            tvm.lectures = _courseService.ConvertDBLectureToModel(_courseService.GetThemeLectures(themeid));
-            return View(tvm);
+            //ThemeViewModel tvm = new ThemeViewModel();
+            //tvm.themename = themename;
+            //tvm.tests = _courseService.ConvertDBTestToModel(_courseService.GetThemeTests(themeid));
+            //tvm.lectures = _courseService.ConvertDBLectureToModel(_courseService.GetThemeLectures(themeid));
+            return View("~/Views/TestsFirstCourse/Test1Theme.cshtml");
         }
         [HttpGet]
         public IActionResult Dictionary()
