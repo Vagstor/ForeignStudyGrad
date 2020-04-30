@@ -40,8 +40,19 @@ window.onload = function () {
 	for (var j = 0; j < wordSelect; j++) {
 		var s1 = "select" + j;
 		var str = document.getElementById(s1).innerHTML;
+		
+		var selectStr = "<select size=\"1\"> <option>-</option><option>получать</option><option>собирать</option><option>обрабатывать</option><option>увеличивать</option><option>хранить</option><option>использовать</option></select>";
+		var nach = 0;
+		var konec = 0;
+		var s = "";
+		var pos = -1;
+		while ((pos = str.indexOf('|', pos + 1)) != -1) {
+			konec = pos;
 
-		var s = str.substring(0, str.indexOf('|')) + "<select size=\"1\"> <option>-</option><option>получать</option><option>собирать</option><option>обрабатывать</option><option>увеличивать</option><option>хранить</option><option>использовать</option></select>" + str.substring(str.indexOf('|') + 1);
+			s += str.substring(nach, konec) + selectStr;
+			nach = konec + 1;
+		}
+		s += str.substring(nach);
 		document.getElementById("select").innerHTML = s;
     }
 }
