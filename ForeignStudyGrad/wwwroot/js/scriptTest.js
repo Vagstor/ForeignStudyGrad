@@ -4,7 +4,7 @@
 var flag = 0;
 var LengthWordCOlor = 16;//количество элементов
 var oneWordColor = 5;//первый индекс
-var lengthSelect = 7;
+var lengthSelect = 6;
 jQuery(document).ready(function () {
 
 	
@@ -37,11 +37,12 @@ window.onload = function () {
 	flag = 1;
 
 
-	for (var j = 0; j < wordSelect; j++) {
+	for (var j = 0; j < lengthSelect; j++) {
 		var s1 = "select" + j;
 		var str = document.getElementById(s1).innerHTML;
-		
+
 		var selectStr = "<select size=\"1\"> <option>-</option><option>получать</option><option>собирать</option><option>обрабатывать</option><option>увеличивать</option><option>хранить</option><option>использовать</option></select>";
+
 		var nach = 0;
 		var konec = 0;
 		var s = "";
@@ -51,10 +52,12 @@ window.onload = function () {
 
 			s += str.substring(nach, konec) + selectStr;
 			nach = konec + 1;
+
 		}
 		s += str.substring(nach);
-		document.getElementById("select").innerHTML = s;
-    }
+
+		document.getElementById(s1).innerHTML = s;
+	}
 }
 function colorWord() {
 
