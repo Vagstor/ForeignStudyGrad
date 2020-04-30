@@ -1,7 +1,7 @@
-﻿p.size_number_courses {
+﻿.size_number_courses {
     font-size: medium;
 }
-p.size_text_courses {
+.size_text_courses {
     font-size: xx-large;
     text-align: center;
 }
@@ -9,7 +9,7 @@ p.site_titletema {
     text-align: center;
 }
 p.size_text_course {
-    font-size: large;
+    font-size: x-large;
     text-align: left;
 }
 p.size_title_course {
@@ -44,4 +44,15 @@ ul.my_padding{
 }
 .po-right {
     text-align: right;
+}
+.text_test {
+    font-size: xx-large;
+    text-align: left;
+    text-indent: 1.5em;
+}
+
+.text_zadanie {
+    font-size: x-large;
+    text-align: left;
+    font-weight: 600;
 }
