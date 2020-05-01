@@ -49,11 +49,12 @@
                 </tr>
             </table>
             <button type="submit" class="btn btn-primary" id="proverka" onclick="clickProvColorWord()">Проверка</button>
+            <button type="submit" class="btn btn-primary" id="proverka" onclick="clickProvColorWordNew()">Начать заново</button>
         </td>
     </tr>
     <tr>
         <td>
-            <p class="text_zadanie">Задание 3.Прочитайте текст и постарайтесь понять его содержание.</p>
+            <p class="text_zadanie">Задание 3. Прочитайте текст и постарайтесь понять его содержание.</p>
             <p class="text_test">Текст</p>
             <div>
                 <p class="text_test">Вся жизнь человека связана с информацией. Когда человек читает книгу, смотрит телевизор, разговаривает, он получает информацию.</p>
@@ -73,15 +74,15 @@
     </tr>
     <tr>
         <td>
-            <p class="text_zadanie">Задание 4.Подберите из текста однокоренные прилагательные к существительным:</p>
+            <p class="text_zadanie">Задание 4. Подберите из текста однокоренные прилагательные к существительным:</p>
             <div class="text_test">
                 <p>
                 <label>наука</label>
                 <input id="such0"type="text">
                 </p>
                 <p>
-                <label>техника</label>
-                <input  id="such1"type="text">
+                    <label>техника</label>
+                    <input id="such1" type="text">
                 </p>
                 <p>
                     <label>политика</label>
@@ -93,6 +94,10 @@
                 </p>
                 <p><label>война</label>
                 <input id="such4" type="text"></p>
+                <p>
+                    <label>война</label>
+                    <input id="such4" type="text">
+                </p>
                 <p>
                     <label>математика</label>
                     <input id="such5" type="text">
@@ -107,13 +112,14 @@
                 </p>
                 <p>
                     <label>электрон</label>
-                    <input  id="such8"type="text">
+                    <input id="such8" type="text">
                 </p>
                 <p>
                     <label>компьютер</label>
-                    <input id="such9"type="text">
+                    <input id="such9" type="text">
                 </p>
                 <button type="submit" class="btn btn-primary" id="proverka" onclick="clickProvPrilSuch()">Проверка</button>
+                <button type="submit" class="btn btn-primary" id="proverka" onclick="clickProvPrilSuchMew()">Начать заново</button>
             </div>
         </td>
         <tr>
@@ -132,17 +138,45 @@
         <td>
             <p class="text_zadanie">Задание 6.	Вместо точек поставьте глаголы, данные под чертой, в нужной форме: </p>
             <div class="text_test">
-            <p id="select0">1. Когда человек читает газету, смотрит телевизионную передачу, слушает радио, он | информацию.</p>
-            <p id="select1">2. Когда студент решает задачу, он | информацию.</p>
-            <p id="select2">3. Результаты обработки информации человек | в своей деятельности.</p>
-            <p id="select3">4. Обработанную информацию человек | в библиотеках, в музеях, в своей памяти.</p>
-            <p id="select4">5. Количество информации быстро |.</p>
-            <p id="select5">6. В настоящее время информацию | и | с помощью электронно-вычислительных машин (ЭВМ) — компьютеров.</p>
-            <p>_________________________________________________________</p>
-            <p>Получать, собирать, обрабатывать, увеличивать, хранить, использовать.</p>
+                <p id="select0">1. Когда человек читает газету, смотрит телевизионную передачу, слушает радио, он | информацию.</p>
+                <p id="select1">2. Когда студент решает задачу, он | информацию.</p>
+                <p id="select2">3. Результаты обработки информации человек | в своей деятельности.</p>
+                <p id="select3">4. Обработанную информацию человек | в библиотеках, в музеях, в своей памяти.</p>
+                <p id="select4">5. Количество информации быстро |.</p>
+                <p id="select5">6. В настоящее время информацию | и | с помощью электронно-вычислительных машин (ЭВМ) — компьютеров.</p>
+                <p>_________________________________________________________</p>
+                <p>Получать, собирать, обрабатывать, увеличивать, хранить, использовать.</p>
             </div>
             <button type="submit" class="btn btn-primary" id="proverka" onclick="clickSelect()">Проверка</button>
+            <button type="submit" class="btn btn-primary" id="proverka" onclick="clickSelectNew()">Начать заново</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p class="text_zadanie">Задание 7.	Прочитайте текст ещё раз и ответьте на вопросы.</p>
+            <div class="text_test">
+                <p> 1. Что такое информация?</p>
+                <p>2. Когда человек получает информацию?</p>
+                <p>3. Какие виды информации существуют?</p>
+                <p>4. Что такое условие задачи?</p>
+                <p>5. Что такое «математические вычисления»?</p>
+                <p>6. Где человек использует результаты обработки инфор-мации?</p>
+                <p>7. Как сейчас собирают, хранят и обрабатывают инфор-мацию?</p>
+                <p>8. Что такое информатика?</p>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p class="text_zadanie">Задание 8.	Сформулируйте главную мысль текста и дайте ему название.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p class="text_zadanie">Задание 9.	Расскажите текст, дополнив его сведениями, полученными из упражнений к тексту.</p>
         </td>
     </tr>
 </table>
-<script src="~/js/scriptTest.js"></script>
+<script src="~/js/scriptTestPrilSuch.js"></script>
+<script src="~/js/scriptTestColor.js"></script>
+<script src="~/js/scriptTestSelect.js"></script>
