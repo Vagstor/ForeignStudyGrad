@@ -17,7 +17,7 @@ var wordSelect = [[], []];
 window.onload = function () {
 	console.log("Загрузился");
 	//подача номера теста для подачи входных данных
-	var numberTest = 1;
+	var numberTest = document.getElementById("Theme").textContent;
 	//объявление элементов для scriptColor.js
 	vhodWordColor(numberTest);
 
