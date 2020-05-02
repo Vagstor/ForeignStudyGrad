@@ -19,12 +19,36 @@
             @*Выыод слов для группировки*@
             <p>Нажимайте на слова, чтобы выделять их цветом. Однокоренные слова должны иметь одинаковый цвет.</p>
             <table alight="center" class="site_padding size_text_courses">
-                <tr><td id="word0" onclick="colorWord()">информация</td><td id="word1" onclick="colorWord()">сбор</td><td id="word2" onclick="colorWord()">сохранять</td></tr>
-                <tr><td id="word3" onclick="colorWord()">решать</td><td id="word4" onclick="colorWord()">вычисление</td><td id="word5" onclick="colorWord()">обрабатывать</td></tr>
-                <tr><td id="word6" onclick="colorWord()">обработка</td><td id="word7" onclick="colorWord()">хранение</td><td id="word8" onclick="colorWord()">информационный</td></tr>
-                <tr><td id="word9" onclick="colorWord()">решение</td><td id="word10" onclick="colorWord()">вычислять</td><td id="word11" onclick="colorWord()">обработанный</td></tr>
-                <tr><td id="word12" onclick="colorWord()">хранить</td><td id="word13" onclick="colorWord()">информатика</td><td id="word14" onclick="colorWord()">собирать</td></tr>
-                <tr><td id="word15" onclick="colorWord()">сохранение</td><td></td><td></td></tr>
+                <tr>
+                <td id="word0">информация</td>
+                <td id="word1">сбор</td>
+                <td id="word2">сохранять</td>
+                </tr>
+                <tr>
+                <td id="word3">решать</td>
+                <td id="word4">вычисление</td>
+                <td id="word5" onclick="colorWord()">обрабатывать</td>
+                </tr>
+                <tr>
+                <td id="word6" onclick="colorWord()">обработка</td>
+                <td id="word7" onclick="colorWord()">хранение</td>
+                <td id="word8" onclick="colorWord()">информационный</td>
+                </tr>
+                <tr>
+                <td id="word9" onclick="colorWord()">решение</td>
+                <td id="word10" onclick="colorWord()">вычислять</td>
+                <td id="word11" onclick="colorWord()">обработанный</td>
+                </tr>
+                <tr>
+                <td id="word12" onclick="colorWord()">хранить</td>
+                <td id="word13" onclick="colorWord()">информатика</td>
+                <td id="word14" onclick="colorWord()">собирать</td>
+                </tr>
+                <tr>
+                <td id="word15" onclick="colorWord()">сохранение</td>
+                <td></td>
+                <td></td>
+                </tr>
             </table>
             <button type="submit" class="btn btn-primary" id="proverka" onclick="clickProvColorWord()">Проверка</button>
             <button type="submit" class="btn btn-primary" id="proverka" onclick="clickProvColorWordNew()">Начать заново</button>
@@ -55,8 +79,8 @@
             <p class="text_zadanie">Задание 4. Подберите из текста однокоренные прилагательные к существительным:</p>
             <div class="text_test">
                 <p>
-                    <label>наука</label>
-                    <input id="such0" type="text">
+                <label>наука</label>
+                <input id="such0"type="text">
                 </p>
                 <p>
                     <label>техника</label>
@@ -64,12 +88,14 @@
                 </p>
                 <p>
                     <label>политика</label>
-                    <input id="such2" type="text">
+                    <input id="such2"type="text">
                 </p>
                 <p>
                     <label>экономика</label>
                     <input id="such3" type="text">
                 </p>
+                <p><label>война</label>
+                <input id="such4" type="text"></p>
                 <p>
                     <label>война</label>
                     <input id="such4" type="text">
