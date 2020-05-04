@@ -101,7 +101,7 @@ namespace ForeignStudyGrad.Services
             var q = from c in _db.Themes
                     where c.CourseId == course
                     select c;
-            if (q.ToList() != null) return q.ToList();
+            if (q.ToList() != null) return q.OrderBy(theme => theme.ThemeNumber).ToList();
             else { return new List<Theme>(); }
         }
         //public List<Test> GetThemeTests(Guid theme)

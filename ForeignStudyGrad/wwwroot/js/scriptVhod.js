@@ -39,7 +39,7 @@ function vhodWordPrilSuch(numberTest) {
 function vhodWordSelect(numberTest) {
 	switch (numberTest) {
 		case "Test1Theme":
-			this.wordSelectLength = 7;
+			this.wordSelectLength = 6;
 			this.lengthSelect = 6;
 			this.rez = ["получает", "обрабатывает", "использует", "хранит", "увеличивается", "собирают", "обрабатывают"];
 			break;
