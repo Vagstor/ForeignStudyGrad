@@ -1,49 +1,9 @@
 ﻿//задание с группированием слов
 var colorBD = ["white", "rgb(255,255,203)", "rgb(205,205,94)", "rgb(255, 205, 94)", "rgb(180,255,87)", "rgb(255,205,152)", "rgb(0,255,148)", "rgb(255,205,205)", "rgb(67,255,203)", "rgb(222,154,154)", "rgb(126, 205, 205)", "rgb(222,154,207)", "rgb(154,154,207)", "rgb(205,205,255)"];
 
-var wordcolor = [[], [], []];
-var numberKoren;//количество корней в задании
-var koren = [];//какое слово принадлежит какому корню
-var flag;
-var lenght;
-
-window.onload = function () {
-
-    var numberTest = 1;
-    vhodWordColor(numberTest);
-
-
-    for (var i = 0; i < lenght; i++) {
-        var s = "word" + i;
-        this.wordcolor[0][i] = document.getElementById(s);
-        this.wordcolor[1][i] = this.koren[i];
-        colorWhite(i);
-    }
 
 
 
-    this.numberKoren = Math.max.apply(null, this.koren);
-    flag = 1;
-
-}
-
-//входные данные
-function vhodWordColor(numberTest) {
-    switch (numberTest) {
-        case 1:
-            this.lenght = 16;
-            this.koren = [1, 2, 3, 4, 5, 2, 2, 3, 1, 4, 5, 2, 3, 1, 2, 3];
-            break;
-        case 2:
-            this.lenght = 21;
-            this.koren = [];
-            break;
-        case 3:
-            this.lenght = 4;
-            this.koren = [1, 2, 3, 4];
-            break;
-    };
-}
 
 function colorWord() {
 
@@ -105,13 +65,13 @@ function clickProvColorWord() {
     }
 
     if (selekt) alert("Good"); else alert("Bad");
+    Console.log("Выполнение задачи с цветами закончено");
 }
-function colorWhite(i) {
-    this.wordcolor[0][i].style.backgroundColor = 'white';
-}
+
 function clickProvColorWordNew() {
     for (var i = 0; i < this.lenght; i++) {
-        this.wordcolor[1][i] = 'white';
+        this.wordcolor[2][i] = undefind;
         colorWhite(i);
     }
+    Console.log("Отчситка полей для задачи с цветами выполнена");
 }

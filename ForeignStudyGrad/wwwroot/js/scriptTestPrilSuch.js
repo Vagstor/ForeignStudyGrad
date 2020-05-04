@@ -1,26 +1,5 @@
-﻿var wordPrilSuch = [[], []];
-var lengthPrilSuch;
-var rez = [];
-window.onload = function () {
-	var numberTest = 1;
-	vhodWordPrilSuch(numberTest);
-}
+﻿
 
-//входные данные
-function vhodWordPrilSuch(numberTest) {
-	switch (numberTest) {
-		case 1:
-			this.lengthPrilSuch = 10;
-			this.rez = ["научная", "техническая", "политическая", "экономическая", "военная", "математические", "вычислительных", "", "электронно", ""];
-			break;
-		case 2:
-
-			break;
-		case 3:
-
-			break;
-	};
-}
 
 function clickProvPrilSuch() {
 	var selekt = true;
@@ -35,12 +14,13 @@ function clickProvPrilSuch() {
 
 	for (var i = 0; i < lengthPrilSuch; i++) {
 
-		if (wordPrilSuch[1][i] != rez[i]) {
+		if (wordPrilSuch[1][i] != rezPril[i]) {
 			wordPrilSuch[0][i].value = "";
 			selekt = false;
 		}
 	}
 	if (selekt) alert("Good"); else alert("Bad");
+	Console.log("Выполнение задачи с прилогательными закончено");
 }
 
 
@@ -49,7 +29,8 @@ function clickProvPrilSuch() {
 function clickProvPrilSuchMew() {
 
 	for (var i = 0; i < lengthPrilSuch; i++) {
-			wordPrilSuch[0][i].value = "";
+		wordPrilSuch[0][i].value = "";
 	}
+	Console.log("Отчситка полей для задачи с прилагательными выполнена");
 }
 
