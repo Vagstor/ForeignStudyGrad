@@ -70,7 +70,7 @@ function clickProvColorWord() {
 
 function clickProvColorWordNew() {
     for (var i = 0; i < this.lenght; i++) {
-        this.wordcolor[2][i] = undefind;
+        this.wordcolor[2][i] = undefined;
         colorWhite(i);
     }
     Console.log("Отчситка полей для задачи с цветами выполнена");
