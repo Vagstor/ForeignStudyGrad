@@ -238,10 +238,11 @@ namespace DataModels
 	[Table(Schema="dbo", Name="themes")]
 	public partial class Theme
 	{
-		[Column("theme_id"),   PrimaryKey,  NotNull] public Guid   ThemeId   { get; set; } // uniqueidentifier
-		[Column("theme_name"),              NotNull] public string ThemeName { get; set; } // varchar(50)
-		[Column("course_id"),               NotNull] public Guid   CourseId  { get; set; } // uniqueidentifier
-		[Column("viewname"),      Nullable         ] public string Viewname  { get; set; } // varchar(max)
+		[Column("theme_id"),     PrimaryKey,  NotNull] public Guid   ThemeId     { get; set; } // uniqueidentifier
+		[Column("theme_name"),                NotNull] public string ThemeName   { get; set; } // varchar(50)
+		[Column("course_id"),                 NotNull] public Guid   CourseId    { get; set; } // uniqueidentifier
+		[Column("viewname"),        Nullable         ] public string Viewname    { get; set; } // varchar(max)
+		[Column("theme_number"),    Nullable         ] public byte?  ThemeNumber { get; set; } // tinyint
 
 		#region Associations
 
