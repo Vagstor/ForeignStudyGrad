@@ -13,11 +13,20 @@ var lengthSelect;//количество предложений с селекта
 var rez = [];
 var wordSelectLength;//колличество селектов
 var wordSelect = [[], []];
-
+var numTextZad;
+var textStr="";
 
 window.onload = function () {
 	console.log("Загрузился");
-
+	this.numTextZad = 7;
+	for (var i = 0; i < numTextZad; i++) {
+		var s1 = "textText" + i;
+		vhodText();
+		document.getElementById(s1).innerHTML = textStr;
+		textStr = "";
+		console.log(i);
+	}
+	
 	//подача номера теста для подачи входных данных
 	var numberTest = document.getElementById("Theme").textContent;
 	//объявление элементов для scriptColor.js
@@ -72,7 +81,7 @@ function vhodText() {
 		"Результаты обработки информации человек использует в своей деятельности.",
 		"Количество информации быстро увеличивается. В настоящее время информацию собирают, хранят и обрабатывают с помощью электронно-вычислительных машин (ЭВМ) – компьютеров.",
 		"Информатика – это наука о сборе, хранении, обработке и передаче информации."];
-	var pClass = "<p class = \"text_test\"";
+	var pClass = "<p class = \"text_test\">";
 	var p = "</p>";
 	textMas.forEach(function (text) {
 		textStr += pClass + text + p;
