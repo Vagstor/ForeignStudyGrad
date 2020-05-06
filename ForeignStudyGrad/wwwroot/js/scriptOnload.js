@@ -15,12 +15,16 @@ var wordSelectLength;//колличество селектов
 var wordSelect = [[], []];
 var numTextZad;
 var textStr = "";
-var tablinks;
+var tablinks =[];
+var textMas = [];
 
 window.onload = function () {
 	console.log("Загрузился");
 	tablinks = document.getElementsByClassName("tablink");
-
+	//подача номера теста для подачи входных данных
+	var numberTest = document.getElementById("Theme").textContent;
+	console.log(numberTest);
+	vhod(numberTest);
 	this.numTextZad = 7;
 	for (var i = 0; i < numTextZad; i++) {
 		var s1 = "textText" + i;
@@ -31,11 +35,10 @@ window.onload = function () {
 		console.log(i);
 	}
 	
-	//подача номера теста для подачи входных данных
-	var numberTest = document.getElementById("Theme").textContent;
+	
+	
 	//объявление элементов для scriptColor.js
-	vhodWordColor(numberTest);
-
+	lenght = koren.length;
 	for (var i = 0; i < lenght; i++) {
 		var s = "word" + i;
 		this.wordcolor[0][i] = document.getElementById(s);
@@ -47,10 +50,10 @@ window.onload = function () {
 	flag = 1;
 	console.log("Задание с цветом объявлено");
 	//объявление элементов для scriptTestPrilSuch.js
-	vhodWordPrilSuch(numberTest);
+	lengthPrilSuch = rezPril.length;
 	console.log("Задание с прилагательными объявлено");
 	//объявление элементов для scriptSelect.js
-	vhodWordSelect(numberTest);
+	wordSelectLength = lengthSelect = rez.length;
 	var ii = 0;
 	for (var j = 0; j < lengthSelect; j++) {
 		var s1 = "select" + j;
@@ -77,15 +80,6 @@ function colorWhite(i) {
 }
 
 function vhodText() {
-	
-	textMas = ["Текст", "Вся жизнь человека связана с информацией. Когда человек читает книгу, смотрит телевизор, разговаривает, он получает информацию.",
-		"Информация – это сведения о мире вокруг нас.Слово информация произошло от латинского слова informatio – осведомление, разъяснение, изложение.",
-		"Информация бывает различных видов:",
-		"•	научная;", "•	техническая;", "•	политическая;", "•	экономическая;", "•	военная и т. д.",
-		"Например, при решении задачи условие задачи – это исходная информация, математические вычисления – это обработка информации. Данные, которые получены в ходе решения задачи, – это результат обработки информации.",
-		"Результаты обработки информации человек использует в своей деятельности.",
-		"Количество информации быстро увеличивается. В настоящее время информацию собирают, хранят и обрабатывают с помощью электронно-вычислительных машин (ЭВМ) – компьютеров.",
-		"Информатика – это наука о сборе, хранении, обработке и передаче информации."];
 	var pClass = "<p class = \"text_test\">";
 	var p = "</p>";
 	textMas.forEach(function (text) {

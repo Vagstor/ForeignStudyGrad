@@ -11,15 +11,15 @@
 <p class="text_zadanie site_padding">Цель работы: @Model.Goal</p>
 
 <nav class="w3-bar w3-black">
-    <button class="w3-bar-item w3-button" onclick="openTask('Task1')">Задание 1</button>
-    <button class="w3-bar-item w3-button" onclick="openTask('Task2')">Задание 2</button>
-    <button class="w3-bar-item w3-button" onclick="openTask('Task3')">Задание 3</button>
-    <button class="w3-bar-item w3-button" onclick="openTask('Task4')">Задание 4</button>
-    <button class="w3-bar-item w3-button" onclick="openTask('Task5')">Задание 5</button>
-    <button class="w3-bar-item w3-button" onclick="openTask('Task6')">Задание 6</button>
-    <button class="w3-bar-item w3-button" onclick="openTask('Task7')">Задание 7</button>
-    <button class="w3-bar-item w3-button" onclick="openTask('Task8')">Задание 8</button>
-    <button class="w3-bar-item w3-button" onclick="openTask('Task9')">Задание 9</button>
+    <button class="w3-bar-item w3-button tablink" id="tablink0" onclick="openTask('Task1')">Задание 1</button>
+    <button class="w3-bar-item w3-button tablink" id="color" onclick="openTask('Task2')">Задание 2</button>
+    <button class="w3-bar-item w3-button tablink" id="tablink2" onclick="openTask('Task3')">Задание 3</button>
+    <button class="w3-bar-item w3-button tablink" id="srav" onclick="openTask('Task4')">Задание 4</button>
+    <button class="w3-bar-item w3-button tablink" id="tablink4" onclick="openTask('Task5')">Задание 5</button>
+    <button class="w3-bar-item w3-button tablink" id="select" onclick="openTask('Task6')">Задание 6</button>
+    <button class="w3-bar-item w3-button tablink" id="tablink6" onclick="openTask('Task7')">Задание 7</button>
+    <button class="w3-bar-item w3-button tablink" id="tablink7" onclick="openTask('Task8')">Задание 8</button>
+    <button class="w3-bar-item w3-button tablink" id="tablink8" onclick="openTask('Task9')">Задание 9</button>
 </nav>
 <div class="task" id="Task1">
     <p class="text_zadanie">Задание 1. Прочитайте слова и словосочетания, запомните их значения:</p>
@@ -113,10 +113,6 @@
                         <input id="such4" type="text">
                     </p>
                     <p>
-                        <label>война</label>
-                        <input id="such4" type="text">
-                    </p>
-                    <p>
                         <label>математика</label>
                         <input id="such5" type="text">
                     </p>
@@ -176,7 +172,6 @@
                     <p id="select3">4. Обработанную информацию человек | в библиотеках, в музеях, в своей памяти.</p>
                     <p id="select4">5. Количество информации быстро |.</p>
                     <p id="select5">6. В настоящее время информацию | и | с помощью электронно-вычислительных машин (ЭВМ) — компьютеров.</p>
-                <button type="submit" class="btn btn-primary" onclick="clickSelect()">Проверка</button>
                 <button type="submit" class="btn btn-primary" onclick="clickSelectNew()">Начать заново</button>
             </td>
         </tr>
@@ -232,7 +227,7 @@
             <td class="text_test">
                 <p class="text_zadanie">Задание 9.	Расскажите текст, дополнив его сведениями, полученными из упражнений к тексту.</p>
                 <p><textarea class="form-control" rows="5"></textarea></p>
-                <button type="submit" class="btn btn-primary">Проверка</button>
+                <button type="submit" class="btn btn-primary" onclick="proverka()">Проверка</button>
             </td>
         </tr>
     </table>
@@ -253,3 +248,4 @@
 <script src="~/js/scriptTestPrilSuch.js"></script>
 <script src="~/js/scriptTestColor.js"></script>
 <script src="~/js/scriptTestSelect.js"></script>
+<script src="~/js/scriptProverka.js"></script>
