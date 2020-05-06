@@ -21,6 +21,7 @@ window.onload = function () {
 	this.numTextZad = 7;
 	for (var i = 0; i < numTextZad; i++) {
 		var s1 = "textText" + i;
+		if (i != 0) textStr = "<p class=\"text_zadanie\">Прочитайте текст и выполните задание.</p>";
 		vhodText();
 		document.getElementById(s1).innerHTML = textStr;
 		textStr = "";
@@ -73,6 +74,7 @@ function colorWhite(i) {
 }
 
 function vhodText() {
+	
 	textMas = ["Текст", "Вся жизнь человека связана с информацией. Когда человек читает книгу, смотрит телевизор, разговаривает, он получает информацию.",
 		"Информация – это сведения о мире вокруг нас.Слово информация произошло от латинского слова informatio – осведомление, разъяснение, изложение.",
 		"Информация бывает различных видов:",
