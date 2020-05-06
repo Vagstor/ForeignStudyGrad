@@ -2,219 +2,232 @@
     ViewData["Title"] = "Название теста";
 }
 <link href="~/css/sytecss.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="~/css/syteCssTableButton.css">
 <h1 id="Theme">Test1Theme</h1>
 <script src="~/js/scriptVhod.js" async></script>
 <script src="~/js/scriptOnload.js" async></script>
 <p class="text_zadanie site_padding">Цель работы: </p>
 
-<div class="w3-content w3-display-container">
-    <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-    <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
-    <div class="taskTab">
-        <p class="text_zadanie">Задание 1. Прочитайте слова и словосочетания, запомните их значения:</p>
-        <ul class="text_test">
-            <li>информация <input id="slovo0" type="text"></li>
-            <li>исходная информация <input id="slovo1" type="text"></li>
-            <li>количество информации <input id="slovo2" type="text"></li>
-            <li>обработка информации <input id="slovo3" type="text"></li>
-            <li>получать, получить (что?) <input id="slovo4" type="text"></li>
-            <li>получение информации <input id="slovo5" type="text"></li>
-            <li>сведения (о ком? о чём?) <input id="slovo6" type="text"></li>
-            <li>обработать, обрабатывать (что?) <input id="slovo7" type="text"></li>
-            <li>использовать (что?) <input id="slovo8" type="text"></li>
-            <li>использование <input id="slovo9" type="text"></li>
-            <li>научный <input id="slovo10" type="text"></li>
-            <li>технический <input id="slovo11" type="text"></li>
-            <li>политический <input id="slovo12" type="text"></li>
-            <li>результат <input id="slovo13" type="text"></li>
-            <li>вычислять, вычислить (что?) <input id="slovo14" type="text"></li>
-            <li>хранить (что?) <input id="slovo15" type="text"></li>
-            <li>сохранять, сохранить (что?) <input id="slovo16" type="text"></li>
-            <li>сохранение <input id="slovo17" type="text"></li>
-        </ul>
-    </div>
-    <div class="taskTab">
-        <p class="text_zadanie">Задание 2. Сгруппируйте однокоренные слова:</p>
-        <p>Нажимайте на слова, чтобы выделять их цветом. Однокоренные слова должны иметь одинаковый цвет.</p>
-        <table alight="center" class="site_padding size_text_courses not_select_text">
-            <tr>
-                <td id="word0" onclick="colorWord()">информация</td>
-                <td id="word1" onclick="colorWord()">сбор</td>
-                <td id="word2" onclick="colorWord()">сохранять</td>
-            </tr>
-            <tr>
-                <td id="word3" onclick="colorWord()">решать</td>
-                <td id="word4" onclick="colorWord()">вычисление</td>
-                <td id="word5" onclick="colorWord()">обрабатывать</td>
-            </tr>
-            <tr>
-                <td id="word6" onclick="colorWord()">обработка</td>
-                <td id="word7" onclick="colorWord()">хранение</td>
-                <td id="word8" onclick="colorWord()">информационный</td>
-            </tr>
-            <tr>
-                <td id="word9" onclick="colorWord()">решение</td>
-                <td id="word10" onclick="colorWord()">вычислять</td>
-                <td id="word11" onclick="colorWord()">обработанный</td>
-            </tr>
-            <tr>
-                <td id="word12" onclick="colorWord()">хранить</td>
-                <td id="word13" onclick="colorWord()">информатика</td>
-                <td id="word14" onclick="colorWord()">собирать</td>
-            </tr>
-            <tr>
-                <td id="word15" onclick="colorWord()">сохранение</td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
-        <button type="submit" class="btn btn-primary" id="proverka" onclick="clickProvColorWord()">Проверка</button>
-        <button type="submit" class="btn btn-primary" onclick="clickProvColorWordNew()">Начать заново</button>
-    </div>
-    <div class="taskTab">
-        <p class="text_zadanie">Задание 3. Прочитайте текст и постарайтесь понять его содержание.</p>
-        <p id="textText0"></p>
-    </div>
-    <div class="taskTab">
-        <p id="textText1"></p>
-        <p></p>
-        <p class="text_zadanie">Задание 4. Подберите из текста однокоренные прилагательные к существительным:</p>
-        <div class="text_test">
-            <p>
-                <label>наука</label>
-                <input id="such0" type="text">
-            </p>
-            <p>
-                <label>техника</label>
-                <input id="such1" type="text">
-            </p>
-            <p>
-                <label>политика</label>
-                <input id="such2" type="text">
-            </p>
-            <p>
-                <label>экономика</label>
-                <input id="such3" type="text">
-            </p>
-            <p>
-                <label>война</label>
-                <input id="such4" type="text">
-            </p>
-            <p>
-                <label>война</label>
-                <input id="such4" type="text">
-            </p>
-            <p>
-                <label>математика</label>
-                <input id="such5" type="text">
-            </p>
-            <p>
-                <label>вычисления</label>
-                <input id="such6" type="text">
-            </p>
-            <p>
-                <label>машина</label>
-                <input id="such7" type="text">
-            </p>
-            <p>
-                <label>электрон</label>
-                <input id="such8" type="text">
-            </p>
-            <p>
-                <label>компьютер</label>
-                <input id="such9" type="text">
-            </p>
-            <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuch()">Проверка</button>
-            <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuchMew()">Начать заново</button>
-        </div>
-    </div>
-    <div class="taskTab">
-        <p id="textText2"></p>
-        <p></p>
-        <p class="text_zadanie">Задание 5.	Замените данные предложения синонимичными.</p>
-        <div class="text_test">
-            <p>1. Условие задачи – это исходная информация.</p>
-            <p><input id="sininomPred0" type="text"></p>
-            <p>2. Математические вычисления – это обработка исходной информации.</p>
-            <p> <input id="sininomPred1" type="text"></p>
-            <p>3. Информатика – это наука о сборе, хранении и обработке информации.</p>
-            <p><input id="sininomPred2" type="text"></p>
-            <p></p>
-            <p>Образец: Информация – это сведения о мире вокруг нас. Информация представляет собой сведения о мире вокруг нас.</p>
-        </div>
-    </div>
-    <div class="taskTab">
-         <p id="textText3"></p>
-        <p></p>
-        <p class="text_zadanie">Задание 6.	Вместо точек поставьте глаголы, данные под чертой, в нужной форме: </p>
-        <div class="text_test">
-            <p id="select0">1. Когда человек читает газету, смотрит телевизионную передачу, слушает радио, он | информацию.</p>
-            <p id="select1">2. Когда студент решает задачу, он | информацию.</p>
-            <p id="select2">3. Результаты обработки информации человек | в своей деятельности.</p>
-            <p id="select3">4. Обработанную информацию человек | в библиотеках, в музеях, в своей памяти.</p>
-            <p id="select4">5. Количество информации быстро |.</p>
-            <p id="select5">6. В настоящее время информацию | и | с помощью электронно-вычислительных машин (ЭВМ) — компьютеров.</p>
-            <p>_________________________________________________________</p>
-            <p>Получать, собирать, обрабатывать, увеличивать, хранить, использовать.</p>
-        </div>
-        <button type="submit" class="btn btn-primary" onclick="clickSelect()">Проверка</button>
-        <button type="submit" class="btn btn-primary" onclick="clickSelectNew()">Начать заново</button>
-    </div>
-    <div class="taskTab">
-        <p id="textText4"></p>
-        <p></p>
-        <p class="text_zadanie">Задание 7.	Прочитайте текст ещё раз и ответьте на вопросы.</p>
-        <div class="text_test">
-            <p> 1. Что такое информация?</p>
-            <p><input id="question0" type="text"></p>
-            <p>2. Когда человек получает информацию?</p>
-            <p><input id="question1" type="text"></p>
-            <p>3. Какие виды информации существуют?</p>
-            <p><input id="question2" type="text"></p>
-            <p>4. Что такое условие задачи?</p>
-            <p><input id="question3" type="text"></p>
-            <p>5. Что такое «математические вычисления»?</p>
-            <p><input id="question4" type="text"></p>
-            <p>6. Где человек использует результаты обработки инфор-мации?</p>
-            <p><input id="question5" type="text"></p>
-            <p>7. Как сейчас собирают, хранят и обрабатывают инфор-мацию?</p>
-            <p><input id="question6" type="text"></p>
-            <p>8. Что такое информатика?</p>
-            <p><input id="question7" type="text"></p>
-        </div>
-    </div>
-    <div class="taskTab">
-        <p id="textText5"></p>
-        <p></p>
-        <p class="text_zadanie">Задание 8.	Сформулируйте главную мысль текста и дайте ему название.</p>
-        <p><textarea name="comment" cols="40" rows="10"></textarea></p>
-    </div>
-    <div class="taskTab">
-         <p id="textText6"></p>
-        <p></p>
-        <p class="text_zadanie">Задание 9.	Расскажите текст, дополнив его сведениями, полученными из упражнений к тексту.</p>
-        <p><textarea name="comment" cols="40" rows="3"></textarea></p>
-    </div>
-
+<button class="w3-button w3-display-left" top=" 0%" onclick="plusDivs(-1)">&#10094;</button>
+<button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+<div class="taskTab">
+    <p class="text_zadanie">Задание 1. Прочитайте слова и словосочетания, запомните их значения:</p>
+    <ul class="text_test site_padding" >
+        <li>информация <input id="slovo0" type="text"></li>
+        <li>исходная информация <input id="slovo1" type="text"></li>
+        <li>количество информации <input id="slovo2" type="text"></li>
+        <li>обработка информации <input id="slovo3" type="text"></li>
+        <li>получать, получить (что?) <input id="slovo4" type="text"></li>
+        <li>получение информации <input id="slovo5" type="text"></li>
+        <li>сведения (о ком? о чём?) <input id="slovo6" type="text"></li>
+        <li>обработать, обрабатывать (что?) <input id="slovo7" type="text"></li>
+        <li>использовать (что?) <input id="slovo8" type="text"></li>
+        <li>использование <input id="slovo9" type="text"></li>
+        <li>научный <input id="slovo10" type="text"></li>
+        <li>технический <input id="slovo11" type="text"></li>
+        <li>политический <input id="slovo12" type="text"></li>
+        <li>результат <input id="slovo13" type="text"></li>
+        <li>вычислять, вычислить (что?) <input id="slovo14" type="text"></li>
+        <li>хранить (что?) <input id="slovo15" type="text"></li>
+        <li>сохранять, сохранить (что?) <input id="slovo16" type="text"></li>
+        <li>сохранение <input id="slovo17" type="text"></li>
+    </ul>
+</div>
+<div class="taskTab">
+    <p class="text_zadanie">Задание 2. Сгруппируйте однокоренные слова:</p>
+    <p>Нажимайте на слова, чтобы выделять их цветом. Однокоренные слова должны иметь одинаковый цвет.</p>
+    <table alight="center" class="site_padding size_text_courses not_select_text">
+        <tr>
+            <td id="word0" onclick="colorWord()">информация</td>
+            <td id="word1" onclick="colorWord()">сбор</td>
+            <td id="word2" onclick="colorWord()">сохранять</td>
+        </tr>
+        <tr>
+            <td id="word3" onclick="colorWord()">решать</td>
+            <td id="word4" onclick="colorWord()">вычисление</td>
+            <td id="word5" onclick="colorWord()">обрабатывать</td>
+        </tr>
+        <tr>
+            <td id="word6" onclick="colorWord()">обработка</td>
+            <td id="word7" onclick="colorWord()">хранение</td>
+            <td id="word8" onclick="colorWord()">информационный</td>
+        </tr>
+        <tr>
+            <td id="word9" onclick="colorWord()">решение</td>
+            <td id="word10" onclick="colorWord()">вычислять</td>
+            <td id="word11" onclick="colorWord()">обработанный</td>
+        </tr>
+        <tr>
+            <td id="word12" onclick="colorWord()">хранить</td>
+            <td id="word13" onclick="colorWord()">информатика</td>
+            <td id="word14" onclick="colorWord()">собирать</td>
+        </tr>
+        <tr>
+            <td id="word15" onclick="colorWord()">сохранение</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-primary" onclick="clickProvColorWordNew()">Начать заново</button>
+</div>
+<div class="taskTab">
+    <p class="text_zadanie">Задание 3. Прочитайте текст и постарайтесь понять его содержание.</p>
+    <p id="textText0"></p>
+</div>
+<div class="taskTab">
+    <table class="table table-bordered">
+        <tr>
+            <td width="50%"><p id="textText1"></p>
+                </td>
+            <td class="text_test">
+                <p class="text_zadanie">Задание 4. Подберите из текста однокоренные прилагательные к существительным:</p>
+                    <p>
+                        <label>наука</label>
+                        <input id="such0" type="text">
+                    </p>
+                    <p>
+                        <label>техника</label>
+                        <input id="such1" type="text">
+                    </p>
+                    <p>
+                        <label>политика</label>
+                        <input id="such2" type="text">
+                    </p>
+                    <p>
+                        <label>экономика</label>
+                        <input id="such3" type="text">
+                    </p>
+                    <p>
+                        <label>война</label>
+                        <input id="such4" type="text">
+                    </p>
+                    <p>
+                        <label>война</label>
+                        <input id="such4" type="text">
+                    </p>
+                    <p>
+                        <label>математика</label>
+                        <input id="such5" type="text">
+                    </p>
+                    <p>
+                        <label>вычисления</label>
+                        <input id="such6" type="text">
+                    </p>
+                    <p>
+                        <label>машина</label>
+                        <input id="such7" type="text">
+                    </p>
+                    <p>
+                        <label>электрон</label>
+                        <input id="such8" type="text">
+                    </p>
+                    <p>
+                        <label>компьютер</label>
+                        <input id="such9" type="text">
+                    </p>
+                    <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuchMew()">Начать заново</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="taskTab">
+    <table class="table table-bordered">
+        <tr>
+            <td width="50%">
+                <p id="textText2"></p>
+            </td>
+            <td class="text_test">
+                <p class="text_zadanie">Задание 5.	Замените данные предложения синонимичными.</p>
+                    <p>1. Условие задачи – это исходная информация.</p>
+                    <p><input id="sininomPred0" type="text"></p>
+                    <p>2. Математические вычисления – это обработка исходной информации.</p>
+                    <p> <input id="sininomPred1" type="text"></p>
+                    <p>3. Информатика – это наука о сборе, хранении и обработке информации.</p>
+                    <p><input id="sininomPred2" type="text"></p>
+                    <p></p>
+                    <p>Образец: Информация – это сведения о мире вокруг нас. Информация представляет собой сведения о мире вокруг нас.</p>
+            </td>
+        </tr>
+    </table>
+      
+</div>
+<div class="taskTab">
+    <table class="table table-bordered">
+        <tr>
+            <td width="50%">
+                <p id="textText3"></p>
+            </td>
+            <td class="text_test">
+                <p class="text_zadanie">Задание 6.	Вместо точек поставьте глаголы, данные под чертой, в нужной форме: </p>
+                    <p id="select0">1. Когда человек читает газету, смотрит телевизионную передачу, слушает радио, он | информацию.</p>
+                    <p id="select1">2. Когда студент решает задачу, он | информацию.</p>
+                    <p id="select2">3. Результаты обработки информации человек | в своей деятельности.</p>
+                    <p id="select3">4. Обработанную информацию человек | в библиотеках, в музеях, в своей памяти.</p>
+                    <p id="select4">5. Количество информации быстро |.</p>
+                    <p id="select5">6. В настоящее время информацию | и | с помощью электронно-вычислительных машин (ЭВМ) — компьютеров.</p>
+                <button type="submit" class="btn btn-primary" onclick="clickSelect()">Проверка</button>
+                <button type="submit" class="btn btn-primary" onclick="clickSelectNew()">Начать заново</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="taskTab">
+    <table class="table table-bordered">
+        <tr>
+            <td width="50%">
+                <p id="textText4"></p>
+            </td>
+            <td class="text_test">
+                <p class="text_zadanie">Задание 7.	Прочитайте текст ещё раз и ответьте на вопросы.</p>
+                    <p> 1. Что такое информация?</p>
+                    <p><textarea class="form-control" rows="5"></textarea></p>
+                    <p>2. Когда человек получает информацию?</p>
+                    <p><textarea class="form-control" rows="5"></textarea></p>
+                    <p>3. Какие виды информации существуют?</p>
+                    <p><textarea class="form-control" rows="5"></textarea></p>
+                    <p>4. Что такое условие задачи?</p>
+                    <p><textarea class="form-control" rows="5"></textarea></p>
+                    <p>5. Что такое «математические вычисления»?</p>
+                    <p><textarea class="form-control" rows="5"></textarea></p>
+                    <p>6. Где человек использует результаты обработки инфор-мации?</p>
+                    <p><textarea class="form-control" rows="5"></textarea></p>
+                    <p>7. Как сейчас собирают, хранят и обрабатывают инфор-мацию?</p>
+                    <p><textarea class="form-control" rows="5"></textarea></p>
+                    <p>8. Что такое информатика?</p>
+                    <p><textarea class="form-control" rows="5"></textarea></p>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="taskTab">
+    <table class="table table-bordered">
+        <tr>
+            <td width="50%">
+                <p id="textText5"></p>
+            </td>
+            <td class="text_test">
+                <p class="text_zadanie">Задание 8.	Сформулируйте главную мысль текста и дайте ему название.</p>
+                <p><textarea class="form-control" rows="5"></textarea></p>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="taskTab">
+    <table class="table table-bordered">
+        <tr>
+            <td width="50%">
+                <p id="textText6"></p>
+            </td>
+            <td class="text_test">
+                <p class="text_zadanie">Задание 9.	Расскажите текст, дополнив его сведениями, полученными из упражнений к тексту.</p>
+                <p><textarea class="form-control" rows="5"></textarea></p>
+                <button type="submit" class="btn btn-primary">Проверка</button>
+            </td>
+        </tr>
+    </table>
 </div>
 
-            <p class="text_zadanie">Задание 3. Прочитайте текст и постарайтесь понять его содержание.</p>
-            <p class="text_test">Текст</p>
-            <div>
-                <p class="text_test">Вся жизнь человека связана с информацией. Когда человек читает книгу, смотрит телевизор, разговаривает, он получает информацию.</p>
-                <p class="text_test">Информация – это сведения о мире вокруг нас. Слово информация произошло от латинского слова informatio – осведомление, разъяснение, изложение.</p>
-                <p class="text_test">Информация бывает различных видов:</p>
-                <p class="text_test">•	научная;</p>
-                <p class="text_test">•	техническая;</p>
-                <p class="text_test">•	политическая;</p>
-                <p class="text_test">•	экономическая;</p>
-                <p class="text_test">•	военная и т. д.</p>
-                <p class="text_test">Например, при решении задачи условие задачи – это исходная информация, математические вычисления – это обработка информации. Данные, которые получены в ходе решения задачи, – это результат обработки информации.</p>
-                <p class="text_test">Результаты обработки информации человек использует в своей деятельности.</p>
-                <p class="text_test">Количество информации быстро увеличивается. В настоящее время информацию собирают, хранят и обрабатывают с помощью электронно-вычислительных машин (ЭВМ) – компьютеров.</p>
-                <p class="text_test">Информатика – это наука о сборе, хранении, обработке и передаче информации.</p>
-            </div>
+
 
 <script>
     var slideIndex = 1;
@@ -233,6 +246,9 @@
             x[i].style.display = "none";
         }
         x[slideIndex - 1].style.display = "block";
+        event.preventDefault();
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
     }
 </script>
 <script src="~/js/scriptTestPrilSuch.js"></script>
