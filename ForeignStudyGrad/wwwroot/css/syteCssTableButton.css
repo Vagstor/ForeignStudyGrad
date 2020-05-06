@@ -72,3 +72,13 @@
     transform: translate(0%,-50%);
     -ms-transform: translate(0%,-50%)
 }
+
+.w3-red, .w3-hover-red:hover {
+    color: #fff !important;
+    background-color: #f44336 !important
+}
+
+.w3-green, .w3-hover-green:hover {
+    color: #fff !important;
+    background-color: #4CAF50 !important
+}

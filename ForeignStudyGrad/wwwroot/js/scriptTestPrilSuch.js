@@ -19,8 +19,7 @@ function clickProvPrilSuch() {
 			selekt = false;
 		}
 	}
-	if (selekt) alert("Good"); else alert("Bad");
-	Console.log("Выполнение задачи с прилогательными закончено");
+	return selekt;
 }
 
 

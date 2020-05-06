@@ -14,10 +14,13 @@ var rez = [];
 var wordSelectLength;//колличество селектов
 var wordSelect = [[], []];
 var numTextZad;
-var textStr="";
+var textStr = "";
+var tablinks;
 
 window.onload = function () {
 	console.log("Загрузился");
+	tablinks = document.getElementsByClassName("tablink");
+
 	this.numTextZad = 7;
 	for (var i = 0; i < numTextZad; i++) {
 		var s1 = "textText" + i;

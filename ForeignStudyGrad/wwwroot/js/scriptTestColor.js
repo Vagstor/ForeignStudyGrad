@@ -60,8 +60,7 @@ function clickProvColorWord() {
         }
     }
 
-    if (selekt) alert("Good"); else alert("Bad");
-    Console.log("Выполнение задачи с цветами закончено");
+    return selekt;
 }
 
 function clickProvColorWordNew() {

@@ -22,8 +22,7 @@ function clickSelect() {
 			selekt = false;
 		}
 	}
-	if (selekt) alert("Good"); else alert("Bad");
-	Console.log("Выполнение задачи с селектами закончено");
+	return selekt;
 }
 
 function clickSelectNew() {
