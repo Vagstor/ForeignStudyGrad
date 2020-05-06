@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ForeignStudyGrad.Models;
 using ForeignStudyGrad.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +20,8 @@ namespace ForeignStudyGrad.Controllers
         [HttpGet]
         public IActionResult ShowTheme(Guid themeid)
         {
-            return View(_themeService.GetThemeViewById(themeid));
+            ThemeViewModel vm = _themeService.GetThemeInfoById(themeid);
+            return View(vm.Link,vm);
         }
     }
 }

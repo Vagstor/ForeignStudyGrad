@@ -1,4 +1,5 @@
 ﻿using DataModels;
+using ForeignStudyGrad.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +14,18 @@ namespace ForeignStudyGrad.Services
         {
             _db = db;
         }
-
-        public string GetThemeViewById(Guid id)
+        public ThemeViewModel GetThemeInfoById(Guid id)
         {
             var q = from t in _db.Themes
                     where t.ThemeId == id
-                    select t.Viewname;
-            return q.FirstOrDefault();
+                    select t;
+            ThemeViewModel output = new ThemeViewModel()
+            {
+                Goal = q.FirstOrDefault().ThemeGoal,
+                Themename = q.FirstOrDefault().ThemeName,
+                Link = q.FirstOrDefault().Viewname
+            };
+            return output;
         }
         public List<Cours> SearchCoursesWith(string text)
         {

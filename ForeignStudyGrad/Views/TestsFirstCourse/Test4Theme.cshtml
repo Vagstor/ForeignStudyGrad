@@ -1,9 +1,11 @@
-﻿
+﻿@model ThemeViewModel;
 @{
-    ViewData["Title"] = "Test4Theme";
+    ViewData["Title"] = Model.Themename;
 }
 
-<h1>Test4Theme</h1>
+<h1>Model.Themename</h1>
+
+<p class="text_zadanie site_padding">Цель работы: @Model.Goal</p>
 
 <h3>
     Задание 1. Прочитайте слова и словосочетания, запомните их
