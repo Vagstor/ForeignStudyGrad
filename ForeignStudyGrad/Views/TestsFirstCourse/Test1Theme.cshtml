@@ -1,16 +1,27 @@
-﻿@{
-    ViewData["Title"] = "Название теста";
+﻿@model ThemeViewModel;
+@{
+    ViewData["Title"] = Model.Themename;
 }
 <link href="~/css/sytecss.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="~/css/syteCssTableButton.css">
-<h1 id="Theme">Test1Theme</h1>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<h1 id="Theme">@Model.Themename</h1>
 <script src="~/js/scriptVhod.js" async></script>
 <script src="~/js/scriptOnload.js" async></script>
-<p class="text_zadanie site_padding">Цель работы: </p>
+<p class="text_zadanie site_padding">Цель работы: @Model.Goal</p>
 
-<button class="w3-button w3-display-left" top=" 0%" onclick="plusDivs(-1)">&#10094;</button>
-<button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
-<div class="taskTab">
+<nav class="w3-bar w3-black">
+    <button class="w3-bar-item w3-button" onclick="openTask('Task1')">Задание 1</button>
+    <button class="w3-bar-item w3-button" onclick="openTask('Task2')">Задание 2</button>
+    <button class="w3-bar-item w3-button" onclick="openTask('Task3')">Задание 3</button>
+    <button class="w3-bar-item w3-button" onclick="openTask('Task4')">Задание 4</button>
+    <button class="w3-bar-item w3-button" onclick="openTask('Task5')">Задание 5</button>
+    <button class="w3-bar-item w3-button" onclick="openTask('Task6')">Задание 6</button>
+    <button class="w3-bar-item w3-button" onclick="openTask('Task7')">Задание 7</button>
+    <button class="w3-bar-item w3-button" onclick="openTask('Task8')">Задание 8</button>
+    <button class="w3-bar-item w3-button" onclick="openTask('Task9')">Задание 9</button>
+</nav>
+<div class="task" id="Task1">
     <p class="text_zadanie">Задание 1. Прочитайте слова и словосочетания, запомните их значения:</p>
     <ul class="text_test site_padding" >
         <li>информация <input id="slovo0" type="text"></li>
@@ -33,7 +44,7 @@
         <li>сохранение <input id="slovo17" type="text"></li>
     </ul>
 </div>
-<div class="taskTab">
+<div id="Task2" class="task" style="display:none">
     <p class="text_zadanie">Задание 2. Сгруппируйте однокоренные слова:</p>
     <p>Нажимайте на слова, чтобы выделять их цветом. Однокоренные слова должны иметь одинаковый цвет.</p>
     <table alight="center" class="site_padding size_text_courses not_select_text">
@@ -70,11 +81,11 @@
     </table>
     <button type="submit" class="btn btn-primary" onclick="clickProvColorWordNew()">Начать заново</button>
 </div>
-<div class="taskTab">
+<div id="Task3" class="task" style="display:none">
     <p class="text_zadanie">Задание 3. Прочитайте текст и постарайтесь понять его содержание.</p>
     <p id="textText0"></p>
 </div>
-<div class="taskTab">
+<div id="Task4" class="task" style="display:none">
     <table class="table table-bordered">
         <tr>
             <td width="50%"><p id="textText1"></p>
@@ -130,7 +141,7 @@
         </tr>
     </table>
 </div>
-<div class="taskTab">
+<div id="Task5" class="task" style="display:none">
     <table class="table table-bordered">
         <tr>
             <td width="50%">
@@ -151,7 +162,7 @@
     </table>
       
 </div>
-<div class="taskTab">
+<div id="Task6" class="task" style="display:none">
     <table class="table table-bordered">
         <tr>
             <td width="50%">
@@ -171,7 +182,7 @@
         </tr>
     </table>
 </div>
-<div class="taskTab">
+<div id="Task7" class="task" style="display:none">
     <table class="table table-bordered">
         <tr>
             <td width="50%">
@@ -199,7 +210,7 @@
         </tr>
     </table>
 </div>
-<div class="taskTab">
+<div id="Task8" class="task" style="display:none">
     <table class="table table-bordered">
         <tr>
             <td width="50%">
@@ -212,7 +223,7 @@
         </tr>
     </table>
 </div>
-<div class="taskTab">
+<div id="Task9" class="task" style="display:none">
     <table class="table table-bordered">
         <tr>
             <td width="50%">
@@ -230,25 +241,13 @@
 
 
 <script>
-    var slideIndex = 1;
-    showDivs(slideIndex);
-
-    function plusDivs(n) {
-        showDivs(slideIndex += n);
-    }
-
-    function showDivs(n) {
+    function openTask(tabName) {
         var i;
-        var x = document.getElementsByClassName("taskTab");
-        if (n > x.length) { slideIndex = 1 }
-        if (n < 1) { slideIndex = x.length }
+        var x = document.getElementsByClassName("task");
         for (i = 0; i < x.length; i++) {
             x[i].style.display = "none";
         }
-        x[slideIndex - 1].style.display = "block";
-        event.preventDefault();
-        $("html, body").animate({ scrollTop: 0 }, "slow");
-        return false;
+        document.getElementById(tabName).style.display = "block";
     }
 </script>
 <script src="~/js/scriptTestPrilSuch.js"></script>

@@ -243,6 +243,7 @@ namespace DataModels
 		[Column("course_id"),                 NotNull] public Guid   CourseId    { get; set; } // uniqueidentifier
 		[Column("viewname"),        Nullable         ] public string Viewname    { get; set; } // varchar(max)
 		[Column("theme_number"),    Nullable         ] public byte?  ThemeNumber { get; set; } // tinyint
+		[Column("theme_goal"),      Nullable         ] public string ThemeGoal   { get; set; } // varchar(max)
 
 		#region Associations
 

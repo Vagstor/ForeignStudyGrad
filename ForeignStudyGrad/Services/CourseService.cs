@@ -58,30 +58,30 @@ namespace ForeignStudyGrad.Services
             }
             return themeModel;
         }
-        public List<TestModel> ConvertDBTestToModel(List<Test> testlist)
-        {
-            List<TestModel> testModel = new List<TestModel>();
-            foreach (Test test in testlist)
-            {
-                TestModel element = new TestModel();
-                element.testname = test.TestName;
-                testModel.Add(element);
-            }
-            return testModel;
-        }
+        //public List<TestModel> ConvertDBTestToModel(List<Test> testlist)
+        //{
+        //    List<TestModel> testModel = new List<TestModel>();
+        //    foreach (Test test in testlist)
+        //    {
+        //        TestModel element = new TestModel();
+        //        element.testname = test.TestName;
+        //        testModel.Add(element);
+        //    }
+        //    return testModel;
+        //}
 
-        public List<LectureModel> ConvertDBLectureToModel(List<Lecture> lecturelist)
-        {
-            List<LectureModel> lectureModel = new List<LectureModel>();
-            foreach (Lecture lecture in lecturelist)
-            {
-                LectureModel element = new LectureModel();
-                element.lecturefile = lecture.LectureFilelink;
-                element.lecturename = lecture.LectureName;
-                lectureModel.Add(element);
-            }
-            return lectureModel;
-        }
+        //public List<LectureModel> ConvertDBLectureToModel(List<Lecture> lecturelist)
+        //{
+        //    List<LectureModel> lectureModel = new List<LectureModel>();
+        //    foreach (Lecture lecture in lecturelist)
+        //    {
+        //        LectureModel element = new LectureModel();
+        //        element.lecturefile = lecture.LectureFilelink;
+        //        element.lecturename = lecture.LectureName;
+        //        lectureModel.Add(element);
+        //    }
+        //    return lectureModel;
+        //}
         public List<Cours> GetUserCourses(string login)
         {
             var _siteService = new AccountService(_db);
