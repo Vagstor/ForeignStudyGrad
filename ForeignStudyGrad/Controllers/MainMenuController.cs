@@ -37,7 +37,7 @@ namespace ForeignStudyGrad.Controllers
             return View("pdf");
         }
         [HttpGet]
-        public IActionResult Courses()
+        public IActionResult AllCourses()
         {
             AllCoursesViewModel acvm = new AllCoursesViewModel();
             acvm.courses = _courseService.ConvertDBCourseToModel(_courseService.GetAllCourses());
