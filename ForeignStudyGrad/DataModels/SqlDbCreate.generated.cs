@@ -112,9 +112,10 @@ namespace DataModels
 	[Table(Schema="dbo", Name="dictionaries")]
 	public partial class Dictionary
 	{
-		[Column("word_id"),   PrimaryKey, NotNull] public Guid   WordId   { get; set; } // uniqueidentifier
-		[Column("word_body"),             NotNull] public string WordBody { get; set; } // varchar(50)
-		[Column("user_id"),               NotNull] public Guid   UserId   { get; set; } // uniqueidentifier
+		[Column("word_id"),          PrimaryKey,  NotNull] public Guid   WordId          { get; set; } // uniqueidentifier
+		[Column("user_id"),                       NotNull] public Guid   UserId          { get; set; } // uniqueidentifier
+		[Column("word_translation"),    Nullable         ] public string WordTranslation { get; set; } // varchar(50)
+		[Column("word_original"),       Nullable         ] public string WordOriginal    { get; set; } // varchar(50)
 
 		#region Associations
 

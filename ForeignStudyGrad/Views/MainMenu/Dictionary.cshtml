@@ -3,5 +3,17 @@
     ViewData["Title"] = "Dictionary";
 }
 
-<h1>Словарь</h1>
+@model DictionaryViewModel;
 
+<h1>Словарь</h1>
+<table alight="center" class="site_padding size_text_courses not_select_text">
+    @{
+        foreach (Pair pair in Model.Pairs)
+        {
+            <tr>
+                <td id="word0" onclick="colorWord()">информация</td>
+                <td id="word1" onclick="colorWord()">@Model.Pairs</td>
+            </tr>
+        }
+    }
+</table>

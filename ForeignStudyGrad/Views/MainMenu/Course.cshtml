@@ -17,7 +17,7 @@
     @foreach (ThemeModel theme in Model.themes)
     {
     <li class="courses">
-        <p class="size_text_course site_padding">@Html.ActionLink(theme.themeName,"ShowTheme", "Themes", new { themeid = theme.themeId})</p>
+        <p class="size_text_course site_padding">@Html.ActionLink(theme.themeName,"ShowTheme", "Theme", new { themeid = theme.themeId})</p>
     </li>
     }
 </ul>

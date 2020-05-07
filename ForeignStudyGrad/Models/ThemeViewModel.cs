@@ -12,6 +12,13 @@ namespace ForeignStudyGrad.Models
         public string Themename { get; set; }
         public string Goal { get; set; }
         public string Link { get; set; }
+        public List<TranslationPairs> DictionaryList { get; set; }
+    }
+
+    public class TranslationPairs
+    { 
+        public string Word { get; set; }
+        public string Translation { get; set; }
     }
 
     //public class LectureModel
