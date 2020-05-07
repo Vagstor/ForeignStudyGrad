@@ -48,8 +48,18 @@ ul.my_padding{
 .text_test {
     font-size: xx-large;
     text-align: left;
-    text-indent: 1.5em;
+    text-indent: 2em;
     width: 100%;
+}
+
+input[type=text], input[type=password], textarea, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: xx-large;
 }
 
 .text_zadanie {
@@ -74,4 +84,12 @@ body {
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
+}
+
+table{
+    width : 100%;
+}
+
+td{
+    width : 50%;
 }
