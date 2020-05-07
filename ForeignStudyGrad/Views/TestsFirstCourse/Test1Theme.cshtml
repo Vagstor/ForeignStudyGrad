@@ -15,11 +15,11 @@
     <button class="w3-bar-item w3-button tablink" id="color" onclick="openTask('Task2')">Задание 2</button>
     <button class="w3-bar-item w3-button tablink" id="tablink2" onclick="openTask('Task3')">Задание 3</button>
     <button class="w3-bar-item w3-button tablink" id="srav" onclick="openTask('Task4')">Задание 4</button>
-    <button class="w3-bar-item w3-button tablink" id="tablink4" onclick="openTask('Task5')">Задание 5</button>
+    <button class="w3-bar-item w3-button tablink" id="prov0" onclick="openTask('Task5')">Задание 5</button>
     <button class="w3-bar-item w3-button tablink" id="select" onclick="openTask('Task6')">Задание 6</button>
-    <button class="w3-bar-item w3-button tablink" id="tablink6" onclick="openTask('Task7')">Задание 7</button>
-    <button class="w3-bar-item w3-button tablink" id="tablink7" onclick="openTask('Task8')">Задание 8</button>
-    <button class="w3-bar-item w3-button tablink" id="tablink8" onclick="openTask('Task9')">Задание 9</button>
+    <button class="w3-bar-item w3-button tablink" id="prov1" onclick="openTask('Task7')">Задание 7</button>
+    <button class="w3-bar-item w3-button tablink" id="prov2" onclick="openTask('Task8')">Задание 8</button>
+    <button class="w3-bar-item w3-button tablink" id="prov3" onclick="openTask('Task9')">Задание 9</button>
 </nav>
 <div class="task" id="Task1">
     <p class="text_zadanie">Задание 1. Прочитайте слова и словосочетания, запомните их значения:</p>
@@ -146,11 +146,11 @@
             <td class="text_test">
                 <p class="text_zadanie">Задание 5.	Замените данные предложения синонимичными.</p>
                     <p>1. Условие задачи – это исходная информация.</p>
-                    <p><input id="sininomPred0" type="text"></p>
+                    <p><textarea class="form-control sininomPred" rows="5"></textarea></p>
                     <p>2. Математические вычисления – это обработка исходной информации.</p>
-                    <p> <input id="sininomPred1" type="text"></p>
+                    <p> <textarea class="form-control sininomPred" rows="5"></textarea></p>
                     <p>3. Информатика – это наука о сборе, хранении и обработке информации.</p>
-                    <p><input id="sininomPred2" type="text"></p>
+                    <p><textarea class="form-control sininomPred" rows="5"></textarea></p>
                     <p></p>
                     <p>Образец: Информация – это сведения о мире вокруг нас. Информация представляет собой сведения о мире вокруг нас.</p>
             </td>
@@ -186,21 +186,21 @@
             <td class="text_test">
                 <p class="text_zadanie">Задание 7.	Прочитайте текст ещё раз и ответьте на вопросы.</p>
                     <p> 1. Что такое информация?</p>
-                    <p><textarea class="form-control" rows="5"></textarea></p>
+                    <p><textarea class="form-control question" rows="5"></textarea></p>
                     <p>2. Когда человек получает информацию?</p>
-                    <p><textarea class="form-control" rows="5"></textarea></p>
+                    <p><textarea class="form-control question" rows="5"></textarea></p>
                     <p>3. Какие виды информации существуют?</p>
-                    <p><textarea class="form-control" rows="5"></textarea></p>
+                    <p><textarea class="form-control question" rows="5"></textarea></p>
                     <p>4. Что такое условие задачи?</p>
-                    <p><textarea class="form-control" rows="5"></textarea></p>
+                    <p><textarea class="form-control question" rows="5"></textarea></p>
                     <p>5. Что такое «математические вычисления»?</p>
-                    <p><textarea class="form-control" rows="5"></textarea></p>
+                    <p><textarea class="form-control question" rows="5"></textarea></p>
                     <p>6. Где человек использует результаты обработки инфор-мации?</p>
-                    <p><textarea class="form-control" rows="5"></textarea></p>
+                    <p><textarea class="form-control question" rows="5"></textarea></p>
                     <p>7. Как сейчас собирают, хранят и обрабатывают инфор-мацию?</p>
-                    <p><textarea class="form-control" rows="5"></textarea></p>
+                    <p><textarea class="form-control question" rows="5"></textarea></p>
                     <p>8. Что такое информатика?</p>
-                    <p><textarea class="form-control" rows="5"></textarea></p>
+                    <p><textarea class="form-control question" rows="5"></textarea></p>
             </td>
         </tr>
     </table>
@@ -213,7 +213,7 @@
             </td>
             <td class="text_test">
                 <p class="text_zadanie">Задание 8.	Сформулируйте главную мысль текста и дайте ему название.</p>
-                <p><textarea class="form-control" rows="5"></textarea></p>
+                <p><textarea class="form-control nameText" rows="5"></textarea></p>
             </td>
         </tr>
     </table>
@@ -226,7 +226,7 @@
             </td>
             <td class="text_test">
                 <p class="text_zadanie">Задание 9.	Расскажите текст, дополнив его сведениями, полученными из упражнений к тексту.</p>
-                <p><textarea class="form-control" rows="5"></textarea></p>
+                <p><textarea class="form-control textNew" rows="5"></textarea></p>
                 <button type="submit" class="btn btn-primary" onclick="proverka()">Проверка</button>
             </td>
         </tr>
