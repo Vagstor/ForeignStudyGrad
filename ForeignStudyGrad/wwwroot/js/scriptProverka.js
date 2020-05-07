@@ -35,6 +35,8 @@
     if (!provMasClass(textNew)) {
         document.getElementById("prov3").className += " w3-red";
     } else document.getElementById("prov3").className += " w3-green";
+
+
     console.log(clickSelect() + ' ' + clickProvColorWord() + ' ' + clickProvPrilSuch() + ' ' + provMasClass(sininomPred));
 }
 

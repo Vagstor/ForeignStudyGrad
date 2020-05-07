@@ -11,7 +11,7 @@
     </div>
     <form asp-action="login" method="post">
         <label>Имя пользователя или e-mail:</label>
-        <input type="text" asp-for="user.Login" placeholder="Введите логин или e-mail">
+        <input  type="text" asp-for="user.Login" placeholder="Введите логин или e-mail">
         <span asp-validation-for="user.Login"></span><br>
         <label>Пароль: </label>
         <input type="password" asp-for="user.Password" placeholder="Пароль">
