@@ -106,7 +106,5 @@ namespace ForeignStudyGrad.Services
             user.Password = password;
             _db.Insert(user);
         }
-
-
     }
 }

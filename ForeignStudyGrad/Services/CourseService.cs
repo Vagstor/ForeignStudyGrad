@@ -10,16 +10,31 @@ namespace ForeignStudyGrad.Services
     public class CourseService
     {
         private ForeignstudyDB _db;
+        private AccountService _accService;
 
-        public CourseService(ForeignstudyDB db)
+        public CourseService(ForeignstudyDB db, AccountService accService)
         {
             _db = db;
+            _accService = accService;
         }
-        public List<Cours> GetAllCourses()
+        public void SubscribeUserToCourse(Guid courseid, string username)
         {
-            return _db.Courses.ToList();
+            Subscription subscription = new Subscription()
+            {
+                SubId = courseid,
+                UserId = _accService.GetByLogin(username).UserId
+            };
         }
-
+        public void MatchWithSubscriptions(List<CourseModel> courseList, string username)
+        {
+            List<CourseModel> userCourseList = ConvertDBCourseToModel(GetUserCourses(username));
+            if (userCourseList.Count() != 0)
+                for (int i = 0; i < userCourseList.Count(); i++)
+                {
+                    string foundSub = courseList.Find(x => x.id == userCourseList[i].id).name;
+                    courseList.Find(x => x.name == foundSub).ifSubscribed = true;
+                }
+        }
         public List<Cours> SearchCoursesWith(string text)
         {
             var q = from c in _db.Courses
@@ -27,12 +42,19 @@ namespace ForeignStudyGrad.Services
                     select c;
             return q.ToList();
         }
-        public List<Cours> GetCoursesInfoById(List<Guid> courseidlist)
+        public List<PairModel> ConvertDBDictionaryPairsToModel(List<Dictionary> dList)
         {
-            var q = from c in _db.Courses
-                    where courseidlist.Contains(c.CourseId)
-                    select c;
-            return q.ToList();
+            List<PairModel> pairModel = new List<PairModel>();
+            foreach (Dictionary dic in dList)
+            {
+                PairModel element = new PairModel()
+                {
+                    Original = dic.WordOriginal,
+                    Translation = dic.WordTranslation
+                };
+                pairModel.Add(element);
+            }
+            return pairModel;
         }
         public List<CourseModel> ConvertDBCourseToModel(List<Cours> courselist)
         {
@@ -58,40 +80,15 @@ namespace ForeignStudyGrad.Services
             }
             return themeModel;
         }
-        //public List<TestModel> ConvertDBTestToModel(List<Test> testlist)
-        //{
-        //    List<TestModel> testModel = new List<TestModel>();
-        //    foreach (Test test in testlist)
-        //    {
-        //        TestModel element = new TestModel();
-        //        element.testname = test.TestName;
-        //        testModel.Add(element);
-        //    }
-        //    return testModel;
-        //}
-
-        //public List<LectureModel> ConvertDBLectureToModel(List<Lecture> lecturelist)
-        //{
-        //    List<LectureModel> lectureModel = new List<LectureModel>();
-        //    foreach (Lecture lecture in lecturelist)
-        //    {
-        //        LectureModel element = new LectureModel();
-        //        element.lecturefile = lecture.LectureFilelink;
-        //        element.lecturename = lecture.LectureName;
-        //        lectureModel.Add(element);
-        //    }
-        //    return lectureModel;
-        //}
         public List<Cours> GetUserCourses(string login)
         {
-            var _siteService = new AccountService(_db);
-            return GetCoursesInfoById(GetUserSubs(login, _siteService));
+            return GetCoursesInfoById(GetUserSubs(login));
         }
-        public List<Guid> GetUserSubs(string login, AccountService _siteService)
+        public List<Guid> GetUserSubs(string login)
         {
-            _siteService.GetByLogin(login);
+            _accService.GetByLogin(login);
             var q = from s in _db.Subscriptions
-                    where s.UserId == _siteService.GetByLogin(login).UserId
+                    where s.UserId == _accService.GetByLogin(login).UserId
                     select s.CourseId;
             if (q.ToList() != null) return q.ToList();
             else { return new List<Guid>(); };
@@ -104,21 +101,24 @@ namespace ForeignStudyGrad.Services
             if (q.ToList() != null) return q.OrderBy(theme => theme.ThemeNumber).ToList();
             else { return new List<Theme>(); }
         }
-        //public List<Test> GetThemeTests(Guid theme)
-        //{
-        //    var q = from c in _db.Tests
-        //            where c.ThemeId == theme
-        //            select c;
-        //    if (q.ToList() != null) return q.ToList();
-        //    else { return new List<Test>(); }
-        //}
-        //public List<Lecture> GetThemeLectures(Guid theme)
-        //{
-        //    var q = from c in _db.Lectures
-        //            where c.ThemeId == theme
-        //            select c;
-        //    if (q.ToList() != null) return q.ToList();
-        //    else { return new List<Lecture>(); }
-        //}
+        public List<Cours> GetCoursesInfoById(List<Guid> courseidlist)
+        {
+            var q = from c in _db.Courses
+                    where courseidlist.Contains(c.CourseId)
+                    select c;
+            return q.ToList();
+        }
+        public List<Dictionary> GetUserDictionary(string username)
+        {
+            var q = from d in _db.Dictionaries
+                    where d.UserId == _accService.GetByLogin(username).UserId
+                    select d;
+            if (q.ToList() != null) return q.ToList();
+            else { return new List<Dictionary>(); }
+        }
+        public List<Cours> GetAllCourses()
+        {
+            return _db.Courses.ToList();
+        }
     }
 }

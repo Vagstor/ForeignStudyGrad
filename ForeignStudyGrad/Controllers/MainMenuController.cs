@@ -11,10 +11,12 @@ namespace ForeignStudyGrad.Controllers
     public class MainMenuController : Controller
     {
         private CourseService _courseService;
+        private AccountService _accService;
 
-        public MainMenuController(CourseService service)
+        public MainMenuController(CourseService service, AccountService accService)
         {
             _courseService = service;
+            _accService = accService;
         }
 
         [HttpGet]
@@ -29,7 +31,7 @@ namespace ForeignStudyGrad.Controllers
         {
             AllCoursesViewModel acvm = new AllCoursesViewModel();
             acvm.courses = _courseService.ConvertDBCourseToModel(_courseService.SearchCoursesWith(currentModel.searchString));
-            return View("Courses", acvm);
+            return View("AllCourses", acvm);
         }
         [HttpGet]
         public IActionResult Lecture()
@@ -41,7 +43,14 @@ namespace ForeignStudyGrad.Controllers
         {
             AllCoursesViewModel acvm = new AllCoursesViewModel();
             acvm.courses = _courseService.ConvertDBCourseToModel(_courseService.GetAllCourses());
+            _courseService.MatchWithSubscriptions(acvm.courses, User.Identity.Name);
             return View(acvm);
+        }
+        [HttpPost]
+        public IActionResult SubscribeUserToCourse(Guid courseid, string username)
+        {
+            _courseService.SubscribeUserToCourse(courseid, username);
+            return View("AllCourses");
         }
         [HttpGet]
         public IActionResult Course(Guid courseid, string coursename)
@@ -63,7 +72,11 @@ namespace ForeignStudyGrad.Controllers
         [HttpGet]
         public IActionResult Dictionary()
         {
-            return View();
+            DictionaryViewModel dvm = new DictionaryViewModel()
+            {
+                Pairs = _courseService.ConvertDBDictionaryPairsToModel(_courseService.GetUserDictionary(User.Identity.Name))
+            };
+            return View(dvm);
         }
         [HttpGet]
         public IActionResult Timetable()
