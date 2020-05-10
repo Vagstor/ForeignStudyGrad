@@ -17,6 +17,12 @@ var numTextZad;
 var textStr = "";
 var tablinks =[];
 var textMas = [];
+var MasPrilColom;
+var MasPrilRow;
+var masPril = [[], []];
+var masFunc = [];
+var kolProv;
+var kolProvPril;
 
 window.onload = function () {
 	console.log("Загрузился");
@@ -25,7 +31,6 @@ window.onload = function () {
 	var numberTest = document.getElementById("Theme").textContent;
 	console.log(numberTest);
 	vhod(numberTest);
-	this.numTextZad = 7;
 	for (var i = 0; i < numTextZad; i++) {
 		var s1 = "textText" + i;
 		if (i != 0) textStr = "<p class=\"text_zadanie\">Прочитайте текст и выполните задание.</p>";
@@ -50,7 +55,7 @@ window.onload = function () {
 	flag = 1;
 	console.log("Задание с цветом объявлено");
 	//объявление элементов для scriptTestPrilSuch.js
-	lengthPrilSuch = rezPril.length;
+	
 	console.log("Задание с прилагательными объявлено");
 	//объявление элементов для scriptSelect.js
 	wordSelectLength = lengthSelect = rez.length;

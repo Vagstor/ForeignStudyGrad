@@ -1,25 +1,25 @@
-﻿
-
-
-function clickProvPrilSuch() {
-	var selekt = true;
-	for (var i = 0; i < lengthPrilSuch; i++) {
-		var s = "such" + i;
-
-		wordPrilSuch[0][i] = document.getElementById(s);
-		wordPrilSuch[1][i] = wordPrilSuch[0][i].value;
-		if (wordPrilSuch[1][i][wordPrilSuch[1][i].length - 1] == ' ') wordPrilSuch[1][i] = wordPrilSuch[1][i].substring(0, wordPrilSuch[1][i].length - 1);
-		wordPrilSuch[1][i] = wordPrilSuch[1][i].toLowerCase();
+﻿function clickProvPrilSuch(masPolz, masVhod) {
+	var selekt = false;
+	var flag = true;
+	for (var i = 0; i < masPolz.length; i++) {
+		if (masPolz[i].value[masPolz[i].value.length - 1] == ' ') masPolz[i].value = masPolz[i].value.substring(0, masPolz[i].value.length - 1);
+		masPolz[i].value.toLowerCase();
 	}
 
-	for (var i = 0; i < lengthPrilSuch; i++) {
+	for (var i = 0; i < masVhod.length; i++) {
 
-		if (wordPrilSuch[1][i] != rezPril[i]) {
-			wordPrilSuch[0][i].value = "";
-			selekt = false;
+		selekt = false;
+		for (var j = 0; j < masVhod[0].length; j++)
+			if (masPolz[i].value == masVhod[i][j]) {
+
+				selekt = true;
+			}
+
+		if (!selekt) {
+			masPolz[i].value = ""; flag = false;
 		}
 	}
-	return selekt;
+	return flag;
 }
 
 

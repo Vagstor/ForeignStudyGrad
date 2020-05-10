@@ -4,24 +4,24 @@
 }
 <link href="~/css/sytecss.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="~/css/syteCssTableButton.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+@*<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">*@
 <h1 id="Theme">@Model.Themename</h1>
 <script src="~/js/scriptVhod.js" async></script>
 <script src="~/js/scriptOnload.js" async></script>
 <p class="text_zadanie site_padding">Цель работы: @Model.Goal</p>
 
-<nav class="w3-bar w3-black container text_test">
-    <button class="w3-bar-item w3-button tablink" id="tablink0" onclick="openTask('Task1')">Задание 1</button>
+<nav class="w3-bar w3-black container text_number_zadanie">
+    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task1')">Задание 1</button>
     <button class="w3-bar-item w3-button tablink" id="color" onclick="openTask('Task2')">Задание 2</button>
-    <button class="w3-bar-item w3-button tablink" id="tablink2" onclick="openTask('Task3')">Задание 3</button>
-    <button class="w3-bar-item w3-button tablink" id="srav" onclick="openTask('Task4')">Задание 4</button>
+    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task3')">Задание 3</button>
+    <button class="w3-bar-item w3-button tablink" id="srav0" onclick="openTask('Task4')">Задание 4</button>
     <button class="w3-bar-item w3-button tablink" id="prov0" onclick="openTask('Task5')">Задание 5</button>
     <button class="w3-bar-item w3-button tablink" id="select" onclick="openTask('Task6')">Задание 6</button>
     <button class="w3-bar-item w3-button tablink" id="prov1" onclick="openTask('Task7')">Задание 7</button>
     <button class="w3-bar-item w3-button tablink" id="prov2" onclick="openTask('Task8')">Задание 8</button>
     <button class="w3-bar-item w3-button tablink" id="prov3" onclick="openTask('Task9')">Задание 9</button>
+    <button type="submit" class="btn btn-primary" onclick="proverka()">Проверка</button>
 </nav>
-<div class="container">
     <div class="task" id="Task1">
         <p class="text_zadanie">Задание 1. Прочитайте слова и словосочетания, переведите их на свой язык:</p>
         <ul class="text_test">
@@ -47,10 +47,10 @@
         </ul>
         <button type="submit" class="btn btn-primary" onclick="clickProvColorWordNew()">Добавить в словарь</button>
     </div>
-    <div id="Task2" class="task" style="display:none">
+    <div id="Task2" class=" task" style="display:none">
         <p class="text_zadanie">Задание 2. Сгруппируйте однокоренные слова:</p>
         <p>Нажимайте на слова, чтобы выделять их цветом. Однокоренные слова должны иметь одинаковый цвет.</p>
-        <table alight="center" class="site_padding size_text_courses not_select_text">
+        <table alight="center" class="site_padding size_text_courses not_select_text text_test">
             <tr>
                 <td id="word0" onclick="colorWord()">информация</td>
                 <td id="word1" onclick="colorWord()">сбор</td>
@@ -81,10 +81,10 @@
                 <td></td>
                 <td></td>
             </tr>
-        </table>
-        <button type="submit" class="btn btn-primary" onclick="clickProvColorWordNew()">Начать заново</button>
+        </table><br>
+        <button type="submit" class="btn btn-primary" onclick="clickProvColorWordNew()">Начать заново</button><br />
     </div>
-    <div id="Task3" class="task" style="display:none">
+    <div id="Task3" class=" task" style="display:none">
         <p class="text_zadanie">Задание 3. Прочитайте текст и постарайтесь понять его содержание.</p>
         <p id="textText0"></p>
     </div>
@@ -98,43 +98,43 @@
                     <p class="text_zadanie">Задание 4. Подберите из текста однокоренные прилагательные к существительным:</p>
                     <p>
                         <label>наука</label>
-                        <input id="such0" type="text">
+                        <input class="such0" type="text">
                     </p>
                     <p>
                         <label>техника</label>
-                        <input id="such1" type="text">
+                        <input class="such0" type="text">
                     </p>
                     <p>
                         <label>политика</label>
-                        <input id="such2" type="text">
+                        <input class="such0" type="text">
                     </p>
                     <p>
                         <label>экономика</label>
-                        <input id="such3" type="text">
+                        <input class="such0" type="text">
                     </p>
                     <p>
                         <label>война</label>
-                        <input id="such4" type="text">
+                        <input class="such0" type="text">
                     </p>
                     <p>
                         <label>математика</label>
-                        <input id="such5" type="text">
+                        <input class="such0" type="text">
                     </p>
                     <p>
                         <label>вычисления</label>
-                        <input id="such6" type="text">
+                        <input class="such0" type="text">
                     </p>
                     <p>
                         <label>машина</label>
-                        <input id="such7" type="text">
+                        <input class="such0" type="text">
                     </p>
                     <p>
                         <label>электрон</label>
-                        <input id="such8" type="text">
+                        <input class="such0" type="text">
                     </p>
                     <p>
                         <label>компьютер</label>
-                        <input id="such9" type="text">
+                        <input class="such0" type="text">
                     </p>
                     <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuchMew()">Начать заново</button>
                 </td>
@@ -150,11 +150,11 @@
                 <td class="text_test">
                     <p class="text_zadanie">Задание 5.	Замените данные предложения синонимичными.</p>
                     <p>1. Условие задачи – это исходная информация.</p>
-                    <p><textarea class="form-control sininomPred" rows="5"></textarea></p>
+                    <p><textarea class="form-control question0" rows="5"></textarea></p>
                     <p>2. Математические вычисления – это обработка исходной информации.</p>
-                    <p> <textarea class="form-control sininomPred" rows="5"></textarea></p>
+                    <p> <textarea class="form-control question0" rows="5"></textarea></p>
                     <p>3. Информатика – это наука о сборе, хранении и обработке информации.</p>
-                    <p><textarea class="form-control sininomPred" rows="5"></textarea></p>
+                    <p><textarea class="form-control question0" rows="5"></textarea></p>
                     <p></p>
                     <p>Образец: Информация – это сведения о мире вокруг нас. Информация представляет собой сведения о мире вокруг нас.</p>
                 </td>
@@ -190,21 +190,21 @@
                 <td class="text_test">
                     <p class="text_zadanie">Задание 7.	Прочитайте текст ещё раз и ответьте на вопросы.</p>
                     <p> 1. Что такое информация?</p>
-                    <p><textarea class="form-control question" rows="5"></textarea></p>
+                    <p><textarea class="form-control question1" rows="5"></textarea></p>
                     <p>2. Когда человек получает информацию?</p>
-                    <p><textarea class="form-control question" rows="5"></textarea></p>
+                    <p><textarea class="form-control question1" rows="5"></textarea></p>
                     <p>3. Какие виды информации существуют?</p>
-                    <p><textarea class="form-control question" rows="5"></textarea></p>
+                    <p><textarea class="form-control question1" rows="5"></textarea></p>
                     <p>4. Что такое условие задачи?</p>
-                    <p><textarea class="form-control question" rows="5"></textarea></p>
+                    <p><textarea class="form-control question1" rows="5"></textarea></p>
                     <p>5. Что такое «математические вычисления»?</p>
-                    <p><textarea class="form-control question" rows="5"></textarea></p>
+                    <p><textarea class="form-control question1" rows="5"></textarea></p>
                     <p>6. Где человек использует результаты обработки инфор-мации?</p>
-                    <p><textarea class="form-control question" rows="5"></textarea></p>
+                    <p><textarea class="form-control question1" rows="5"></textarea></p>
                     <p>7. Как сейчас собирают, хранят и обрабатывают инфор-мацию?</p>
-                    <p><textarea class="form-control question" rows="5"></textarea></p>
+                    <p><textarea class="form-control question1" rows="5"></textarea></p>
                     <p>8. Что такое информатика?</p>
-                    <p><textarea class="form-control question" rows="5"></textarea></p>
+                    <p><textarea class="form-control question1" rows="5"></textarea></p>
                 </td>
             </tr>
         </table>
@@ -217,7 +217,7 @@
                 </td>
                 <td class="text_test">
                     <p class="text_zadanie">Задание 8.	Сформулируйте главную мысль текста и дайте ему название.</p>
-                    <p><textarea class="form-control nameText" rows="5"></textarea></p>
+                    <p><textarea class="form-control question2" rows="5"></textarea></p>
                 </td>
             </tr>
         </table>
@@ -230,13 +230,12 @@
                 </td>
                 <td class="text_test">
                     <p class="text_zadanie">Задание 9.	Расскажите текст, дополнив его сведениями, полученными из упражнений к тексту.</p>
-                    <p><textarea class="form-control textNew" rows="5"></textarea></p>
-                    <button type="submit" class="btn btn-primary" onclick="proverka()">Проверка</button>
+                    <p><textarea class="form-control question3" rows="5"></textarea></p>
+                    
                 </td>
             </tr>
         </table>
     </div>
-</div>
 
 
 <script>

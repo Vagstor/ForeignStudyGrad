@@ -1,235 +1,370 @@
-﻿@model ThemeViewModel;
-@{
-    ViewData["Title"] = Model.Themename;
-}
-
-<h1 id="Theme">@Model.Themename</h1>
+﻿<link href="~/css/sytecss.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="~/css/syteCssTableButton.css">
+<h1 id="Theme">Тема 2. Единицы измерения информации</h1>
 <script src="~/js/scriptVhod.js" async></script>
 <script src="~/js/scriptOnload.js" async></script>
-<p class="text_zadanie site_padding">Цель работы: @Model.Goal</p>
-<p class="text_zadanie">Задание 1. Прочитайте слова и словосочетания, запомните их значения:</p>
-<ul class="text_test">
-    <li>наименьший</li>
-    <li>основной</li>
-    <li>специальный</li>
-    <li>основная единица</li>
-    <li>специальный символ</li>
-    <li>равен, равна (чему?)</li>
-    <li>измерить, измерять (что? чем?)</li>
-    <li>равно (чему?)</li>
-    <li>измерение информации</li>
-    <li>равны (чему?)</li>
-    <li>кодировать (что? чем?)</li>
-    <li>код</li>
-</ul>
-
-<p class="text_zadanie">Задание 2. Сгруппируйте однокоренные слова:</p>
-<table class="site_padding size_text_courses">
-    <tr>
-        <td id="word0" onclick="colorWord()">информация</td>
-        <td id="word1" onclick="colorWord()">замерить</td>
-        <td id="word2" onclick="colorWord()">значение</td>
-        <td id="word3" onclick="colorWord()">информатика</td>
-    </tr>
-    <tr>
-        <td id="word4" onclick="colorWord()">кодируется</td>
-        <td id="word5" onclick="colorWord()">содержит</td>
-        <td id="word6" onclick="colorWord()">основная</td>
-        <td id="word7" onclick="colorWord()">код</td>
-    </tr>
-    <tr>
-        <td id="word8" onclick="colorWord()">буква</td>
-        <td id="word9" onclick="colorWord()">цифра</td>
-        <td id="word10" onclick="colorWord()">специальный</td>
-        <td id="word11" onclick="colorWord()">измерение</td>
-    </tr>
-    <tr>
-        <td id="word12" onclick="colorWord()">основа</td>
-        <td id="word13" onclick="colorWord()">информировать</td>
-        <td id="word14" onclick="colorWord()">значить</td>
-        <td id="word15" onclick="colorWord()">содержание</td>
-    </tr>
-    <tr>
-        <td id="word16" onclick="colorWord()">буквенный</td>
-        <td id="word17" onclick="colorWord()">примерять</td>
-        <td id="word18" onclick="colorWord()">цифровой</td>
-        <td id="word19" onclick="colorWord()">специальность</td>
-    </tr>
-    <tr>
-        <td id="word20" onclick="colorWord()">оцифрованный</td>
-    </tr>
-</table>
-<p></p>
-<button type="submit" class="btn btn-primary" id="proverka" onclick="clickProvColorWord()">Проверка</button>
-<button type="submit" class="btn btn-primary" onclick="clickProvColorWordNew()">Начать заново</button>
-
-<p class="text_zadanie"> Задание 3. Согласуйте прилагательные с существительными по образцу:</p>
-
-<p class="text_test">
-    технический (решение, информация, приём, сведения);
-    двоичный (цифры, система, смыслы, код); специальный (инфор-
-    мация, символ, число, измерения); наименьший (число, единица,
-    значение, знак, числа).
-    <i>Образец</i>: научный (информация, текст, определение,
-    результаты) — научная информация, научный текст, научное опре-
-    деление, научные результаты.
-</p>
-
-<p class="text_zadanie">Задание 4. Прочитайте предложения. Запомните конструкцию «что измеряется чем / при помощи чего».</p>
-<p class="text_test">
-    Температура тела и воздуха измеряется при помощи термометра.
-    Масса тела измеряется при помощи весов.
-    Количество информации измеряется при помощи подсчёта количества байтов.
-</p>
-
-<p class="text_zadanie">Задание 5. Прочитайте предложения, запомните конструкцию «что равно чему».</p>
-
-<p class="text_test">
-    1 м равен 100 см (ста сантиметрам).
-    1 кг равен 1000 г (тысяче граммов).
-    1 байт равен 8 бит (восьми битам).
-    1 т (тонна) равна 1000 кг (тысяче килограммов).
-    2 м равны 200 см (двумстам сантиметрам).
-    2 кг равны 2000 г (двум тысячам граммов).
-    3 байта равны 16 битам (шестнадцати битам).
-    2 т равны 2000 кг (двум тысячам килограммов).
-</p>
-
-<p class="text_zadanie">Задание 6. Прочитайте текст и постарайтесь понять его содержание.</p>
-
-<p class="text_test">
-    В настоящее время информацию собирают, хранят и обрабатывают. Количество информации можно измерить.
-    Наименьшая единица информации в компьютере – 1 бит.
-    Слово «бит» произошло от английского выражения Binary digiTs – двоичные цифры. Бит может иметь одно из двух значений: 0 или 1.
-    В компьютерах используется запись информации в двоичной системе счисления. Количество информации измеряется при помощи подсчёта числа двоичных символов.
-    Основная единица информации в компьютере – 1 <b>байт</b>. 1 байт равен 8 <b>битам</b>.
-</p>
-@*Вставить странную недокартинку с 8 окошками (таблица?)*@
-<p class="text_test">
-    Например, буква М содержит 1 байт информации. Если слово МАМА кодируется последовательностью из 32 цифр, то это слово содержит 32 бита, или 4 байта информации.
-</p>
-<p class="text_test">
-    Чтобы записать в двоичных кодах любую букву алфавита, цифру или специальный символ (. , : ; + – &lt; &gt; # $ &amp; и т. д.), нужен один байт.
-</p>
-<p class="text_test">
-    Для измерения количества информации используют крупные единицы:
-    1 килобайт (Кб) = 1024 байт;
-    1 мегабайт (Мб) = 1024 килобайт;
-    1 гигабайт (Гб) = 1024 мегабайт;
-    1 терабайт (Тб) = 1024 гигабайт.
-</p>
-
-<p class="text_zadanie">Задание 7. Ответьте на вопрос: какие основные понятия рассматриваются в этом тексте? Найдите в тексте предложения, в которых речь идёт о единицах измерения информации.</p>
-
-<p class="text_zadanie">Задание 8. Определите отношения между единицами измерения информации по образцу: «что равно чему».</p>
-
-<p class="text_zadanie">Задание 9. Переведите количество информации из более крупных единиц в основные:</p>
-<div class="text_test">
-    <p>
-        <label>6 Кб 78 байт</label>
-        <input id="such0" type="text"> байт
-    </p>
-    <p>
-        <label>672 Кб 2 байт</label>
-        <input id="such1" type="text"> байт
-    </p>
-    <p>
-        <label>5 Мб 890 байт</label>
-        <input id="such2" type="text"> байт
-    </p>
-    <p>
-        <label>12 Мб 451 Кб 901 байт</label>
-        <input id="such3" type="text"> байт
-    </p>
-    <p>
-        <label>120 Мб</label>
-        <input id="such4" type="text"> байт
-    </p>
-    <p>
-        <label>36 Гб 345 байт</label>
-        <input id="such5" type="text"> байт
-    </p>
-    <p>
-        <label>109 Мб 6 Кб 78 байт</label>
-        <input id="such5" type="text"> байт
-    </p>
-    <p>
-        <label>8 Гб 471 Мб 90 байт</label>
-        <input id="such5" type="text"> байт
-    </p>
-    <p>
-        <label>832 Тб 238 байт</label>
-        <input id="such5" type="text"> байт
-    </p>
-    <p>  <i>Образец</i>: 4 Кб 234 байт = 4*1024 + 234 байт = 4330 байт.</p>
-    <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuch()">Проверка</button>
-    <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuchMew()">Начать заново</button>
+<p class="text_zadanie site_padding">Цель работы: </p>
+<nav class="w3-bar w3-black container text_number_zadanie">
+    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task1')">Задание 1</button>
+    <button class="w3-bar-item w3-button tablink" id="color" onclick="openTask('Task2')">Задание 2</button>
+    <button class="w3-bar-item w3-button tablink" id="srav0" onclick="openTask('Task3')">Задание 3</button>
+    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task4')">Задание 4</button>
+    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task5')">Задание 5</button>
+    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task6')">Задание 6</button>
+    <button class="w3-bar-item w3-button tablink" id="prov0" onclick="openTask('Task7')">Задание 7</button>
+    <button class="w3-bar-item w3-button tablink" id="prov1" onclick="openTask('Task8')">Задание 8</button>
+    <button class="w3-bar-item w3-button tablink" id="srav1" onclick="openTask('Task9')">Задание 9</button>
+    <button class="w3-bar-item w3-button tablink" id="prov2" onclick="openTask('Task10')">Задание 10</button>
+    <button class="w3-bar-item w3-button tablink" id="srav2" onclick="openTask('Task11')">Задание 11</button>
+    <button class="w3-bar-item w3-button tablink" id="srav3" onclick="openTask('Task12')">Задание 12</button>
+    <button class="w3-bar-item w3-button tablink" id="prov3" onclick="openTask('Task13')">Задание 13</button>
+    <button class="w3-bar-item w3-button tablink" id="select" onclick="openTask('Task14')">Задание 14</button>
+    <button class="w3-bar-item w3-button tablink" id="prov4" onclick="openTask('Task15')">Задание 15</button>
+    <button type="submit" class="btn btn-primary" onclick="proverka()">Проверка</button>
+</nav>
+<div class="task" id="Task1">
+    <p class="text_zadanie">Задание 1. Прочитайте слова и словосочетания, запомните их значения:</p>
+    <ul class="text_test">
+        <li>наименьший</li>
+        <li>основной</li>
+        <li>специальный</li>
+        <li>основная единица</li>
+        <li>специальный символ</li>
+        <li>равен, равна (чему?)</li>
+        <li>измерить, измерять (что? чем?)</li>
+        <li>равно (чему?)</li>
+        <li>измерение информации</li>
+        <li>равны (чему?)</li>
+        <li>кодировать (что? чем?)</li>
+        <li>код</li>
+    </ul>
 </div>
-
-<p class="text_zadanie">Задание 10. Найдите в тексте информацию из предыдущего текста (тема 1).</p>
-<p class="text_zadanie">Задание 11. Найдите в тексте словосочетания со словом информация.</p>
-<p class="text_zadanie">Задание 12. Подберите прилагательные к существительным:</p>
-<div class="text_test">
-    <p>
-        <input id="such0" type="text">
-        <label>единица</label>
-    </p>
-    <p>
-        <label>символ</label>
-        <input id="such1" type="text">
-    </p>
-    <p>
-        <label>код</label>
-        <input id="such2" type="text">
-    </p>
-    <p>
-        <label>основа</label>
-        <input id="such3" type="text">
-    </p>
-    <p>
-        <label>бит</label>
-        <input id="such4" type="text">
-    </p>
-    <p>
-        <label>байт</label>
-        <input id="such5" type="text">
-    </p>
-    <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuch()">Проверка</button>
-    <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuchMew()">Начать заново</button>
+<div id="Task2" class=" task" style="display:none">
+    <p class="text_zadanie">Задание 2. Сгруппируйте однокоренные слова:</p>
+    <table class="site_padding size_text_courses">
+        <tr>
+            <td id="word0" onclick="colorWord()">информация</td>
+            <td id="word1" onclick="colorWord()">замерить</td>
+            <td id="word2" onclick="colorWord()">значение</td>
+            <td id="word3" onclick="colorWord()">информатика</td>
+        </tr>
+        <tr>
+            <td id="word4" onclick="colorWord()">кодируется</td>
+            <td id="word5" onclick="colorWord()">содержит</td>
+            <td id="word6" onclick="colorWord()">основная</td>
+            <td id="word7" onclick="colorWord()">код</td>
+        </tr>
+        <tr>
+            <td id="word8" onclick="colorWord()">буква</td>
+            <td id="word9" onclick="colorWord()">цифра</td>
+            <td id="word10" onclick="colorWord()">специальный</td>
+            <td id="word11" onclick="colorWord()">измерение</td>
+        </tr>
+        <tr>
+            <td id="word12" onclick="colorWord()">основа</td>
+            <td id="word13" onclick="colorWord()">информировать</td>
+            <td id="word14" onclick="colorWord()">значить</td>
+            <td id="word15" onclick="colorWord()">содержание</td>
+        </tr>
+        <tr>
+            <td id="word16" onclick="colorWord()">буквенный</td>
+            <td id="word17" onclick="colorWord()">примерять</td>
+            <td id="word18" onclick="colorWord()">цифровой</td>
+            <td id="word19" onclick="colorWord()">специальность</td>
+        </tr>
+        <tr>
+            <td id="word20" onclick="colorWord()">оцифрованный</td>
+        </tr>
+    </table>
+    <p></p>
+    <button type="submit" class="btn btn-primary" onclick="clickProvColorWordNew()">Начать заново</button>
 </div>
-<p class="text_zadanie">Задание 13. Замените данные предложения синонимичными:</p>
-<p class="text_test">
-    1. Основной единицей информации в компьютере является
-    байт.
-    2. Наибольшей единицей информации в компьютере является
-    гигабайт.
-    3. Единицами информации в компьютере являются байт,
-    килобайт, мегабайт и гигабайт.
-    <i>Образец:</i> Наименьшей единицей информации в компьютере является 1 бит. Наименьшая единица информации в компьютере – это 1 бит.
-</p>
-<p class="text_zadanie">Задание 14. Вставьте в предложения слова и словосочетания, данные под чертой, в нужной форме:</p>
-<div class="text_test">
-    <p id="select0">1. Количество информации |.</p>
-    <p id="select1">2. Бит | 0 или 1.</p>
-    <p id="select2">3. Слово МАМА | последовательностью из 32 цифр.</p>
-    <p id="select3">4. Слово МАМА | 32 бита информации.</p>
-    <p id="select4">5. Буква М | 1 байт информации.</p>
-    <p id="select5">6. Для измерения количества информации | и более крупные единицы.</p>
-    <p>_________________________________________________________</p>
-    <p>Использовать, кодировать, можно измерять, содержать, принимать значение.</p>
-</div>
-<button type="submit" class="btn btn-primary" onclick="clickSelect()">Проверка</button>
-<button type="submit" class="btn btn-primary" onclick="clickSelectNew()">Начать заново</button>
+<div id="Task3" class=" task" style="display:none">
+    <p class="text_zadanie"> Задание 3. Согласуйте прилагательные с существительными по образцу:</p>
 
-<p class="text_zadanie">Задание 15. Расскажите текст, опираясь на вопросы: </p>
-<p class="text_test">
-    1. Как называется наименьшая единица измерения информации?
-    2. Как называется основная единица информации в компьютере?
-    3. Чему равен 1 байт?
-    4. Для чего нужен один байт?
-    5. Какие единицы используются для измерения количества информации?
-    6. Какое количество информации содержит слово «информатика»?
-</p>
+    <p class="text_test">
+        <input class="such0" type="text" placeholder="технический"> решение<br />
+        <input class="such0" type="text" placeholder="технический"> информация <br />
+        <input class="such0" type="text" placeholder="технический"> приём <br />
+        <input class="such0" type="text" placeholder="технический"> сведения<br />
+        <input class="such0" type="text" placeholder="двоичный"> цифры<br />
+        <input class="such0" type="text" placeholder="двоичный"> система<br />
+        <input class="such0" type="text" placeholder="двоичный"> смыслы<br />
+        <input class="such0" type="text" placeholder="двоичный"> код<br />
+        <input class="such0" type="text" placeholder="специальный"> информация <br />
+        <input class="such0" type="text" placeholder="специальный"> символ<br />
+        <input class="such0" type="text" placeholder="специальный"> число<br />
+        <input class="such0" type="text" placeholder="специальный"> измерения<br />
+        <input class="such0" type="text" placeholder="наименьший"> число<br />
+        <input class="such0" type="text" placeholder="наименьший"> единица<br />
+        <input class="such0" type="text" placeholder="наименьший"> значение<br />
+        <input class="such0" type="text" placeholder="наименьший"> знак<br />
+        <input class="such0" type="text" placeholder="наименьший"> числа<br />
+        <i>Образец</i>: научный (информация, текст, определение,
+        результаты) — научная информация, научный текст, научное опре-
+        деление, научные результаты.
+    </p>
+</div>
+<div id="Task4" class=" task" style="display:none">
+    <p class="text_zadanie">Задание 4. Прочитайте предложения. Запомните конструкцию «что измеряется чем / при помощи чего».</p>
+    <p class="text_test">
+        Температура тела и воздуха измеряется при помощи термометра.<br />
+        Масса тела измеряется при помощи весов.<br />
+        Количество информации измеряется при помощи подсчёта количества байтов.<br />
+    </p>
+</div>
+<div id="Task5" class=" task" style="display:none">
+    <p class="text_zadanie">Задание 5. Прочитайте предложения, запомните конструкцию «что равно чему».</p>
+
+    <p class="text_test">
+        1 м равен 100 см (ста сантиметрам).<br />
+        1 кг равен 1000 г (тысяче граммов).<br />
+        1 байт равен 8 бит (восьми битам).<br />
+        1 т (тонна) равна 1000 кг (тысяче килограммов).<br />
+        2 м равны 200 см (двумстам сантиметрам).<br />
+        2 кг равны 2000 г (двум тысячам граммов).<br />
+        3 байта равны 16 битам (шестнадцати битам).<br />
+        2 т равны 2000 кг (двум тысячам килограммов).<br />
+    </p>
+</div>
+<div id="Task6" class=" task" style="display:none">
+    <p class="text_zadanie">Задание 6. Прочитайте текст и постарайтесь понять его содержание.</p>
+    <p id="textText0"></p>
+</div>
+<div id="Task7" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText1"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">Задание 7. Ответьте на вопрос: какие основные понятия рассматриваются в этом тексте? Найдите в тексте предложения, в которых речь идёт о единицах измерения информации.</p>
+                <p><textarea class="form-control question0" rows="5"></textarea></p>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="Task8" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText2"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">Задание 8. Определите отношения между единицами измерения информации по образцу: «что равно чему».</p>
+                <p><textarea class="form-control question1" rows="5"></textarea></p>
+            </td>
+        </tr>
+    </table>
+
+</div>
+<div id="Task9" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText3"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">Задание 9. Переведите количество информации из более крупных единиц в основные:</p>
+                <div class="text_test">
+                    <p>
+                        <label>6 Кб 78 байт</label>
+                        <input class="such1" type="text"> байт
+                    </p>
+                    <p>
+                        <label>672 Кб 2 байт</label>
+                        <input class="such1" type="text"> байт
+                    </p>
+                    <p>
+                        <label>5 Мб 890 байт</label>
+                        <input class="such1" type="text"> байт
+                    </p>
+                    <p>
+                        <label>12 Мб 451 Кб 901 байт</label>
+                        <input class="such1" type="text"> байт
+                    </p>
+                    <p>
+                        <label>120 Мб</label>
+                        <input class="such1" type="text"> байт
+                    </p>
+                    <p>
+                        <label>36 Гб 345 байт</label>
+                        <input class="such1" type="text"> байт
+                    </p>
+                    <p>
+                        <label>109 Мб 6 Кб 78 байт</label>
+                        <input class="such1" type="text"> байт
+                    </p>
+                    <p>
+                        <label>8 Гб 471 Мб 90 байт</label>
+                        <input class="such1" type="text"> байт
+                    </p>
+                    <p>
+                        <label>832 Тб 238 байт (запишите первые 8 цифр)</label>
+                        <input class="such1" type="text"> байт
+                    </p>
+                    <p>  <i>Образец</i>: 4 Кб 234 байт = 4*1024 + 234 байт = 4330 байт.</p>
+                    <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuchMew()">Начать заново</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+
+</div>
+<div id="Task10" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText4"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">Задание 10. Найдите в тексте информацию из предыдущего текста (тема 1).</p>
+                <p><textarea class="form-control question2" rows="5"></textarea></p>
+            </td>
+        </tr>
+    </table>
+
+</div>
+<div id="Task11" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText5"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">Задание 11. Найдите в тексте словосочетания со словом информация.</p>
+                <input class="such2" type="text">
+                <input class="such2" type="text">
+                <input class="such2" type="text">
+                <input class="such2" type="text">
+                <input class="such2" type="text">
+                <input class="such2" type="text">
+                <input class="such2" type="text">
+            </td>
+        </tr>
+    </table>
+
+</div>
+<div id="Task12" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText6"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">Задание 12. Подберите прилагательные к существительным:</p>
+                <div class="text_test">
+                    <p>
+                        <input class="such3" type="text"><label>единица</label>
+                    </p>
+                    <p>
+                        <input class="such3" type="text"><label>символ</label>
+                    </p>
+                    <p>
+                        <input class="such3" type="text"><label>код</label>
+                    </p>
+                    <p>
+                        <input class="such3" type="text"> <label>основа</label>
+                    </p>
+                    <p>
+                        <input class="such3" type="text"><label>бит</label>
+                    </p>
+                    <p>
+                        <input class="such3" type="text"><label>байт</label>
+                    </p>
+                    <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuchMew()">Начать заново</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+
+</div>
+<div id="Task13" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText7"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">Задание 13. Замените данные предложения синонимичными:</p>
+                <div class="text_test">
+                    1. Основной единицей информации в компьютере является байт.
+                    <p><textarea class="form-control question3" rows="5"></textarea></p>
+                    2. Наибольшей единицей информации в компьютере является гигабайт.
+                    <p><textarea class="form-control question3" rows="5"></textarea></p>
+                    3. Единицами информации в компьютере являются байт, килобайт, мегабайт и гигабайт.
+                    <p><textarea class="form-control question3" rows="5"></textarea></p>
+                    <i>Образец:</i> Наименьшей единицей информации в компьютере является 1 бит. Наименьшая единица информации в компьютере – это 1 бит.
+                </div>
+            </td>
+        </tr>
+    </table>
+
+</div>
+<div id="Task14" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText8"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">Задание 14. Вставьте в предложения слова и словосочетания, данные под чертой, в нужной форме:</p>
+                <div class="text_test">
+                    <p id="select0">1. Количество информации |.</p>
+                    <p id="select1">2. Бит | 0 или 1.</p>
+                    <p id="select2">3. Слово МАМА | последовательностью из 32 цифр.</p>
+                    <p id="select3">4. Слово МАМА | 32 бита информации.</p>
+                    <p id="select4">5. Буква М | 1 байт информации.</p>
+                    <p id="select5">6. Для измерения количества информации | и более крупные единицы.</p>
+                    <p>_________________________________________________________</p>
+                    <p>Использовать, кодировать, можно измерять, содержать, принимать значение.</p>
+                </div>
+
+                <button type="submit" class="btn btn-primary" onclick="clickSelectNew()">Начать заново</button>
+            </td>
+        </tr>
+    </table>
+
+</div>
+<div id="Task15" class=" task" style="display:none">
+
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText9"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">Задание 15. Расскажите текст, опираясь на вопросы: </p>
+                <p class="text_test">
+                    1. Как называется наименьшая единица измерения информации?<br />
+                    2. Как называется основная единица информации в компьютере?<br />
+                    3. Чему равен 1 байт?<br />
+                    4. Для чего нужен один байт?<br />
+                    5. Какие единицы используются для измерения количества информации?<br />
+                    6. Какое количество информации содержит слово «информатика»?<br>
+                </p>
+                <p><textarea class="form-control question4" rows="5"></textarea></p>
+            </td>
+        </tr>
+    </table>
+
+
+
+</div>
+<script>
+    function openTask(tabName) {
+        var i;
+        var x = document.getElementsByClassName("task");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        document.getElementById(tabName).style.display = "block";
+    }
+</script>
+
 <script src="~/js/scriptTestPrilSuch.js"></script>
 <script src="~/js/scriptTestColor.js"></script>
 <script src="~/js/scriptTestSelect.js"></script>
+<script src="~/js/scriptProverka.js"></script>

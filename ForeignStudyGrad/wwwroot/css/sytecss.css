@@ -48,11 +48,10 @@ ul.my_padding{
 .text_test {
     font-size: xx-large;
     text-align: left;
-    text-indent: 2em;
     width: 100%;
 }
 
-input[type=text], input[type=password], textarea, select {
+input[type=text], input[type=password], select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -62,10 +61,20 @@ input[type=text], input[type=password], textarea, select {
     font-size: xx-large;
 }
 
+
+textarea {
+    font-size: x-large !important;
+}
+.text_number_zadanie {
+    font-size: large;
+    text-align: left;
+    font-weight: 600;
+}
 .text_zadanie {
     font-size: x-large;
     text-align: left;
     font-weight: 600;
+    text-indent: 2em;
 }
 body {
     min-width: 100%;
@@ -92,4 +101,48 @@ table{
 
 td{
     width : 50%;
+}
+
+/*@media (max-width:992px) {
+    .text_zadanie {
+        font-size: large;
+    }
+
+    input[type=text], input[type=password], textarea, select {
+        font-size: x-large;
+    }
+
+    .text_test {
+        font-size: x-large;
+    }
+}*/
+@media (max-width:768px) {
+    .text_zadanie {
+        font-size: large !important;
+    }
+
+    input[type=text], input[type=password], select {
+        font-size: x-large;
+    }
+    textarea {
+        font-size: x-large !important;
+    }
+    .text_test {
+        font-size: x-large;
+    }
+}
+@media (max-width:576px) {
+    .text_zadanie {
+        font-size: medium !important;
+    }
+
+    input[type=text], input[type=password],  select {
+        font-size: large;
+    }
+    textarea {
+        font-size: large !important;
+    }
+    .text_test {
+        font-size: large;
+    }
 }
