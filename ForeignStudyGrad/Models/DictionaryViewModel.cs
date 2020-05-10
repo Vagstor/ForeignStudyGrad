@@ -7,10 +7,10 @@ namespace ForeignStudyGrad.Models
 {
     public class DictionaryViewModel
     {
-        public List<Pair> Pairs { get; set; }
+        public List<PairModel> Pairs { get; set; }
     }
 
-    public class Pair
+    public class PairModel
     { 
         public string Original { get; set; }
         public string Translation { get; set; }

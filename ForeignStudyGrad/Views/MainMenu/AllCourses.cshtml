@@ -12,12 +12,19 @@
             <button type="submit" class="btn btn-primary" asp-controller="MainMenu" asp-action="SearchCourse">Найти курс</button>
         </form>
     </div>
-        <p class="size_title_course site_padding">Найденые курсы: </p>
+        <p class="size_title_course site_padding">Найденные курсы: </p>
         <ul class="my_padding">
             @foreach (CourseModel course in Model.courses)
             {
                 <li class="courses">
-<p class="size_text_course site_padding">@Html.ActionLink(course.name, "Course", new { courseid = course.id, coursename = course.name })</p>
-        </li>
-    }
-</ul>
+                    <p class="size_text_course site_padding">
+                        @Html.ActionLink(course.name, "Course", new { courseid = course.id, coursename = course.name })
+                        @if (course.ifSubscribed == false)
+                        {
+                            @Html.ActionLink("Записаться", "SubscribeUserToCourse", new { courseid = course.id, username = User.Identity.Name })
+                            @*<button type="button" class="btn btn-success" asp-controller="course" asp-action="subscribeusertocourse">Записаться</button>*@
+                        }
+                    </p>
+                </li>
+            }
+        </ul>
