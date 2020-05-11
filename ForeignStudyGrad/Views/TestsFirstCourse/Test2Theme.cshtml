@@ -1,9 +1,13 @@
-﻿<link href="~/css/sytecss.css" rel="stylesheet" type="text/css" />
+﻿@model ThemeViewModel;
+@{
+    ViewData["Title"] = Model.Themename;
+}
+<link href="~/css/sytecss.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="~/css/syteCssTableButton.css">
-<h1 id="Theme">Тема 2. Единицы измерения информации</h1>
+<h1 id="Theme">@Model.Themename</h1>
 <script src="~/js/scriptVhod.js" async></script>
 <script src="~/js/scriptOnload.js" async></script>
-<p class="text_zadanie site_padding">Цель работы: </p>
+<p class="text_zadanie site_padding">Цель работы: @Model.Goal</p>
 <nav class="w3-bar w3-black container text_number_zadanie">
     <button class="w3-bar-item w3-button tablink" onclick="openTask('Task1')">Задание 1</button>
     <button class="w3-bar-item w3-button tablink" id="color" onclick="openTask('Task2')">Задание 2</button>
@@ -41,7 +45,7 @@
 </div>
 <div id="Task2" class=" task" style="display:none">
     <p class="text_zadanie">Задание 2. Сгруппируйте однокоренные слова:</p>
-    <table class="site_padding size_text_courses">
+    <table class="site_padding size_text_courses  not_select_text text_test">
         <tr>
             <td id="word0" onclick="colorWord()">информация</td>
             <td id="word1" onclick="colorWord()">замерить</td>
@@ -216,10 +220,12 @@
     <table class="table table-bordered">
         <tr>
             <td>
-                <p id="textText4"></p>
+                <p id="textText4" class="mySlides"></p>
+                <p id="textTextOld" class="mySlides"></p>
             </td>
             <td>
                 <p class="text_zadanie">Задание 10. Найдите в тексте информацию из предыдущего текста (тема 1).</p>
+                <button type="submit" class="btn btn-primary" onclick="plusDivs(+1)">Переключить текст</button>
                 <p><textarea class="form-control question2" rows="5"></textarea></p>
             </td>
         </tr>
@@ -312,14 +318,12 @@
             <td>
                 <p class="text_zadanie">Задание 14. Вставьте в предложения слова и словосочетания, данные под чертой, в нужной форме:</p>
                 <div class="text_test">
-                    <p id="select0">1. Количество информации |.</p>
-                    <p id="select1">2. Бит | 0 или 1.</p>
-                    <p id="select2">3. Слово МАМА | последовательностью из 32 цифр.</p>
-                    <p id="select3">4. Слово МАМА | 32 бита информации.</p>
-                    <p id="select4">5. Буква М | 1 байт информации.</p>
-                    <p id="select5">6. Для измерения количества информации | и более крупные единицы.</p>
-                    <p>_________________________________________________________</p>
-                    <p>Использовать, кодировать, можно измерять, содержать, принимать значение.</p>
+                    <p class="select0">1. Количество информации |.</p>
+                    <p class="select0">2. Бит | 0 или 1.</p>
+                    <p class="select0">3. Слово МАМА | последовательностью из 32 цифр.</p>
+                    <p class="select0">4. Слово МАМА | 32 бита информации.</p>
+                    <p class="select0">5. Буква М | 1 байт информации.</p>
+                    <p class="select0">6. Для измерения количества информации | и более крупные единицы.</p>
                 </div>
 
                 <button type="submit" class="btn btn-primary" onclick="clickSelectNew()">Начать заново</button>
@@ -361,6 +365,23 @@
             x[i].style.display = "none";
         }
         document.getElementById(tabName).style.display = "block";
+    }
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = x.length };
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex - 1].style.display = "block";
     }
 </script>
 

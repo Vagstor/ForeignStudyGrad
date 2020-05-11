@@ -2,221 +2,349 @@
 @{
     ViewData["Title"] = Model.Themename;
 }
+<link href="~/css/sytecss.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="~/css/syteCssTableButton.css">
 
-    <h1>Model.Themename</h1>
+<h1 id="Theme">@Model.Themename</h1>
+<script src="~/js/scriptVhod.js" async></script>
+<script src="~/js/scriptOnload.js" async></script>
+<p class="text_zadanie site_padding">Цель работы: @Model.Goal</p>
+<nav class="w3-bar w3-black container text_number_zadanie">
+    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task1')">Задание 1</button>
+    <button class="w3-bar-item w3-button tablink" id="color" onclick="openTask('Task2')">Задание 2</button>
+    <button class="w3-bar-item w3-button tablink" id="srav0" onclick="openTask('Task3')">Задание 3</button>
+    <button class="w3-bar-item w3-button tablink" id="srav1" onclick="openTask('Task4')">Задание 4</button>
+    <button class="w3-bar-item w3-button tablink" id="prov0" onclick="openTask('Task5')">Задание 5</button>
+    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task6')">Задание 6</button>
+    <button class="w3-bar-item w3-button tablink" id="prov1" onclick="openTask('Task7')">Задание 7</button>
+    <button class="w3-bar-item w3-button tablink" id="srav2" onclick="openTask('Task8')">Задание 8</button>
+    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task9')">Задание 9</button>
+    <button class="w3-bar-item w3-button tablink" id="select" onclick="openTask('Task10')">Задание 10</button>
+    <button class="w3-bar-item w3-button tablink" id="prov2" onclick="openTask('Task11')">Задание 11</button>
+    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task12')">Задание 12</button>
+    <button class="w3-bar-item w3-button tablink" id="srav3" onclick="openTask('Task13')">Задание 13</button>
+    <button class="w3-bar-item w3-button tablink" id="prov3" onclick="openTask('Task14')">Задание 14</button>
+    <button type="submit" class="btn btn-primary" onclick="proverka()">Проверка</button>
+</nav>
+<div class="task" id="Task1">
+    <p class="text_zadanie">
+        Задание 1. Прочитайте слова и словосочетания, запомните их значения:
+    </p>
+    <ul class="text_test">
+        <li>последовательность</li>
+        <li>последовательный вывод</li>
+        <li>вывод информации</li>
+        <li>аналоговый</li>
+        <li>аналоговая информация</li>
+        <li>декодировать (что?)</li>
+        <li>декодирование информации</li>
+        <li>представлять, представить (что?)</li>
+        <li>переводить (что?)</li>
+        <li>представление информации</li>
+        <li>перевод</li>
+        <li>непрерывный</li>
+        <li>дискретный</li>
+        <li>кодировать (что?)</li>
+        <li>кодирование информации</li>
+        <li>перевод информации</li>
+        <li>двоичный код</li>
+        <li>цифра</li>
+        <li>цифровая форма</li>
+    </ul>
+</div>
+<div id="Task2" class=" task" style="display:none">
+    <p class="text_zadanie">Задание 2. Сгруппируйте однокоренные слова: </p>
+    <table class="site_padding size_text_courses not_select_text text_test">
+        <tr>
+            <td id="word0" onclick="colorWord()">информация</td>
+            <td id="word1" onclick="colorWord()">аналог</td>
+            <td id="word2" onclick="colorWord()">обрабатываться</td>
+            <td id="word3" onclick="colorWord()">закодированный</td>
+        </tr>
+        <tr>
+            <td id="word4" onclick="colorWord()">цифровой</td>
+            <td id="word5" onclick="colorWord()">решение</td>
+            <td id="word6" onclick="colorWord()">код</td>
+            <td id="word7" onclick="colorWord()">последовательный</td>
+        </tr>
+        <tr>
+            <td id="word8" onclick="colorWord()">информатика</td>
+            <td id="word9" onclick="colorWord()">записывать</td>
+            <td id="word10" onclick="colorWord()">обработка</td>
+            <td id="word11" onclick="colorWord()">цифра</td>
+        </tr>
+        <tr>
+            <td id="word12" onclick="colorWord()">кодирование</td>
+            <td id="word13" onclick="colorWord()">переводить</td>
+            <td id="word14" onclick="colorWord()">аналоговый</td>
+            <td id="word15" onclick="colorWord()">последовательность</td>
+        </tr>
+        <tr>
+            <td id="word16" onclick="colorWord()">решать</td>
+            <td id="word17" onclick="colorWord()">декодирование</td>
+            <td id="word18" onclick="colorWord()">перевод</td>
+            <td id="word19" onclick="colorWord()">запись</td>
+        </tr>
+    </table>
+</div>
+<div id="Task3" class=" task" style="display:none">
+    <p class="text_zadanie">
+        Задание 3. От данных существительных образуйте прилагательные:
+    </p>
+    <p class="text_test">
+        а) с помощью суффикса -ов-:<br />
+        аналог <input class="such0" type="text"><br />
+        цифра <input class="such0" type="text"><br />
+        код <input class="such0" type="text"><br />
+        смысл <input class="such0" type="text"><br />
+        байт <input class="such0" type="text"><br />
+        б) с помощью суффикса -н-: <br />
+        последовательность <input class="such0" type="text"><br />
+        перевод <input class="such0" type="text"><br />
+        машина <input class="such0" type="text"><br />
+        компьютер <input class="such0" type="text"><br />
+        система <input class="such0" type="text"><br />
+    </p>
+</div>
+<div id="Task4" class=" task" style="display:none">
+    <p class="text_zadanie">Задание 4. Образуйте от данных глаголов существительные: </p>
+    <p class="text_test">
+        а) с помощью суффиксов -ани(е); -ени(е): <br />
+        кодировать <input class="such1" type="text"><br />
+        обрабатывать <input class="such1" type="text"><br />
+        изображать <input class="such1" type="text"><br />
+        декодировать <input class="such1" type="text"><br />
+        использовать <input class="such1" type="text"><br />
+        записывать <input class="such1" type="text"><br />
+        преобразовать <input class="such1" type="text"><br />
+        воспроизводить <input class="such1" type="text"><br />
+        представлять <input class="such1" type="text"><br />
+        хранить <input class="such1" type="text"><br />
+        вычислять <input class="such1" type="text"><br />
+        б) с помощью нулевого суффикса по образцу «записать – запись»:<br />
+        выводить <input class="such1" type="text"><br />
+        переводить <input class="such1" type="text"><br />
+        составить <input class="such1" type="text"><br />
+        собрать <input class="such1" type="text"><br />
+        передать <input class="such1" type="text"><br />
+        основать <input class="such1" type="text"><br />
+    </p>
+</div>
+<div id="Task5" class=" task" style="display:none">
+    <p class="text_zadanie">Задание 5. Замените данные предложения синонимичными. </p>
+    <div class="text_test">
+        1. Процесс перевода двоичного кода на понятный нам язык называется декодированием информации.
+        <p><textarea class="form-control question0" rows="5"></textarea></p>
+        2. Запись информации в двоичных кодах называется кодированием.
+        <p><textarea class="form-control question0" rows="5"></textarea></p>
+        3. Запись музыки на магнитофонную ленту называется кодированием.
+        <p><textarea class="form-control question0" rows="5"></textarea></p>
+        4. Воспроизведение музыки называется декодированием.
+        <p><textarea class="form-control question0" rows="5"></textarea></p>
+        <i>Образец:</i> Последовательность цифр 0 и 1 называется
+        двоичным кодом. Последовательность цифр 0 и 1 – это двоичный
+        код.
+    </div>
+</div>
+<div id="Task6" class=" task" style="display:none">
+    <p class="text_zadanie">
+        Задание 6. Прочитайте текст и постарайтесь понять его содержание.
+    </p>
+    <p id="textText0"></p>
+</div>
+<div id="Task7" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText1"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">
+                    Задание 7. Определите, какая информация прочитанного текста вам уже известна. Прочитайте её.
+                </p>
+                <p><textarea class="form-control question1" rows="5"></textarea></p>
+            </td>
+        </tr>
+    </table>
 
-    <p class="text_zadanie site_padding">Цель работы: @Model.Goal</p>
-<h3>
-    Задание 1. Прочитайте слова и словосочетания, запомните их значения:
-</h3>
-<p>
-<p>последовательность</p>
-<p>последовательный вывод</p>
-<p>вывод информации</p>
-<p>аналоговый</p>
-<p>
-    аналоговая информация
-</p>
-<p>
-    декодировать (что?)
-</p>
-<p>
-    декодирование информации
-</p>
-<p>
-    представлять, представить (что?)
-</p>
-<p>
-    переводить (что?)
-</p>
-<p>
-    представление информации
-</p>
-<p>
-    перевод
-</p>
-<p>
-    непрерывный
-</p>
-<p>
-    дискретный
-</p>
-<p>
-    кодировать (что?)
-</p>
-<p>
-    кодирование информации
-</p>
-<p>
-    перевод информации
-</p>
-<p>
-    двоичный код
-</p>
-<p>
-    цифра
-</p>
-<p>
-    цифровая форма
-</p>
-</p>
-<h3>Задание 2. Сгруппируйте однокоренные слова: </h3>
-<p>
-    информация, аналог, обрабатываться, закодированный,
-    цифровой, решение, код, последовательный, информатика,
-    записывать, обработка, цифра, кодирование, переводить,
-    аналоговый, последовательность, решать, декодирование, перевод,
-    запись.
-</p>
-<h3>
-    Задание 3. От данных существительных образуйте прилагательные:
-</h3>
-<p>а) с помощью суффикса -ов-: аналог, цифра, код, смысл, байт;</p>
-<p>
-    б) с помощью суффикса -н-: последовательность, перевод,
-    машина, компьютер, система.
-</p>
-<h3>Задание 4. Образуйте от данных глаголов существительные: </h3>
-<p>
-    а) с помощью суффиксов -ани(е); -ени(е): кодировать,
-    обрабатывать, изображать, декодировать, использовать, запи-
-    сывать, преобразовать, воспроизводить, представлять, хранить,
-    вычислять;
-</p>
-<p>
-    б) с помощью нулевого суффикса по образцу «записать –
-    запись»: выводить, переводить, составить, собрать, передать,
-    основать.
-</p>
-<h3>Задание 5. Замените данные предложения синонимичными. </h3>
-<p>
-    1. Процесс перевода двоичного кода на понятный нам язык
-    называется декодированием информации.
-</p>
-<p>
-    2. Запись информации в двоичных кодах называется кодированием.
-</p>
-<p>
-    3. Запись музыки на магнитофонную ленту называется кодированием.
-</p>
-<p>4. Воспроизведение музыки называется декодированием.</p>
-<p>
-    <i>Образец:</i> Последовательность цифр 0 и 1 называется
-    двоичным кодом. Последовательность цифр 0 и 1 – это двоичный
-    код.
-</p>
-<h3>
-    Задание 6. Прочитайте текст и постарайтесь понять его содержание.
-</h3>
-<p>
-    Текст
+</div>
+<div id="Task8" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText2"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">
+                    Задание 8. Определите, какие новые понятия рассматриваются в тексте. Назовите их.
+                </p>
+                <p class="text_test">
+                    <input class="such2" type="text"><br />
+                    <input class="such2" type="text"><br />
+                    <input class="such2" type="text"><br />
+                    <input class="such2" type="text"><br />
+                    <input class="such2" type="text"><br />
+                    <input class="such2" type="text"><br />
+                    <input class="such2" type="text"><br />
+                    <input class="such2" type="text"><br />
+                </p>
+            </td>
+        </tr>
+    </table>
 
-    Информация бывает аналоговой и цифровой. В обычной
-    жизни человек использует аналоговую информацию. Аналоговая
-    информация непрерывна, а цифровая – дискретна. В настоящее
-    время самым лучшим устройством переработки и хранения
-    информации является компьютер. Как известно, информация в
-    компьютере хранится и обрабатывается в цифровой форме.
-    Для машинной обработки информацию нужно записывать,
-    обозначая буквы цифрами, т. е. кодировать её. Все буквы, цифры,
-    изображения и звуки ЭВМ переводит в последовательность двух
-    цифр 0 и 1. Такая последовательность называется двоичным кодом.
+</div>
+<div id="Task9" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText3"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">
+                    Задание 9. Прочитайте ту часть текста, в которой написано о
+                    связях между новыми понятиями.
+                </p>
+            </td>
+        </tr>
+    </table>
 
-    Кодирование информации 15
-    Запись информации в двоичных кодах называется кодированием в
-    двоичных кодах. Так как 8 двоичных символов составляют 1 байт,
-    то говорят о системах «байтового» кодирования. Наиболее
-    распространена система ASCII (American Standard Code for
-    Information Interchange) (табл. 1).
-    Например, в системе ASCII буква А кодируется как 11000000,
-    а буква М – как 11001100, тогда слово МАМА кодируется
-    последовательностью из 32 цифр:
+</div>
+<div id="Task10" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText4"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">
+                    Задание 10. Вставьте вместо точек глаголы, данные под чертой, в
+                    нужной форме:
+                </p>
+                <div class="text_test">
+                    <p class="select0">1. Информация в компьютере | и | в цифровой форме.</p>
+                    <p class="select0">2. Все буквы, цифры, изображения и звуки ЭВМ | в последовательность цифр 0 и 1.</p>
+                    <p class="select0">3. Такая последовательность | двоичным кодом.</p>
+                    <p class="select0">4. Запись информации в двоичных кодах | кодированием в двоичных кодах.</p>
+                    <p class="select0">5. При выводе информации компьютер её |.</p>
+                    <p class="select0">6. Декодирование информации – это | информации из двоичного кода в вид, понятный человеку.</p>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="Task11" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText5"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">Задание 11. Ответьте на вопросы: </p>
+                <div class="text_test">
+                    1. Какого типа бывает информация?
+                    <p><textarea class="form-control question2" rows="5"></textarea></p>
+                    2. В какой форме хранится и обрабатывается информация в
+                    компьютере?
+                    <p><textarea class="form-control question2" rows="5"></textarea></p>
+                    3. Что характеризует аналоговую информацию?
+                    <p><textarea class="form-control question2" rows="5"></textarea></p>
+                    4. Что характеризует дискретную информацию?
+                    <p><textarea class="form-control question1" rows="5"></textarea></p>
+                    5. Что называется кодированием?
+                    <p><textarea class="form-control question2" rows="5"></textarea></p>
+                    6. Что называется декодированием?
+                    <p><textarea class="form-control question2" rows="5"></textarea></p>
+                    7. Как происходит кодирование и декодирование в двоичных
+                    кодах?
+                    <p><textarea class="form-control question2" rows="5"></textarea></p>
+                    8. Как называется процесс записи музыки на компакт-диск?
+                    <p><textarea class="form-control question2" rows="5"></textarea></p>
+                    9. Как называется процесс воспроизведения музыки?
+                    <p><textarea class="form-control question2" rows="5"></textarea></p>
+                </div>
+            </td>
+        </tr>
+    </table>
 
-    М А М А
-    11001100 11000000 11001100 11000000
-    При выводе информации компьютер её декодирует.
-</p>
-@*Опять таблица *@
-Таблица 1
+</div>
+<div id="Task12" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText6"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">
+                    Задание 12. Разделите текст на части в соответствии с данным планом.
+                </p>
+                <p class="text_test">
+                    1. Форма хранения и обработки информации в компьютере.<br />
+                    2. Двоичный код.<br />
+                    3. Кодирование.<br />
+                    4. Декодирование.<br />
+                    5. Примеры кодирования и декодирования информации в жизни.<br />
+                </p>
+            </td>
+        </tr>
+    </table>
 
-ASCII коды русских символов
-<p>
-    Декодирование информации – это преобразование информации из двоичного кода в вид, понятный человеку.
-    Кодирование и декодирование информации в двоичных кодах
-    компьютер делает автоматически.
-</p>
-<p>
-    В жизни мы часто встречаемся с кодированием и деко-
-    дированием информации. Например, запись музыки на компакт-диск – это кодирование, а воспроизведение музыки – это
-    декодирование.
-</p>
-<h3>
-    Задание 7. Определите, какая информация прочитанного текста вам уже известна. Прочитайте её.
-</h3>
-<h3>
-    Задание 8. Определите, какие новые понятия рассматриваются в
-    тексте. Назовите их.
-</h3>
-<h3>
-    Задание 9. Прочитайте ту часть текста, в которой написано о
-    связях между новыми понятиями.
-</h3>
-<h3>
-    Задание 10. Вставьте вместо точек глаголы, данные под чертой, в
-    нужной форме:
-</h3>
-<p>
-    1. Информация в компьютере ……... и ……... в цифровой
-    форме.
-    2. Все буквы, цифры, изображения и звуки ЭВМ …………... в
-    последовательность цифр 0 и 1.
-    3. Такая последовательность …………... двоичным кодом.
-    4. Запись информации в двоичных кодах …….…
-    кодированием в двоичных кодах.
-    5. При выводе информации компьютер её ........................ .
-    6. Декодирование информации – это …………... информации
-    из двоичного кода в вид, понятный человеку.
-</p>
-<p>
-    Переводить, хранить, называть, декодировать, обрабатывать,
-    преобразовать.
-</p>
-<h3>Задание 11. Ответьте на вопросы: </h3>
-<p>
-    1. Какого типа бывает информация?
-    2. В какой форме хранится и обрабатывается информация в
-    компьютере?
-    3. Что характеризует аналоговую информацию?
-    4. Что характеризует дискретную информацию?
-    5. Что называется кодированием?
-    6. Что называется декодированием?
-    7. Как происходит кодирование и декодирование в двоичных
-    кодах?
-    8. Как называется процесс записи музыки на компакт-диск?
-    9. Как называется процесс воспроизведения музыки?
-</p>
-<h3>
-    Задание 12. Разделите текст на части в соответствии с данным планом.
-</h3>
-<p>
-    1. Форма хранения и обработки информации в компьютере.
-    2. Двоичный код.
-    3. Кодирование.
-    4. Декодирование.
-    5. Примеры кодирования и декодирования информации в
-    жизни.
-</p>
-<h3>Задание 13. Закодируйте и декодируйте слова: </h3>
-<p>
-    информатика, бит, байт, папа, количество, слово, код.
-    Образец: 1) кодирование: мир – 11001100 00010000 11010000;
-    2) декодирование: 11001010 11001110 11010010 – кот.
-    Код: 11010010 … 11000101 ... 11001010 … 11010001 …
-    11010010 … 11010110 … 11001000 … 11010100 … 11010000 …
-    11000000 … 11010100 … 11001110 … 11010000 … 11001100 …
-    11000000
-</p>
-<h3>
-    Задание 14. Расскажите полученную из текста информацию по
-    плану задания 12 с использованием примеров задания 13.
-</h3>
+</div>
+<div id="Task13" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText7"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">Задание 13. Закодируйте и декодируйте слова: </p>
+                <p class="text_test">
+                    Образец: 1) кодирование: мир – 11001100 00010000 11010000;
+                    информатика <input class="such3" type="text"><br />
+                    бит <input class="such3" type="text"><br />
+                    байт <input class="such3" type="text"><br />
+                    папа <input class="such3" type="text"><br />
+                    количество <input class="such3" type="text"><br />
+                    слово <input class="such3" type="text"><br />
+                    код <input class="such3" type="text"><br />
+                    2) декодирование: 11001010 11001110 11010010 – кот.
+                    11010010 11000101 11001010 11010001 11010010 <input class="such3" type="text"><br />
+                    11010110 11001000 11010100 11010000 11000000 <input class="such3" type="text"><br />
+                    11010100 11001110 11010000 11001100 11000000 <input class="such3" type="text"><br />
+                </p>
+            </td>
+        </tr>
+    </table>
+
+</div>
+<div id="Task14" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText8"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">
+                    Задание 14. Расскажите полученную из текста информацию по
+                    плану задания 12 с использованием примеров задания 13.
+                </p>
+                <p><textarea class="form-control question3" rows="5"></textarea></p>
+            </td>
+        </tr>
+    </table>
+
+</div>
+<script>
+    function openTask(tabName) {
+        var i;
+        var x = document.getElementsByClassName("task");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        document.getElementById(tabName).style.display = "block";
+    }
+    </script >
+
+    <script src="~/js/scriptTestPrilSuch.js"></script>
+<script src="~/js/scriptTestColor.js"></script>
+<script src="~/js/scriptTestSelect.js"></script>
+<script src="~/js/scriptProverka.js"></script>

@@ -1,8 +1,8 @@
 ﻿
-function selIndex(ii) {
-	var selectStr = "<select size=\"1\" id=\"sel" + ii + "\"> <option>-</option>";
-	for (var i = 0; i < wordSelectLength; i++) {
-		selectStr += "<option>" + rez[i] + "</option>";
+function selIndex(ii,masRez) {
+	var selectStr = "<select size=\"1\" class=\"sel" + ii + "\"> <option>-</option>";
+	for (var i = 0; i < masRez.length; i++) {
+		selectStr += "<option>" + masRez[i] + "</option>";
 	}
 	selectStr += "</select>";
 	return selectStr;
@@ -11,14 +11,12 @@ function selIndex(ii) {
 
 
 
-function clickSelect() {
+function clickSelect(array, masRez) {
 	var selekt = true;
-	for (var i = 0; i < wordSelectLength; i++) {
-		var s = "sel" + i;
-		wordSelect[0][i] = document.getElementById(s);
-		wordSelect[1][i] = wordSelect[0][i].options[wordSelect[0][i].selectedIndex].value;
-		if (wordSelect[1][i] != rez[i]) {
-			wordSelect[0][i].value = "-";
+	console.log(array.length);
+	for (var i = 0; i < array.length; i++) {
+		if (array[i].options[array[i].selectedIndex].value != masRez[i]) {
+			array[i].value = "-";
 			selekt = false;
 		}
 	}

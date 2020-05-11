@@ -3,10 +3,21 @@
     ViewData["Title"] = Model.Themename;
 }
 
-<h1>Model.Themename</h1>
+    <h1 id="Theme">@Model.Themename</h1>
 
 <p class="text_zadanie site_padding">Цель работы: @Model.Goal</p>
-
+<nav class="w3-bar w3-black container text_number_zadanie">
+    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task1')">Задание 1</button>
+    <button class="w3-bar-item w3-button tablink" id="color" onclick="openTask('Task2')">Задание 2</button>
+    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task3')">Задание 3</button>
+    <button class="w3-bar-item w3-button tablink" id="srav0" onclick="openTask('Task4')">Задание 4</button>
+    <button class="w3-bar-item w3-button tablink" id="prov0" onclick="openTask('Task5')">Задание 5</button>
+    <button class="w3-bar-item w3-button tablink" id="select" onclick="openTask('Task6')">Задание 6</button>
+    <button class="w3-bar-item w3-button tablink" id="prov1" onclick="openTask('Task7')">Задание 7</button>
+    <button class="w3-bar-item w3-button tablink" id="prov2" onclick="openTask('Task8')">Задание 8</button>
+    <button class="w3-bar-item w3-button tablink" id="prov3" onclick="openTask('Task9')">Задание 9</button>
+    <button type="submit" class="btn btn-primary" onclick="proverka()">Проверка</button>
+</nav>
 <h3>
     Задание 1. Прочитайте слова и словосочетания, запомните их
     значения:
