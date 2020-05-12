@@ -23,6 +23,9 @@ var masPril = [[], []];
 var masFunc = [];
 var kolProv;
 var kolProvPril;
+var textMasOld;
+var kolProvSelect;
+var masProvSelect=[];
 
 window.onload = function () {
 	console.log("Загрузился");
@@ -34,13 +37,17 @@ window.onload = function () {
 	for (var i = 0; i < numTextZad; i++) {
 		var s1 = "textText" + i;
 		if (i != 0) textStr = "<p class=\"text_zadanie\">Прочитайте текст и выполните задание.</p>";
-		vhodText();
+		vhodText(textMas);
 		document.getElementById(s1).innerHTML = textStr;
 		textStr = "";
 		console.log(i);
 	}
-	
-	
+	if (textMasOld != undefined) {
+		var s1 = "textTextOld";
+		vhodText(textMasOld);
+		document.getElementById(s1).innerHTML = textStr;
+		textStr = "";
+	}
 	
 	//объявление элементов для scriptColor.js
 	lenght = koren.length;
@@ -58,25 +65,28 @@ window.onload = function () {
 	
 	console.log("Задание с прилагательными объявлено");
 	//объявление элементов для scriptSelect.js
-	wordSelectLength = lengthSelect = rez.length;
-	var ii = 0;
-	for (var j = 0; j < lengthSelect; j++) {
-		var s1 = "select" + j;
-		var str = document.getElementById(s1).innerHTML;
-		var nach = 0;
-		var konec = 0;
-		var s = "";
-		var pos = -1;
-		while ((pos = str.indexOf('|', pos + 1)) != -1) {
-			konec = pos;
+	kolProvSelect = masProvSelect.length;
+	this.console.log(kolProvSelect);
+	for (var i = 0; i < kolProvSelect; i++) {
+		var s1 = "select" + i;
+		var str = this.document.getElementsByClassName(s1);
+		this.console.log(str.length);
+		for (var j = 0; j < str.length; j++) {
+			var nach = 0;
+			var konec = 0;
+			var s = "";
+			var pos = -1;
+			while ((pos = str[j].textContent.indexOf('|', pos + 1)) != -1) {
+				konec = pos;
 
-			s += str.substring(nach, konec) + selIndex(ii);
-			nach = konec + 1;
-			ii++;
+				s += str[j].textContent.substring(nach, konec) + selIndex(i, masProvSelect[i]);
+				nach = konec + 1;
+			}
+			s += str[j].textContent.substring(nach);
+
+			str[j].innerHTML = s;
+
 		}
-		s += str.substring(nach);
-
-		document.getElementById(s1).innerHTML = s;
 	}
 	console.log("Задание с селектами объявлено");
 }
@@ -84,7 +94,7 @@ function colorWhite(i) {
 	this.wordcolor[0][i].style.backgroundColor = 'white';
 }
 
-function vhodText() {
+function vhodText(textMas) {
 	var pClass = "<p class = \"text_test\">";
 	var p = "</p>";
 	textMas.forEach(function (text) {

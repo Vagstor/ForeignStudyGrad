@@ -5,14 +5,19 @@
         tablinks[i].className = tablinks[i].className.replace(" w3-green", "");
     }
 
-
-    if (!clickSelect()) {
+    for (var i = 0; i < kolProvSelect; i++) {
+        var s = "sel" + i;
+        var ss = "select" + i;
+        var wordProv = document.getElementsByClassName(s);
+    if (!clickSelect(wordProv, masProvSelect[i])) {
 
         document.getElementById("select").className += " w3-red";
-    } else document.getElementById("select").className += " w3-green";
+        } else document.getElementById("select").className += " w3-green";
+    }
     if (!clickProvColorWord()) {
         document.getElementById("color").className += " w3-red";
-    } else document.getElementById("color").className += " w3-green";
+        } else document.getElementById("color").className += " w3-green";
+    
     //проверка всех заданий с сравнением слов
     for (var i = 0; i < kolProvPril; i++) {
         var s = "srav" + i;
