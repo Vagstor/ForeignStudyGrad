@@ -1,5 +1,6 @@
 ﻿using DataModels;
 using ForeignStudyGrad.Models;
+using LinqToDB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,11 @@ namespace ForeignStudyGrad.Services
         {
             Subscription subscription = new Subscription()
             {
-                SubId = courseid,
+                SubId = new Guid(),
+                CourseId = courseid,
                 UserId = _accService.GetByLogin(username).UserId
             };
+            _db.Insert(subscription);
         }
         public void MatchWithSubscriptions(List<CourseModel> courseList, string username)
         {

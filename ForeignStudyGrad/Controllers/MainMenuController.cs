@@ -46,11 +46,11 @@ namespace ForeignStudyGrad.Controllers
             _courseService.MatchWithSubscriptions(acvm.courses, User.Identity.Name);
             return View(acvm);
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult SubscribeUserToCourse(Guid courseid, string username)
         {
             _courseService.SubscribeUserToCourse(courseid, username);
-            return View("AllCourses");
+            return RedirectToAction("AllCourses");
         }
         [HttpGet]
         public IActionResult Course(Guid courseid, string coursename)
