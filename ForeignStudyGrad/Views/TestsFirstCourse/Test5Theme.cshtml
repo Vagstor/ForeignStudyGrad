@@ -2,146 +2,287 @@
 @{
     ViewData["Title"] = Model.Themename;
 }
-
-<h1>Model.Themename</h1>
-
+<link href="~/css/sytecss.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="~/css/syteCssTableButton.css">
+@*<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">*@
+<h1 id="Theme">@Model.Themename</h1>
+<script src="~/js/scriptVhod.js" async></script>
+<script src="~/js/scriptOnload.js" async></script>
 <p class="text_zadanie site_padding">Цель работы: @Model.Goal</p>
-
-<h3>
+<nav class="w3-bar w3-black container text_number_zadanie">
+    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task1')">Задание 1</button>
+    <button class="w3-bar-item w3-button tablink" id="color" onclick="openTask('Task2')">Задание 2</button>
+    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task3')">Задание 3</button>
+    <button class="w3-bar-item w3-button tablink" id="srav0" onclick="openTask('Task4')">Задание 4</button>
+    <button class="w3-bar-item w3-button tablink" id="prov0" onclick="openTask('Task5')">Задание 5</button>
+    <button class="w3-bar-item w3-button tablink" id="select" onclick="openTask('Task6')">Задание 6</button>
+    <button class="w3-bar-item w3-button tablink" id="prov1" onclick="openTask('Task7')">Задание 7</button>
+    <button class="w3-bar-item w3-button tablink" id="prov2" onclick="openTask('Task8')">Задание 8</button>
+    <button class="w3-bar-item w3-button tablink" id="prov3" onclick="openTask('Task9')">Задание 9</button>
+    <button type="submit" class="btn btn-primary" onclick="proverka()">Проверка</button>
+</nav>
+<div class="task" id="Task1">
+<p class="text_zadanie">
     Задание 1. Прочитайте слова и словосочетания, запомните их
     значения:
-</h3>
-<p>
-    блок
-    клавиатура
-    системный блок
-    мышь
-    накапливать (что?)
-    сканер
-    накопитель
-    микрофон
-    магнитный диск
-    монитор
-    компакт-диск
-    принтер
-    дискета
-    графическая информация
-    дисковод
-    текстовая информация
-    акустические колонки
-    шина
 </p>
-<h3>Задание 2. Сгруппируйте однокоренные слова:</h3>
-<p>
-    диск, ввод, накопитель, основной, выводить, вводить, основа,
-    системный, подключать, текстовый, графический, дискета, инфор-
-    мация, внутри, накапливать, хранение, система, подключение,
-    графика, вывод, текст, внутренний, дисковод, информационный,
-    хранить.
-</p>
-<h3>Задание 3. Замените данные предложения синонимичными.</h3>
-<p>
-    1. Клавиатура – это устройство для ввода символьной
-    информации в компьютер.
-    2. Мышь – это устройство, которое помогает вводить информацию в компьютер.
-    3. Микрофон – это устройство для ввода в компьютер звуковой информации.
-    4. Сканер – это устройство для ввода в компьютер графической информации.
-    5. Монитор – это устройство вывода информации на экран.
-    6. Акустические колонки – это устройство для вывода
-    звуковой информации.
-    7. Принтер – это устройство для вывода на печать текстовой и
-    графической информации.
-    8. Шина – это набор проводов, по которым происходит обмен
-    данными между устройствами компьютера.
-    Образец: Системный блок – это главный блок в компьютере.
-    Системный блок является главным блоком в компьютере.
-</p>
-<h3>
-    Задание 4. Образуйте словосочетания с данными словами (при
-    затруднении используйте текст):
-</h3>
-<p>
-    память, накопитель, диск, устройство, внутренний, ввод,
-    вывод, информация, обмен, флэш-карта, внешний.
-</p>
-<h3>
-    Задание 5. Прочитайте текст и постарайтесь понять его содержание.
-</h3>
-<p>
-    Текст
-
-    Системный блок является главным блоком в компьютере. Он
-    содержит процессор, внутреннюю память, внешнюю память и
-    специальные устройства: видеокарту, звуковую карту, модем,
-    сетевую карту.
-    К системному блоку компьютера с помощью кабелей можно
-    подключить различные устройства ввода-вывода информации,
-    такие устройства называются периферийными устройствами.
-    Устройства ввода кодируют информацию путем ее перевода
-    из аналогового вида в цифровой.
-    Клавиатура – это устройство для ввода символьной информации в компьютер.
-    Мышь – это устройство, которое помогает вводить информацию в компьютер.
-    Микрофон – это устройство для ввода в компьютер звуковой
-    информации.
-    Сканер – это устройство для ввода в компьютер графической
-    информации.
-    Устройства вывода декодируют информацию из цифрового
-    вида в аналоговый.
-    Монитор – это устройство вывода информации на экран.
-    Акустические колонки – это устройство для вывода звуковой
-    информации.
-    Принтер – это устройство для печати текстовой и графической информации.
-</p>
-<h3>Задание 6. Закончите предложения:</h3>
-<p>
-    1. Персональный компьютер состоит …………….. .
-    2. Системный блок является ……………... .
-    3. Дисковод предназначен для ……………….. .
-    4. CD-дисковод предназначен ……………….... .
-    5. К системному блоку с помощью кабелей можно подклю-
-    чить …………………
-</p>
-<h3>
-    Задание 7. Вместо точек вставьте глаголы, данные под чертой, в
-    нужной форме:
-</h3>
-<p>
-    1. Системный блок ……... главным блоком в компьютере.
-    2. Дисковод – это устройство для ....... информации с дискет.
-    3. К системному блоку компьютера с помощью кабелей можно
-    ......... различные устройства ввода-вывода информации.
-    4. Системный блок …... процессор, внутреннюю память и
-    устройства внешней памяти.
-    Подключать, читать, записывать, содержать, являться.
-</p>
-<h3>
+<ul class="text_test">
+   <li> блок <input class="slovo" type="text"></li>
+    <li>клавиатура <input class="slovo" type="text"></li>
+    <li>системный блок <input class="slovo" type="text"></li>
+    <li>мышь <input class="slovo" type="text"></li>
+    <li>накапливать (что?) <input class="slovo" type="text"></li>
+    <li>сканер <input class="slovo" type="text"></li>
+    <li>накопитель <input class="slovo" type="text"></li>
+    <li>микрофон <input class="slovo" type="text"></li>
+    <li>магнитный диск <input class="slovo" type="text"></li>
+    <li>монитор <input class="slovo" type="text"></li>
+    <li>компакт-диск <input class="slovo" type="text"></li>
+    <li>принтер <input class="slovo" type="text"></li>
+    <li>дискета <input class="slovo" type="text"></li>
+    <li>графическая информация <input class="slovo" type="text"></li>
+    <li>дисковод <input class="slovo" type="text"></li>
+    <li>текстовая информация <input class="slovo" type="text"></li>
+    <li>акустические колонки <input class="slovo" type="text"></li>
+    <li>шина <input class="slovo" type="text"></li>
+	<button type="submit" class="btn btn-primary" onclick="()">Добавить в словарь</button>
+</ul>
+</div>
+    <div id="Task2" class=" task" style="display:none">Задание 2. Сгруппируйте однокоренные слова:</div>
+<p>Нажимайте на слова, чтобы выделять их цветом. Однокоренные слова должны иметь одинаковый цвет.</p>
+        <table alight="center" class="site_padding size_text_courses not_select_text text_test">
+            <tr>
+			<td id="word0" onclick="colorWord()">диск</td>
+			<td id="word1" onclick="colorWord()">ввод</td>
+			<td id="word2" onclick="colorWord()">накопитель</td>
+			<td id="word3" onclick="colorWord()">основной</td>
+			<td id="word4" onclick="colorWord()">выводить</td>
+</tr>
+            <tr>
+			<td id="word5" onclick="colorWord()">вводить</td>
+			<td id="word6" onclick="colorWord()">основа</td>
+    <td id="word7" onclick="colorWord()">системный</td>
+	<td id="word8" onclick="colorWord()">подключать</td>
+	<td id="word9" onclick="colorWord()">текстовый</td>
+	</tr>
+            <tr>
+	<td id="word10" onclick="colorWord()">графический</td>
+	<td id="word11" onclick="colorWord()">дискета</td>
+	<td id="word12" onclick="colorWord()">информация</td> 
+	<td id="word13" onclick="colorWord()">внутри</td>
+	<td id="word14" onclick="colorWord()">накапливать</td>
+	</tr>
+            <tr>
+	<td id="word15" onclick="colorWord()">хранение</td>
+	<td id="word16" onclick="colorWord()">система</td>
+	<td id="word17" onclick="colorWord()">подключение</td>
+    <td id="word18" onclick="colorWord()">графика</td>
+	<td id="word19" onclick="colorWord()">вывод</td>
+	</tr>
+            <tr>
+	<td id="word20" onclick="colorWord()">текст</td>
+	<td id="word21" onclick="colorWord()">внутренний</td>
+	<td id="word22" onclick="colorWord()">дисковод</td>
+	<td id="word23" onclick="colorWord()">информационный</td>
+    <td id="word24" onclick="colorWord()">хранить</td>
+	</tr>
+</table><br>
+<button type="submit" class="btn btn-primary" onclick="clickProvColorWordNew()">Начать заново</button><br />
+</div>
+<div id="Task3" class=" task" style="display:none">
+<p class="text_zadanie">Задание 3. Замените данные предложения синонимичными.</p>
+<p>1. Клавиатура – это устройство для ввода символьной информации в компьютер.</p>
+<p><textarea class="form-control question0" rows="5"></textarea></p>
+ <p>2. Мышь – это устройство, которое помогает вводить информацию в компьютер.</p>
+ <p><textarea class="form-control question0" rows="5"></textarea></p>
+ <p>3. Микрофон – это устройство для ввода в компьютер звуковой информации.</p>
+ <p><textarea class="form-control question0" rows="5"></textarea></p>
+ <p>4. Сканер – это устройство для ввода в компьютер графической информации.</p>
+ <p><textarea class="form-control question0" rows="5"></textarea></p>
+    <p>5. Монитор – это устройство вывода информации на экран.</p>
+	<p><textarea class="form-control question0" rows="5"></textarea></p>
+    <p>6. Акустические колонки – это устройство для вывода звуковой информации.</p>
+	<p><textarea class="form-control question0" rows="5"></textarea></p>
+    <p>7. Принтер – это устройство для вывода на печать текстовой и графической информации.</p>
+	<p><textarea class="form-control question0" rows="5"></textarea></p>
+    <p>8. Шина – это набор проводов, по которым происходит обмен данными между устройствами компьютера.</p>
+	<p><textarea class="form-control question0" rows="5"></textarea></p>
+	<p><i>Образец</i>: Системный блок – это главный блок в компьютере. Системный блок является главным блоком в компьютере.</p>
+</div>
+<div id="Task4" class=" task" style="display:none">
+   <p class="text_zadanie"> Задание 4. Образуйте словосочетания с данными словами (при затруднении используйте текст):</p>
+    <p>
+                        <label>память</label>
+                        <input class="such0" type="text">
+                    </p>
+					<p>
+                        <label>накопитель</label>
+                        <input class="such0" type="text">
+                    </p>
+					<p>
+                        <label>диск</label>
+                        <input class="such0" type="text">
+                    </p>
+					<p>
+                        <label>устройство</label>
+                        <input class="such0" type="text">
+                    </p>
+					<p>
+                        <label>внутренний</label>
+                        <input class="such0" type="text">
+                    </p>
+					<p>
+                        <label>ввод</label>
+                        <input class="such0" type="text">
+                    </p>
+					<p>
+                        <label>вывод</label>
+                        <input class="such0" type="text">
+                    </p>
+					<p>
+                        <label>информация</label>
+                        <input class="such0" type="text">
+                    </p>
+					<p>
+                        <label>обмен</label>
+                        <input class="such0" type="text">
+                    </p>
+					<p>
+                        <label>флэш-карта</label>
+                        <input class="such0" type="text">
+                    </p>
+					<p>
+                        <label>внешний</label>
+                        <input class="such0" type="text">
+                    </p>
+					 <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuchMew()">Начать заново</button>
+					</div>
+ <div id="Task5" class="task" style="display:none">
+     <p class="text_zadanie">Задание 5. Прочитайте текст и постарайтесь понять его содержание.
+<p id="textText0"></p>
+</div>
+<div id="Task6" class="task" style="display:none">
+<table class="table table-bordered">
+<tr>
+                <td>
+                    <p id="textText1"></p>
+                </td>
+<td class="text_test">
+                    <p class="text_zadanie">Задание 6. Закончите предложения:</p>
+<p>1. Персональный компьютер состоит <input class="such1" type="text"> .</p>
+<p>    2. Системный блок является <input class="such1" type="text"> .</p>
+  <p>  3. Дисковод предназначен для <input class="such1" type="text"> .</p>
+ <p>   4. CD-дисковод предназначен <input class="such1" type="text"> .</p>
+<p>    5. К системному блоку с помощью кабелей можно подключить <input class="such1" type="text">.</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="Task7" class="task" style="display:none">
+        <table class="table table-bordered">
+            <tr>
+                <td>
+                    <p id="textText2"></p>
+                </td>
+                <td class="text_test">
+                    <p class="text_zadanie">
+    Задание 7. Вместо точек вставьте глаголы, данные под чертой, в нужной форме:</p>
+<p class="select0">1. Системный блок | главным блоком в компьютере.</p>
+    <p class="select0">2. Дисковод – это устройство для | информации с дискет.</p>
+   <p class="select0"> 3. К системному блоку компьютера с помощью кабелей можно | различные устройства ввода-вывода информации.</p>
+   <p class="select0"> 4. Системный блок | процессор, внутреннюю память и устройства внешней памяти.</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="Task8" class="task" style="display:none">
+        <table class="table table-bordered">
+            <tr>
+                <td>
+                    <p id="textText3"></p>
+                </td>
+                <td class="text_test">
+                    <p class="text_zadanie">
     Задание 8. Прочитайте текст ещё раз, поставьте вопросы к тексту
-    в нужном порядке:
-</h3>
-<p>
-    1. Какие устройства можно подключить к системному блоку?
-    2. Что относится к устройствам внешней памяти?
-    3. Что содержит системный блок?
-    4. С помощью чего подключаются устройства к системному
-    блоку?
-    5. Что относится к основным устройствам компьютера?
-    6. Какой блок в компьютере является главным?
-</p>
-<h3>
+    в нужном порядке:</p>
+<p>1. Какие устройства можно подключить к системному блоку?</p>
+<p><textarea class="form-control question1" rows="5"></textarea></p>
+    <p>2. Что относится к устройствам внешней памяти?</p>
+	<p><textarea class="form-control question1" rows="5"></textarea></p>
+    <p>3. Что содержит системный блок?</p>
+	<p><textarea class="form-control question1" rows="5"></textarea></p>
+   <p> 4. С помощью чего подключаются устройства к системному блоку?</p>
+	<p><textarea class="form-control question1" rows="5"></textarea></p>
+  <p>  5. Что относится к основным устройствам компьютера?</p>
+	<p><textarea class="form-control question1" rows="5"></textarea></p>
+ <p>   6. Какой блок в компьютере является главным?</p>
+	<p><textarea class="form-control question1" rows="5"></textarea></p>
+</td>
+</tr>
+</table>
+</div>
+<div id="Task9" class="task" style="display:none">
+        <table class="table table-bordered">
+            <tr>
+                <td>
+                    <p id="textText4"></p>
+                </td>
+                <td class="text_test">
+                    <p class="text_zadanie">
     Задание 9. Разделите текст на смысловые части, дайте название
-    каждой из них и запишите в форме плана.
-</h3>
-<h3>
+    каждой из них и запишите в форме плана.</p>
+	<p><textarea class="form-control question2" rows="5"></textarea></p>
+</td>
+</tr>
+</table>
+</div>
+<div id="Task10" class="task" style="display:none">
+        <table class="table table-bordered">
+            <tr>
+                <td>
+                    <p id="textText5"></p>
+                </td>
+                <td class="text_test">
+                    <p class="text_zadanie">
     Задание 10. Заполните данную таблицу, правильно распределяя
     перечисленные устройства по их видам:
-</h3>
+</p>
 <p>
     СD-ROM, DVD, модем, звуковая карта, клавиатура, мышь,
     проектор, принтер, сканер, монитор, сетевая карта, звуковая карта,
     факс-модем, TV-тюнер, джойстик, видеокамера.
 </p>
 @*Таблица для заполнения*@
-<h3>
+</td>
+</tr>
+<table>
+</div>
+<div id="Task11" class="task" style="display:none">
+        <table class="table table-bordered">
+            <tr>
+                <td>
+                    <p id="textText6"></p>
+                </td>
+                <td class="text_test">
+                    <p class="text_zadanie">
     Задание 11. Расскажите об основных устройствах персонального
-    компьютера, используя план и таблицу задания 10.
-</h3>
+    компьютера, используя план и таблицу задания 10.</p>
+	<p><textarea class="form-control question3" rows="5"></textarea></p>
+</td>
+</tr>
+</table>
+</div>
+<script>
+    function openTask(tabName) {
+        var i;
+        var x = document.getElementsByClassName("task");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        document.getElementById(tabName).style.display = "block";
+    }
+</script>
+<script src="~/js/scriptTestPrilSuch.js"></script>
+<script src="~/js/scriptTestColor.js"></script>
+<script src="~/js/scriptTestSelect.js"></script>
+<script src="~/js/scriptProverka.js"></script>

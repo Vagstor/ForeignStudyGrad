@@ -8,11 +8,10 @@
 }
 
 @*Вывод названия курса*@
-<p><h3 align="center">Название курса: @Model.courseName</h3></p>
+<p><h3 align="center">@Model.courseName</h3></p>
 
 @*Вывод фамилии преподавателя*@
-<p class="site_padding size_title_course">Преподаватель: </p>
-<p class="site_padding size_title_course">Доступные темы курса: </p>
+<p class="site_padding size_title_course">Доступные темы: </p>
 <ul class="my_padding">
     @foreach (ThemeModel theme in Model.themes)
     {

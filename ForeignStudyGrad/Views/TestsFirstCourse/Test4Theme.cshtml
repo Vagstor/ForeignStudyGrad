@@ -2,144 +2,202 @@
 @{
     ViewData["Title"] = Model.Themename;
 }
+<link href="~/css/sytecss.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="~/css/syteCssTableButton.css">
 
-    <h1 id="Theme">@Model.Themename</h1>
-
+<h1 id="Theme">@Model.Themename</h1>
+<script src="~/js/scriptVhod.js" async></script>
+<script src="~/js/scriptOnload.js" async></script>
 <p class="text_zadanie site_padding">Цель работы: @Model.Goal</p>
 <nav class="w3-bar w3-black container text_number_zadanie">
     <button class="w3-bar-item w3-button tablink" onclick="openTask('Task1')">Задание 1</button>
-    <button class="w3-bar-item w3-button tablink" id="color" onclick="openTask('Task2')">Задание 2</button>
-    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task3')">Задание 3</button>
-    <button class="w3-bar-item w3-button tablink" id="srav0" onclick="openTask('Task4')">Задание 4</button>
-    <button class="w3-bar-item w3-button tablink" id="prov0" onclick="openTask('Task5')">Задание 5</button>
-    <button class="w3-bar-item w3-button tablink" id="select" onclick="openTask('Task6')">Задание 6</button>
-    <button class="w3-bar-item w3-button tablink" id="prov1" onclick="openTask('Task7')">Задание 7</button>
-    <button class="w3-bar-item w3-button tablink" id="prov2" onclick="openTask('Task8')">Задание 8</button>
-    <button class="w3-bar-item w3-button tablink" id="prov3" onclick="openTask('Task9')">Задание 9</button>
+    <button class="w3-bar-item w3-button tablink" id="srav0" onclick="openTask('Task2')">Задание 2</button>
+    <button class="w3-bar-item w3-button tablink" id ="color" onclick="openTask('Task3')">Задание 3</button>
+    <button class="w3-bar-item w3-button tablink" id="prov0" onclick="openTask('Task4')">Задание 4</button>
+    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task5')">Задание 5</button>
+    <button class="w3-bar-item w3-button tablink" id="prov1" onclick="openTask('Task6')">Задание 6</button>
+    <button class="w3-bar-item w3-button tablink" id="srav1" onclick="openTask('Task7')">Задание 7</button>
+    <button class="w3-bar-item w3-button tablink" id="srav2" onclick="openTask('Task8')">Задание 8</button>
+    <button class="w3-bar-item w3-button tablink" id="select0" onclick="openTask('Task9')">Задание 9</button>
     <button type="submit" class="btn btn-primary" onclick="proverka()">Проверка</button>
 </nav>
-<h3>
-    Задание 1. Прочитайте слова и словосочетания, запомните их
-    значения:
-</h3>
-<p>
-    процессор
-    устройство
-    шина
-    оперативное запоминающее устройство
-    управлять (чем?)
-    постоянное запоминающее устройство
-    память
-    устройство вывода
-    внутренняя память
-    устройство ввода
-    оперативная память
-    вводить, ввести (что?)
-    постоянная память
-    выводить, вывести (что?)
-    внешняя память
-    программа
-</p>
-<h3>
-    Задание 2. Замените глаголы из задания 1 на однокоренные
-    существительные.
-</h3>
-<p>Образец: вводить – ввод.</p>
-<h3>Задание 3. Сгруппируйте однокоренные слова:</h3>
-<p>
-    ввод, центральный, обрабатывать, выводить, вывод, вводить,
-    центр, обработка, работа, информация, внутри, обмен, хранение,
-    работать, внутренний, обменивать, информационный, хранить.
-</p>
-<h3>Задание 4. Замените данные предложения синонимичными.</h3>
-<p>
-    1. Процессор, память, устройства ввода и устройства выво-
-    да – это основные устройства компьютера.
+<div class="task" id="Task1">
+    <p class="text_zadanie">
+        Задание 1. Прочитайте слова и словосочетания, запомните их значения:
+    </p>
+    <p>
+        процессор
+        устройство
+        шина
+        оперативное запоминающее устройство
+        управлять (чем?)
+        постоянное запоминающее устройство
+        память
+        устройство вывода
+        внутренняя память
+        устройство ввода
+        оперативная память
+        вводить, ввести (что?)
+        постоянная память
+        выводить, вывести (что?)
+        внешняя память
+        программа
+</div>
+<div id="Task2" class=" task" style="display:none">
+    <p class="text_zadanie">
+        Задание 2. Замените глаголы из задания 1 на однокоренные существительные.
+    </p>
+    <input class="such0" type="text"><br />
+    <input class="such0" type="text"><br />
+    <input class="such0" type="text"><br />
+</div>
+<div id="Task3" class=" task" style="display:none">
+    <p class="text_zadanie">Задание 3. Сгруппируйте однокоренные слова:</p>
+    <table class="site_padding size_text_courses not_select_text text_test">
+        <tr>
+            <td id="word0" onclick="colorWord()">ввод</td>
+            <td id="word1" onclick="colorWord()">центральный</td>
+            <td id="word2" onclick="colorWord()">обрабатывать</td>
+            <td id="word3" onclick="colorWord()">выводить</td>
+        </tr>
+        <tr>
+            <td id="word4" onclick="colorWord()">вывод</td>
+            <td id="word5" onclick="colorWord()">вводить</td>
+            <td id="word6" onclick="colorWord()">центр</td>
+            <td id="word7" onclick="colorWord()">обработка</td>
+        </tr>
+        <tr>
+            <td id="word8" onclick="colorWord()">работа</td>
+            <td id="word9" onclick="colorWord()">информация</td>
+            <td id="word10" onclick="colorWord()">внутри</td>
+            <td id="word11" onclick="colorWord()">обмен</td>
+        </tr>
+        <tr>
+            <td id="word12" onclick="colorWord()">хранение</td>
+            <td id="word13" onclick="colorWord()">работать</td>
+            <td id="word14" onclick="colorWord()">внутренний</td>
+            <td id="word15" onclick="colorWord()">обменивать</td>
+        </tr>
+        <tr>
+            <td id="word16" onclick="colorWord()">информационный</td>
+            <td id="word17" onclick="colorWord()">хранить</td>
+        </tr>
+    </table>
+</div>
+<div id="Task4" class=" task" style="display:none">
+    <p class="text_zadanie">Задание 4. Замените данные предложения синонимичными.</p>
+    1. Процессор, память, устройства ввода и устройства вывода – это основные устройства компьютера.
+    <p><textarea class="form-control question0" rows="5"></textarea></p>
     2. Процессор – это центральное устройство ЭВМ.
-    3. Внешняя память – это устройство для хранения данных без
-    электропитания.
-    4. Устройства ввода – это устройства, предназначенные для
-    ввода информации.
-    5. Устройства вывода – это устройства, предназначенные для
-    вывода информации.
+    <p><textarea class="form-control question0" rows="5"></textarea></p>
+    3. Внешняя память – это устройство для хранения данных без электропитания.
+    <p><textarea class="form-control question0" rows="5"></textarea></p>
+    4. Устройства ввода – это устройства, предназначенные для ввода информации.
+    <p><textarea class="form-control question0" rows="5"></textarea></p>
+    5. Устройства вывода – это устройства, предназначенные для вывода информации.
+    <p><textarea class="form-control question0" rows="5"></textarea></p>
     Образец: Шина – это набор проводов, по которым происходит
     обмен информацией между устройствами компьютера. Шиной
     называется набор проводов, по которым происходит обмен
     информацией между устройствами компьютера.
-</p>
-<h3>
-    Задание 5. Прочитайте текст и постарайтесь понять его содер-
-    жание.
-</h3>
-<p>
-    Все компьютеры состоят из одинаковых основных устройств:
-    процессора, памяти, устройства ввода и устройства вывода.
-    Обработка информации выполняется процессором.
-    Процессор – это центральное устройство ЭВМ.
-    Существует внутренняя и внешняя память компьютера.
-    Внутренняя память используется для временного хранения данных
-    и программ, внешняя – для долговременного их хранения. Память
-    компьютера дискретна.
-    Внутренняя память компьютера предназначена для опера-
-    тивной обработки данных. Она является более быстрой, чем
-    внешняя память. Выделяют следующие виды внутренней памяти:
-    • оперативная. В неё помещаются программы и данные. Она
-    обладает большим быстродействием и является энерго-зависимой.
-    Обозначается RAM (Random Access Memory) – память с
-    произвольным доступом. Иначе оперативную память называют
-    оперативным запоминающим устройством (ОЗУ);
-    • постоянная память (Basic Input-Output System – BIOS) –
-    содержит программы для управления компьютером. Обозначается
-    ROM (Read Only Memory). Иначе постоянную память называют
-    постоянным запоминающим устройством (ПЗУ).
-    Внешняя память предназначена для длительного хранения
-    программ и данных. Это память большого объёма, но низкого быстродействия. Она представлена в основном магнитными и
-    оптическими носителями.
-    В состав внешней памяти компьютера входят:
-     жёсткие диски;
-     лазерные диски (компакт-диски объёмом 700 Мегабайт);
-     DVD-диски (объёмом 4,7... 9,4 Гигабайт);
-     Flash-карты (USB flash drive объёмом до 12 Гигабайт).
-    Человек вводит данные в компьютер через устройства ввода
-    (клавиатура, мышь, сканер, микрофон), а получает результат обра-
-    ботки через устройства вывода (монитор, принтер, акустические
-    колонки).
-    Шина – это набор проводов, по которым происходит обмен
-    информацией между устройствами компьютера.
-</p>
-<h3>Задание 6. Ответьте на вопросы:</h3>
-<p>
+</div>
+<div id="Task5" class=" task" style="display:none">
+    <p class="text_zadanie">
+        Задание 5. Прочитайте текст и постарайтесь понять его содержание.
+    </p>
+    <p id="textText0"></p>
+</div>
+<div id="Task6" class=" task" style="display:none">
+    <p class="text_zadanie">Задание 6. Ответьте на вопросы:</p>
     1. Что относится к основным устройствам компьютера?
+    <p><textarea class="form-control question1" rows="5"></textarea></p>
     2. Что является центральным устройством компьютера?
+    <p><textarea class="form-control question1" rows="5"></textarea></p>
     3. Что делает процессор?
+    <p><textarea class="form-control question1" rows="5"></textarea></p>
     4. Из чего состоит внутренняя память?
+    <p><textarea class="form-control question1" rows="5"></textarea></p>
     5. Каково назначение ОЗУ?
+    <p><textarea class="form-control question1" rows="5"></textarea></p>
     6. Каково назначение ПЗУ?
+    <p><textarea class="form-control question1" rows="5"></textarea></p>
     7. Для чего предназначена шина?
-</p>
-<h3>Задание 7. Закончите предложения:</h3>
-<p>
-    1. Обработка информации выполняется ..................... .
-    2. Процессор, память, устройства ввода и устройства выво-
-    да – это ……………….. .
-    3. Процессор – это ................ устройство ЭВМ.
-    4. Данные и программы во время работы компьютера хранятся
-    в ……………... .
-    5. Человек вводит данные в компьютер через ……………... .
-    6. Устройства вывода – ............... .
-    7. Шина – это набор проводов, по которым …………... .
-</p>
-<h3>Задание 8. Определите вид памяти (ОЗУ, ПЗУ, внешняя):</h3>
-<p>
-    1) малого объёма, данные стираются при выключении
-    компьютера;
-    2) хранит информацию постоянно;
-    3) большего объёма, данные сохраняются при выключении
-    компьютера;
-    4) малого объёма, данные хранятся постоянно;
-    5) не хранит информацию при отсутствии электропитания.
-</p>
-<h3>
-    Задание 9. Соедините линиями название устройства и действие,
-    которое оно выполняет.
-</h3>
+    <p><textarea class="form-control question1" rows="5"></textarea></p>
+</div>
+<div id="Task7" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText1"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">Задание 7. Закончите предложения:</p>
+                <p>
+                    1. Обработка информации выполняется <textarea class="form-control such1" rows="5"></textarea>.<br />
+                    2. Процессор, память, устройства ввода и устройства вывода – это <textarea class="form-control such1" rows="5"></textarea>.<br />
+                    3. Процессор – это <textarea class="form-control such1" rows="5"></textarea> устройство ЭВМ.<br />
+                    4. Данные и программы во время работы компьютера хранятся в <textarea class="form-control such1" rows="5"></textarea>.<br />
+                    5. Человек вводит данные в компьютер через <textarea class="form-control such1" rows="5"></textarea>.<br />
+                    6. Устройства вывода – <textarea class="form-control such1" rows="5"></textarea>.<br />
+                    7. Шина – это набор проводов, по которым <textarea class="form-control such1" rows="5"></textarea>.<br />
+            </td>
+        </tr>
+    </table>
+
+</div>
+<div id="Task8" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText2"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">Задание 8. Определите вид памяти (ОЗУ, ПЗУ, внешняя):</p>
+                1) малого объёма, данные стираются при выключении компьютера - <input class="such2" type="text"><br />
+                2) хранит информацию постоянно - <input class="such2" type="text"><br />
+                3) большего объёма, данные сохраняются при выключении компьютера - <input class="such2" type="text"><br />
+                4) малого объёма, данные хранятся постоянно - <input class="such2" type="text"><br />
+                5) не хранит информацию при отсутствии электропитания - <input class="such2" type="text"><br />
+            </td>
+        </tr>
+    </table>
+
+</div>
+<div id="Task9" class=" task" style="display:none">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <p id="textText3"></p>
+            </td>
+            <td>
+                <p class="text_zadanie">
+                    Задание 9. Сопоставьте, какое устройство выполняет какое действие.
+                </p>
+                <div class="text_test">
+                    <p class="select0">процессор - |</p>
+                    <p class="select0">память - |</p>
+                    <p class="select0">сканер - |</p>
+                    <p class="select0">клавиатура - |</p>
+                    <p class="select0">принтер - |</p>
+                    <p class="select0">монитор - |</p>
+                    </div>
+</td>
+        </tr>
+    </table>
+
+</div>
+<script>
+    function openTask(tabName) {
+        var i;
+        var x = document.getElementsByClassName("task");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        document.getElementById(tabName).style.display = "block";
+    }
+</script>
+
+<script src="~/js/scriptTestPrilSuch.js"></script>
+<script src="~/js/scriptTestColor.js"></script>
+<script src="~/js/scriptTestSelect.js"></script>
+<script src="~/js/scriptProverka.js"></script>

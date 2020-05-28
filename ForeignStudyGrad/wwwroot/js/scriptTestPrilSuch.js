@@ -25,11 +25,18 @@
 
 //почистка полей для нового выполнения
 
-function clickProvPrilSuchMew() {
-
-	for (var i = 0; i < lengthPrilSuch; i++) {
-		wordPrilSuch[0][i].value = "";
+function clickProvPrilSuchMew(s) {
+	var ss = "such" + s;
+	var wordProv = document.getElementsByClassName(ss);
+	for (var i = 0; i < wordProv.length; i++) {
+		wordProv[i].value = "";
 	}
-	Console.log("Отчситка полей для задачи с прилагательными выполнена");
 }
 
+function trueAnswerSrav(s) {
+	var ss = "such" + s;
+	var wordProv = document.getElementsByClassName(ss);
+	for (var i = 0; i < wordProv.length; i++) {
+		wordProv[i].value = masShortAnswer[s][i][0];
+    }
+}

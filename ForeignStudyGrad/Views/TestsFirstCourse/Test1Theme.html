@@ -5,9 +5,9 @@
 <link href="~/css/sytecss.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="~/css/syteCssTableButton.css">
 @*<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">*@
-<h1 id="Theme">@Model.Themename</h1>
-<script src="~/js/scriptVhod.js" async></script>
-<script src="~/js/scriptOnload.js" async></script>
+<h1 id="Theme">Что изучает информатика?</h1>
+<script src="C:/Users/Валерия/source/repos/ForeignStudyGrad/ForeignStudyGrad/wwwroot/js/scriptVhod.js" async></script>
+<script src="C:/Users/Валерия/source/repos/ForeignStudyGrad/ForeignStudyGrad/wwwroot/js/scriptOnload.js" async></script>
 <p class="text_zadanie site_padding">Цель работы: @Model.Goal</p>
 
 <nav class="w3-bar w3-black container text_number_zadanie">
@@ -16,7 +16,7 @@
     <button class="w3-bar-item w3-button tablink" onclick="openTask('Task3')">Задание 3</button>
     <button class="w3-bar-item w3-button tablink" id="srav0" onclick="openTask('Task4')">Задание 4</button>
     <button class="w3-bar-item w3-button tablink" id="prov0" onclick="openTask('Task5')">Задание 5</button>
-    <button class="w3-bar-item w3-button tablink" id="select0" onclick="openTask('Task6')">Задание 6</button>
+    <button class="w3-bar-item w3-button tablink" id="select" onclick="openTask('Task6')">Задание 6</button>
     <button class="w3-bar-item w3-button tablink" id="prov1" onclick="openTask('Task7')">Задание 7</button>
     <button class="w3-bar-item w3-button tablink" id="prov2" onclick="openTask('Task8')">Задание 8</button>
     <button class="w3-bar-item w3-button tablink" id="prov3" onclick="openTask('Task9')">Задание 9</button>
@@ -57,9 +57,9 @@
                 <td id="word2" onclick="colorWord()">сохранять</td>
             </tr>
             <tr>
-                <td id="word3" onclick="colorWord()">обрабатывать</td>
-                <td id="word4" onclick="colorWord()">решать</td>
-                <td id="word5" onclick="colorWord()">вычисление</td>
+                <td id="word3" onclick="colorWord()">решать</td>
+                <td id="word4" onclick="colorWord()">вычисление</td>
+                <td id="word5" onclick="colorWord()">обрабатывать</td>
             </tr>
             <tr>
                 <td id="word6" onclick="colorWord()">обработка</td>
@@ -83,7 +83,6 @@
             </tr>
         </table><br>
         <button type="submit" class="btn btn-primary" onclick="clickProvColorWordNew()">Начать заново</button><br />
-        <button type="submit" class="btn btn-primary" onclick="trueAnswerColor()">Показать правильный ответ</button>
     </div>
     <div id="Task3" class=" task" style="display:none">
         <p class="text_zadanie">Задание 3. Прочитайте текст и постарайтесь понять его содержание.</p>
@@ -137,8 +136,7 @@
                         <label>компьютер</label>
                         <input class="such0" type="text">
                     </p>
-                    <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuchMew(0)">Начать заново</button>
-                    <button type="submit" class="btn btn-primary" onclick="trueAnswerSrav(0)">Показать правильный ответ</button>
+                    <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuchMew()">Начать заново</button>
                 </td>
             </tr>
         </table>
@@ -159,8 +157,6 @@
                     <p><textarea class="form-control question0" rows="5"></textarea></p>
                     <p></p>
                     <p>Образец: Информация – это сведения о мире вокруг нас. Информация представляет собой сведения о мире вокруг нас.</p>
-                    <button type="submit" class="btn btn-primary" onclick="detailedAnswerNew(0)">Начать заново</button>
-                    <button type="submit" class="btn btn-primary" onclick="trueAnswerDetailedAnswer(0)">Показать возможный ответ</button>
                 </td>
             </tr>
         </table>
@@ -180,8 +176,7 @@
                     <p class="select0">4. Обработанную информацию человек | в библиотеках, в музеях, в своей памяти.</p>
                     <p class="select0">5. Количество информации быстро |.</p>
                     <p class="select0">6. В настоящее время информацию | и | с помощью электронно-вычислительных машин (ЭВМ) — компьютеров.</p>
-                    <button type="submit" class="btn btn-primary" onclick="clickSelectNew(0)">Начать заново</button>
-                    <button type="submit" class="btn btn-primary" onclick="trueAnswerSelect(0)">Показать правильный ответ</button>
+                    <button type="submit" class="btn btn-primary" onclick="clickSelectNew()">Начать заново</button>
                 </td>
             </tr>
         </table>
@@ -210,8 +205,6 @@
                     <p><textarea class="form-control question1" rows="5"></textarea></p>
                     <p>8. Что такое информатика?</p>
                     <p><textarea class="form-control question1" rows="5"></textarea></p>
-                    <button type="submit" class="btn btn-primary" onclick="detailedAnswerNew(1)">Начать заново</button>
-                    <button type="submit" class="btn btn-primary" onclick="trueAnswerDetailedAnswer(1)">Показать правильный ответ</button>
                 </td>
             </tr>
         </table>
@@ -225,8 +218,6 @@
                 <td class="text_test">
                     <p class="text_zadanie">Задание 8.	Сформулируйте главную мысль текста и дайте ему название.</p>
                     <p><textarea class="form-control question2" rows="5"></textarea></p>
-                    <button type="submit" class="btn btn-primary" onclick="detailedAnswerNew(2)">Начать заново</button>
-                    <button type="submit" class="btn btn-primary" onclick="trueAnswerDetailedAnswer(2)">Показать возможный ответ</button>
                 </td>
             </tr>
         </table>
@@ -240,9 +231,7 @@
                 <td class="text_test">
                     <p class="text_zadanie">Задание 9.	Расскажите текст, дополнив его сведениями, полученными из упражнений к тексту.</p>
                     <p><textarea class="form-control question3" rows="5"></textarea></p>
-                    <button type="submit" class="btn btn-primary" onclick="detailedAnswerNew(3)">Начать заново</button>
-                    <button type="submit" class="btn btn-primary" onclick="trueAnswerDetailedAnswer(3)">Показать возможный ответ</button>
-
+                    
                 </td>
             </tr>
         </table>
@@ -251,7 +240,6 @@
 
 <script>
     function openTask(tabName) {
-        if (globalFlagOnload) { 
         var i;
         var x = document.getElementsByClassName("task");
         for (i = 0; i < x.length; i++) {
@@ -259,9 +247,8 @@
         }
         document.getElementById(tabName).style.display = "block";
     }
-    }
 </script>
-<script src="~/js/scriptTestPrilSuch.js"></script>
-<script src="~/js/scriptTestColor.js"></script>
-<script src="~/js/scriptTestSelect.js"></script>
-<script src="~/js/scriptProverka.js"></script>
+<script src="C:/Users/Валерия/source/repos/ForeignStudyGrad/ForeignStudyGrad/wwwroot/js/scriptTestPrilSuch.js"></script>
+<script src="C:/Users/Валерия/source/repos/ForeignStudyGrad/ForeignStudyGrad/wwwroot/js/scriptTestColor.js"></script>
+<script src="C:/Users/Валерия/source/repos/ForeignStudyGrad/ForeignStudyGrad/wwwroot/js/scriptTestSelect.js"></script>
+<script src="C:/Users/Валерия/source/repos/ForeignStudyGrad/ForeignStudyGrad/wwwroot/js/scriptProverka.js"></script>

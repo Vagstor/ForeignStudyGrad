@@ -8,9 +8,6 @@ function selIndex(ii,masRez) {
 	return selectStr;
 }
 
-
-
-
 function clickSelect(array, masRez) {
 	var selekt = true;
 	console.log(array.length);
@@ -23,9 +20,18 @@ function clickSelect(array, masRez) {
 	return selekt;
 }
 
-function clickSelectNew() {
-	for (var i = 0; i < wordSelectLength; i++) {
-		wordSelect[0][i].value = "-";
+function clickSelectNew(s) {
+	var str = "sel" + s;
+	var wordProv = document.getElementsByClassName(str);
+	for (var i = 0; i < wordProv.length; i++) {
+		wordProv[i].value = "-";
 	}
-	Console.log("Отчситка полей для задачи с селектами выполнена");
+}
+
+function trueAnswerSelect(s) {
+	var str = "sel"+s;
+	var wordProv = document.getElementsByClassName(str);
+	for (var i = 0; i < wordProv.length; i++) {
+		wordProv[i].value = masProvSelect[s][i];
+    }
 }

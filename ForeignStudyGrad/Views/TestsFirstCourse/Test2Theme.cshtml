@@ -22,7 +22,7 @@
     <button class="w3-bar-item w3-button tablink" id="srav2" onclick="openTask('Task11')">Задание 11</button>
     <button class="w3-bar-item w3-button tablink" id="srav3" onclick="openTask('Task12')">Задание 12</button>
     <button class="w3-bar-item w3-button tablink" id="prov3" onclick="openTask('Task13')">Задание 13</button>
-    <button class="w3-bar-item w3-button tablink" id="select" onclick="openTask('Task14')">Задание 14</button>
+    <button class="w3-bar-item w3-button tablink" id="select0" onclick="openTask('Task14')">Задание 14</button>
     <button class="w3-bar-item w3-button tablink" id="prov4" onclick="openTask('Task15')">Задание 15</button>
     <button type="submit" class="btn btn-primary" onclick="proverka()">Проверка</button>
 </nav>
@@ -82,6 +82,7 @@
     </table>
     <p></p>
     <button type="submit" class="btn btn-primary" onclick="clickProvColorWordNew()">Начать заново</button>
+    <button type="submit" class="btn btn-primary" onclick="trueAnswerColor()">Показать правильный ответ</button>
 </div>
 <div id="Task3" class=" task" style="display:none">
     <p class="text_zadanie"> Задание 3. Согласуйте прилагательные с существительными по образцу:</p>
@@ -107,6 +108,8 @@
         <i>Образец</i>: научный (информация, текст, определение,
         результаты) — научная информация, научный текст, научное опре-
         деление, научные результаты.
+        <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuchMew(0)">Начать заново</button>
+        <button type="submit" class="btn btn-primary" onclick="trueAnswerSrav(0)">Показать правильный ответ</button>
     </p>
 </div>
 <div id="Task4" class=" task" style="display:none">
@@ -144,6 +147,8 @@
             <td>
                 <p class="text_zadanie">Задание 7. Ответьте на вопрос: какие основные понятия рассматриваются в этом тексте? Найдите в тексте предложения, в которых речь идёт о единицах измерения информации.</p>
                 <p><textarea class="form-control question0" rows="5"></textarea></p>
+                <button type="submit" class="btn btn-primary" onclick="detailedAnswerNew(0)">Начать заново</button>
+                <button type="submit" class="btn btn-primary" onclick="trueAnswerDetailedAnswer(0)">Показать возможный ответ</button>
             </td>
         </tr>
     </table>
@@ -157,6 +162,8 @@
             <td>
                 <p class="text_zadanie">Задание 8. Определите отношения между единицами измерения информации по образцу: «что равно чему».</p>
                 <p><textarea class="form-control question1" rows="5"></textarea></p>
+                <button type="submit" class="btn btn-primary" onclick="detailedAnswerNew(1)">Начать заново</button>
+                <button type="submit" class="btn btn-primary" onclick="trueAnswerDetailedAnswer(1)">Показать возможный ответ</button>
             </td>
         </tr>
     </table>
@@ -208,7 +215,8 @@
                         <input class="such1" type="text"> байт
                     </p>
                     <p>  <i>Образец</i>: 4 Кб 234 байт = 4*1024 + 234 байт = 4330 байт.</p>
-                    <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuchMew()">Начать заново</button>
+                    <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuchMew(1)">Начать заново</button>
+                    <button type="submit" class="btn btn-primary" onclick="trueAnswerSrav(1)">Показать правильный ответ</button>
                 </div>
             </td>
         </tr>
@@ -227,6 +235,8 @@
                 <p class="text_zadanie">Задание 10. Найдите в тексте информацию из предыдущего текста (тема 1).</p>
                 <button type="submit" class="btn btn-primary" onclick="plusDivs(+1)">Переключить текст</button>
                 <p><textarea class="form-control question2" rows="5"></textarea></p>
+                <button type="submit" class="btn btn-primary" onclick="detailedAnswerNew(2)">Начать заново</button>
+                <button type="submit" class="btn btn-primary" onclick="trueAnswerDetailedAnswer(2)">Показать возможный ответ</button>
             </td>
         </tr>
     </table>
@@ -247,6 +257,8 @@
                 <input class="such2" type="text">
                 <input class="such2" type="text">
                 <input class="such2" type="text">
+                <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuchMew(2)">Начать заново</button>
+                <button type="submit" class="btn btn-primary" onclick="trueAnswerSrav(2)">Показать возможный ответ</button>
             </td>
         </tr>
     </table>
@@ -279,7 +291,8 @@
                     <p>
                         <input class="such3" type="text"><label>байт</label>
                     </p>
-                    <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuchMew()">Начать заново</button>
+                    <button type="submit" class="btn btn-primary" onclick="clickProvPrilSuchMew(3)">Начать заново</button>
+                    <button type="submit" class="btn btn-primary" onclick="trueAnswerSrav(3)">Показать правильный ответ</button>
                 </div>
             </td>
         </tr>
@@ -303,6 +316,8 @@
                     3. Единицами информации в компьютере являются байт, килобайт, мегабайт и гигабайт.
                     <p><textarea class="form-control question3" rows="5"></textarea></p>
                     <i>Образец:</i> Наименьшей единицей информации в компьютере является 1 бит. Наименьшая единица информации в компьютере – это 1 бит.
+                    <button type="submit" class="btn btn-primary" onclick="detailedAnswerNew(3)">Начать заново</button>
+                    <button type="submit" class="btn btn-primary" onclick="trueAnswerDetailedAnswer(3)">Показать возможный ответ</button>
                 </div>
             </td>
         </tr>
@@ -327,6 +342,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary" onclick="clickSelectNew()">Начать заново</button>
+                <button type="submit" class="btn btn-primary" onclick="trueAnswerSelect(0)">Показать правильный ответ</button>
             </td>
         </tr>
     </table>
@@ -350,6 +366,8 @@
                     6. Какое количество информации содержит слово «информатика»?<br>
                 </p>
                 <p><textarea class="form-control question4" rows="5"></textarea></p>
+                <button type="submit" class="btn btn-primary" onclick="detailedAnswerNew(4)">Начать заново</button>
+                <button type="submit" class="btn btn-primary" onclick="trueAnswerDetailedAnswer(4)">Показать возможный ответ</button>
             </td>
         </tr>
     </table>

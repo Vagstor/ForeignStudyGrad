@@ -2,186 +2,240 @@
 @{
     ViewData["Title"] = Model.Themename;
 }
-
-<h1>Model.Themename</h1>
-
+<link href="~/css/sytecss.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="~/css/syteCssTableButton.css">
+@*<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">*@
+<h1 id="Theme">@Model.Themename</h1>
+<script src="~/js/scriptVhod.js" async></script>
+<script src="~/js/scriptOnload.js" async></script>
 <p class="text_zadanie site_padding">Цель работы: @Model.Goal</p>
 
-<h3>
-    Задание 1. Прочитайте слова и словосочетания, запомните их
-    значения:
-</h3>
-<p>
-    информация
-    жидкокристаллические
-    мониторы
-    символьная информация
-    трубка
-    обеспечивать (что? чем?)
-    электронно-лучевая трубка
-    обеспечение
-    акустика
-    плазменная панель
-    акустические колонки
-</p>
-<h3>Задание 2. Сгруппируйте однокоренные слова:</h3>
-<p>
-    клавиатура, ввод, мышь, устройство, клавиатурный, мышиный, вывод, сканер, привод, устраивать, вводимый, сканировать,
-    клавиша, мышка, выводимый.
-</p>
-<h3>Задание 3. Образуйте существительные от глаголов по образцу:</h3>
-<p>
-    а) управлять, удалять, добавлять, получать, включать, изображать, разрешать, отображать, соотносить, обновлять, двигать,
-    перемещать.
-    Образец: выполнять – выполнение;
-    б) переносить, печатать, записать.
-    Образец: переводить – перевод;
-    в) носить, читать, писать.
-    Образец: преподавать – преподаватель.
-</p>
-<h3>
-    Задание 4. Обратите внимание на синонимичные конструкции
-    «что делится на что» = «что может быть какое (каким)» =
-    «что бывает какое (каким)».
-</h3>
-<p>
-    Сканеры делятся на чёрно-белые и цветные.
-    Сканеры могут быть чёрно-белые и цветные (чёрно-белыми и
-    цветными).
-    Сканеры бывают чёрно-белые и цветные (чёрно-белыми и
-    цветными).
-</p>
-<h3>Задание 5. Замените данные конструкции синонимичными:</h3>
-<p>
-    1. Клавиши могут быть цифровыми, буквенными, управляющими, включающими.
-    2. Принтеры могут быть чёрно-белыми и цветными.
-    3. Мониторы могут быть жидкокристаллическими и плазменными.
-    4. Мониторы могут быть двухмерными и трёхмерными.
-    5. Экраны монитора могут быть стандартными, широкоформатными и др.
-</p>
-<h3>
-    Задание 6. Прочитайте текст и постарайтесь понять его содержание.
-</h3>
-<p>
-    Текст
+<nav class="w3-bar w3-black container text_number_zadanie">
+    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task1')">Задание 1</button>
+    <button class="w3-bar-item w3-button tablink" id="color" onclick="openTask('Task2')">Задание 2</button>
+    <button class="w3-bar-item w3-button tablink" onclick="openTask('Task3')">Задание 3</button>
+    <button class="w3-bar-item w3-button tablink" id="srav0" onclick="openTask('Task4')">Задание 4</button>
+    <button class="w3-bar-item w3-button tablink" id="prov0" onclick="openTask('Task5')">Задание 5</button>
+    <button class="w3-bar-item w3-button tablink" id="select" onclick="openTask('Task6')">Задание 6</button>
+    <button class="w3-bar-item w3-button tablink" id="prov1" onclick="openTask('Task7')">Задание 7</button>
+    <button class="w3-bar-item w3-button tablink" id="prov2" onclick="openTask('Task8')">Задание 8</button>
+    <button class="w3-bar-item w3-button tablink" id="prov3" onclick="openTask('Task9')">Задание 9</button>
+    <button type="submit" class="btn btn-primary" onclick="proverka()">Проверка</button>
+</nav>
 
-    Устройства ввода информации
-
-    Устройства ввода кодируют информацию, переводя её в
-    двоичный код. Основным устройством ввода информации в
-    компьютер является клавиатура. Все клавиши клавиатуры можно
-    разделить на специальные группы:
-    1) алфавитно-цифровые клавиши предназначены для ввода
-    букв, цифр и символов;
-    2) функциональные клавиши – для выполнения определённых действий (F1 – F12);
-    3) управляющие клавиши – для выбора режимов и способов
-    ввода;
-    4) клавиши управления курсором (навигационные) – для
-    перемещения по документу;
-    5) цифровые клавиши – дополнительные клавиши для ввода
-    цифр.
-    Tab – клавиша табуляции – предназначена для перемещения
-    курсора на несколько позиций вправо.
-    Enter – ввод команды или строки текста.
-    BackSpace удаляет символ слева от курсора.
-    Delete (Del) удаляет символ справа от курсора.
-    Insert (Ins) включает режим вставки/замены.
-    Esc отменяет предыдущее действие.
-    Пробел добавляет в текст «пустой символ».
-    Ctrl и Alt используются только вместе с другими клавишами.
-    В правой части клавиатуры находятся клавиши управления
-    курсором: Home, End, Page Up, Page Down, , , , .
-    Мышь предназначена для удобства работы и ввода информации. Мышь передаёт компьютеру сигналы о своём движении,
-    курсор двигается в направлении движения мыши.
-    Сканер – устройство для перевода графической информации в
-    цифровую. Задача сканера – получение электронной копии
-    бумажного документа. Важным свойством сканера является
-    разрешающая способность. Разрешающая способность – это
-    количество точек, которые распознает сканер на квадратный дюйм
-    изображения. Оптимальное разрешение сканера для получения
-    хорошей электронной копии изображения 300 (DPI) точек на дюйм.
-    Сканеры бывают чёрно-белые и цветные. Чёрно-белые сканеры
-    распознают разные оттенки серого цвета – от белого до чёрного.
-    Всего таких цветов 256. Цветные сканеры позволяют сделать
-    точную цветную копию изображения.
-
-    Устройства вывода информации
-
-    Принтер – периферийное устройство компьютера,
-    предназначенное для перевода текста или графики на физический
-    носитель из электронного вида. По принципу переноса
-    изображения на носитель принтеры делятся на: литерные,
-    матричные, лазерные (также светодиодные принтеры), струйные,
-    сублимационные, термические. По количеству цветов печати – на
-    чёрно-белые (монохромные) и цветные.
-    Сетевой принтер – принтер, позволяющий принимать задания
-    на печать от нескольких компьютеров, подключённых к локальной
-    сети.
-    Монитор – устройство, предназначенное для визуального
-    отображения информации. Современный монитор состоит из
-    корпуса, блока питания, плат управления и экрана.
-    По типу экрана мониторы делятся на: ЭЛТ – на основе
-    электронно-лучевой трубки, ЖК – жидкокристаллические мониторы, плазменные – на основе плазменной панели, проектор –
-    видеопроектор и экран, размещённые отдельно или объединённые в
-    одном корпусе, лазерные – на основе лазерной панели.
-    По размерности отображения мониторы могут быть
-    двухмерными (2D) – одно изображение для обоих глаз и
-    трёхмерными (3D) – для каждого глаза формируется отдельное
-    изображение для получения эффекта объёма.
-    Основные параметры мониторов:
-    1) соотношение сторон экрана – стандартный (4:3), широкоформатный (16:9) или другое соотношение (например, 5:4);
-    2) размер экрана – определяется длиной диагонали, чаще
-    всего в дюймах;
-    3) разрешение – число пикселей по вертикали и горизонтали;
-    4) глубина цвета – количество бит на кодирование одного
-    пикселя;
-    5) размер зерна или пикселя;
-    6) частота обновления экрана (Гц);
-    7) время отклика пикселей;
-    8) угол обзора.
-    Акустические колонки — устройство для вывода звуковой
-    информации.
-</p>
-<h3>Задание 7. Ответьте на вопросы к тексту:</h3>
+<div class="task" id="Task1">
+        <p class="text_zadanie">
+    Задание 1. Прочитайте слова и словосочетания, запомните их значения:</p>
+<ul class="text_test">
+   <li>  информация <input class="slovo" type="text"></li>
+   <li>  жидкокристаллические <input class="slovo" type="text"></li>
+   <li>  мониторы <input class="slovo" type="text"></li>
+   <li>  символьная информация <input class="slovo" type="text"></li>
+   <li>  трубка <input class="slovo" type="text"></li>
+   <li>  обеспечивать (что? чем?) <input class="slovo" type="text"></li>
+  <li>   электронно-лучевая трубка <input class="slovo" type="text"></li>
+  <li>   обеспечение <input class="slovo" type="text"></li>
+  <li>   акустика <input class="slovo" type="text"></li>
+   <li>  плазменная панель <input class="slovo" type="text"></li>
+   <li>  акустические колонки <input class="slovo" type="text"></li>
+</ul>
+<button type="submit" class="btn btn-primary" onclick="clickProvColorWordNew()">Добавить в словарь</button>
+    </div>
+    <div id="Task2" class=" task" style="display:none">
+        <p class="text_zadanie">Задание 2. Сгруппируйте однокоренные слова:</p>
+		<table alight="center" class="site_padding size_text_courses not_select_text text_test">
+            <tr>
+    <td id="word0" onclick="colorWord()">клавиатура</td>
+	<td id="word1" onclick="colorWord()">ввод</td>
+	<td id="word2" onclick="colorWord()">мышь</td>
+	</tr>
+            <tr>
+	<td id="word3" onclick="colorWord()">устройство</td>
+	<td id="word4" onclick="colorWord()">клавиатурный</td>
+	<td id="word5" onclick="colorWord()">мышиный</td>
+	</tr>
+            <tr>
+	<td id="word6" onclick="colorWord()">вывод</td>
+	<td id="word7" onclick="colorWord()">сканер</td>
+	<td id="word8" onclick="colorWord()">привод</td>
+	</tr>
+            <tr>
+	<td id="word9" onclick="colorWord()">устраивать</td>
+	<td id="word10" onclick="colorWord()">вводимый</td>
+	<td id="word11" onclick="colorWord()">сканировать</td>
+	</tr>
+            <tr>
+    <td id="word12" onclick="colorWord()">клавиша</td>
+	<td id="word13" onclick="colorWord()">мышка</td>
+	<td id="word14" onclick="colorWord()">выводимый</td>
+</tr>
+			</table><br>
+        <button type="submit" class="btn btn-primary" onclick="clickProvColorWordNew()">Начать заново</button><br />
+ </div>
+    <div id="Task3" class=" task" style="display:none">
+        <p class="text_zadanie">Задание 3. Образуйте существительные от глаголов по образцу:</p>
 <p>
-    1. На какие основные группы можно разделить клавиши?
-    2. В чём заключается основное предназначение устройств
-    ввода?
-    3. Что является основным устройством ввода информации в
-    компьютер?
-    4. Для чего предназначена клавиша табуляции?
-    5. Какое устройство преобразует аналоговые звуковые
-    сигналы в двоичный код?
-    6. К какому устройству подключается микрофон?
-    7. С помощью каких клавиш можно удалять символы?
-    8. Какая клавиша добавляет в текст «пустой символ»?
+    а) управлять - <input class="such0" type="text"> </p>
+	<p>удалять - <input class="such0" type="text"> </p>
+	<p>добавлять - <input class="such0" type="text"> </p>
+	<p>получать - <input class="such0" type="text"> </p>
+	<p>включать - <input class="such0" type="text"> </p>
+	<p>изображать - <input class="such0" type="text"> </p>
+	<p>разрешать - <input class="such0" type="text"> </p>
+	<p>отображать - <input class="such0" type="text"> </p>
+	<p>соотносить - <input class="such0" type="text"> </p>
+	<p>обновлять, - <input class="such0" type="text"> </p>
+	<p>двигать - <input class="such0" type="text"> </p>
+  <p>перемещать - <input class="such0" type="text"> </p>
+    <i>Образец:</i> выполнять – выполнение;<br>
+  <p>  б) переносить - <input class="such0" type="text"> </p>
+	<p>печатать - <input class="such0" type="text"> </p>
+	<p>записать - <input class="such0" type="text"> </p>
+    <i>Образец:</i> переводить – перевод;<br>
+    <p>в) носить - <input class="such0" type="text"> </p>
+	<p>читать - <input class="such0" type="text"> </p>
+	<p>писать - <input class="such0" type="text"> .</p>
+    <i>Образец:</i> преподавать – преподаватель.<br>
+	</div>
+	 <div id="Task4" class=" task" style="display:none">
+        <p class="text_zadanie">
+    Задание 4. Обратите внимание на синонимичные конструкции  «что делится на что» = «что может быть какое (каким)» = «что бывает какое (каким)».
 </p>
-<h3>
-    Задание 8. Закончите предложения, используя информацию
-    текста:
-</h3>
 <p>
-    1. Основным устройством ввода информации в компьютер
-    является ... .
-    2. Алфавитно-цифровые клавиши предназначены для ……..
-    3. Управляющие клавиши предназначены для ........ .
-    4. Мышь предназначена для ……..
-    5. Устройство для перевода графической информации в
-    цифровую ... ….
-    6. Задача сканера – …....
-    7. Акустические колонки служат для ……...
+    Сканеры делятся на чёрно-белые и цветные.</p>
+    <p>Сканеры могут быть чёрно-белые и цветные (чёрно-белыми и цветными).</p>
+    <p>Сканеры бывают чёрно-белые и цветные (чёрно-белыми и цветными).
 </p>
-<h3>
-    Задание 9. Прочитайте текст ещё раз, разделите его на смысловые
-    части, дайте им название и запишите в форме плана.
-</h3>
-<p></p>
-<h3>
-    Задание 10. Прочитайте текст по частям и отметьте в каждой
-    предложения, содержащие главную мысль.
-</h3>
-<p></p>
-<h3>
-    Задание 11. Расскажите об устройствах персонального компью-
-    тера.
-</h3>
+</div>
+<div id="Task5" class=" task" style="display:none">
+        <p class="text_zadanie">
+Задание 5. Замените данные конструкции синонимичными:</p>
+<p>
+    1. Клавиши могут быть цифровыми, буквенными, управляющими, включающими.</p>
+	<p><textarea class="form-control question0" rows="5"></textarea></p>
+   <p> 2. Принтеры могут быть чёрно-белыми и цветными.</p>
+	<p><textarea class="form-control question0" rows="5"></textarea></p>
+    <p>3. Мониторы могут быть жидкокристаллическими и плазменными.</p>
+	<p><textarea class="form-control question0" rows="5"></textarea></p>
+    <p>4. Мониторы могут быть двухмерными и трёхмерными.</p>
+	<p><textarea class="form-control question0" rows="5"></textarea></p>
+    <p>5. Экраны монитора могут быть стандартными, широкоформатными и др.</p>
+	<p><textarea class="form-control question0" rows="5"></textarea></p>
+</p>
+</div>
+<div id="Task6" class=" task" style="display:none">
+        <p class="text_zadanie">Задание 6. Прочитайте текст и постарайтесь понять его содержание.</p>
+    <p id="textText0"></p>
+</div>
+<div id="Task7" class=" task" style="display:none">
+<table class="table table-bordered">
+            <tr>
+                <td>
+                    <p id="textText1"></p>
+                </td>
+                <td class="text_test">
+        <p class="text_zadanie">Задание 7. Ответьте на вопросы к тексту:</p>
+<p>
+    1. На какие основные группы можно разделить клавиши?</p>
+	 <p><textarea class="form-control question1" rows="5"></textarea></p>
+   <p> 2. В чём заключается основное предназначение устройств ввода?</p>
+	 <p><textarea class="form-control question1" rows="5"></textarea></p>
+   <p> 3. Что является основным устройством ввода информации в компьютер?</p>
+	 <p><textarea class="form-control question1" rows="5"></textarea></p>
+   <p> 4. Для чего предназначена клавиша табуляции?</p>
+	 <p><textarea class="form-control question1" rows="5"></textarea></p>
+  <p>  5. Какое устройство преобразует аналоговые звуковые сигналы в двоичный код?</p>
+	 <p><textarea class="form-control question1" rows="5"></textarea></p>
+   <p> 6. К какому устройству подключается микрофон?</p>
+	 <p><textarea class="form-control question1" rows="5"></textarea></p>
+  <p>  7. С помощью каких клавиш можно удалять символы?</p>
+	 <p><textarea class="form-control question1" rows="5"></textarea></p>
+   <p> 8. Какая клавиша добавляет в текст «пустой символ»?</p>
+	 <p><textarea class="form-control question1" rows="5"></textarea>
+</p>
+</td>
+            </tr>
+        </table>
+    </div>
+<div id="Task8" class=" task" style="display:none">
+<table class="table table-bordered">
+            <tr>
+                <td>
+                    <p id="textText2"></p>
+                </td>
+                <td class="text_test">
+        <p class="text_zadanie">
+    Задание 8. Закончите предложения, используя информацию текста:
+</p>
+<p>
+    1. Основным устройством ввода информации в компьютер является <input class="such1" type="text"></p>
+    <p>2. Алфавитно-цифровые клавиши предназначены для <input class="such1" type="text"></p>
+    <p>3. Управляющие клавиши предназначены для <input class="such1" type="text"></p>
+   <p> 4. Мышь предназначена для <input class="such1" type="text"></p>
+    <p>5. Устройство для перевода графической информации в цифровую <input class="such1" type="text"></p>
+    <p>6. Задача сканера – <input class="such1" type="text"></p>
+   <p> 7. Акустические колонки служат для <input class="such1" type="text">
+</p>
+</td>
+            </tr>
+        </table>
+    </div>
+<div id="Task9" class=" task" style="display:none">
+<table class="table table-bordered">
+            <tr>
+                <td>
+                    <p id="textText3"></p>
+                </td>
+                <td class="text_test">
+        <p class="text_zadanie">
+    Задание 9. Прочитайте текст ещё раз, разделите его на смысловые части, дайте им название и запишите в форме плана.
+</p>
+<p><textarea class="form-control question2" rows="5"></textarea></p>
+</td>
+            </tr>
+        </table>
+    </div>
+<div id="Task10" class=" task" style="display:none">
+<table class="table table-bordered">
+            <tr>
+                <td>
+                    <p id="textText4"></p>
+                </td>
+                <td class="text_test">
+        <p class="text_zadanie">
+    Задание 10. Прочитайте текст по частям и отметьте в каждой предложения, содержащие главную мысль.
+</p>
+<p><textarea class="form-control question3" rows="5"></textarea></p>
+</td>
+            </tr>
+        </table>
+    </div>
+<div id="Task11" class=" task" style="display:none">
+<table class="table table-bordered">
+            <tr>
+                <td>
+                    <p id="textText5"></p>
+                </td>
+                <td class="text_test">
+        <p class="text_zadanie">
+    Задание 11. Расскажите об устройствах персонального компьютера.
+</p>
+<p><textarea class="form-control question4" rows="5"></textarea></p>
+</td>
+            </tr>
+        </table>
+    </div>
+<script>
+    function openTask(tabName) {
+        var i;
+        var x = document.getElementsByClassName("task");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        document.getElementById(tabName).style.display = "block";
+    }
+</script>
+<script src="~/js/scriptTestPrilSuch.js"></script>
+<script src="~/js/scriptTestColor.js"></script>
+<script src="~/js/scriptTestSelect.js"></script>
+<script src="~/js/scriptProverka.js"></script>
