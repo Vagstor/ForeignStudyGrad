@@ -19,7 +19,10 @@ namespace DbMigrator
             //Console.WriteLine(conn.FullState);
             var assembly = typeof(Program).Assembly;
             //var migrator = new Migrator("sqlserver", "server=ASKOLD-ПК\\sqlexpress;database=foreignstudy;Trusted_Connection=True;", assembly);
-            var migrator = new Migrator("sqlserver", "server=LAPTOP-2I0E2SNC\\sqlexpress;database=foreignstudy;Trusted_Connection=True;", assembly);
+            //var migrator = new Migrator("sqlserver", "server=LAPTOP-2I0E2SNC\\sqlexpress;database=foreignstudy;Trusted_Connection=True;", assembly);
+            Npgsql.NpgsqlConnection conn = new NpgsqlConnection(cnnStrng);
+            conn.Open();
+            var migrator = new Migrator("postgres", conn, assembly);
             migrator.Migrate();
         }
     }
