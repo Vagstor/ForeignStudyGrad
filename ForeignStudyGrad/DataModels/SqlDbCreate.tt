@@ -6,7 +6,9 @@
 <# //@ include file="$(ProjectDir)LinqToDB.Templates\PluralizationService.ttinclude"     #>
 <#
 	NamespaceName = "DataModels";
-
-	LoadSqlServerMetadata("tcp:foreignstudygraddbserver.database.windows.net,1433", "foreignstudy", "fs", "Foreignstudy123!");
+	DataContextName = "MainDb";
+	GetSchemaOptions.IncludedSchemas = new[] { "tasksite" };
+	LoadPostgreSQLMetadata("localhost", "5432", "tasksite", "postgres", "admin");
+	
 	GenerateModel();
 #>
