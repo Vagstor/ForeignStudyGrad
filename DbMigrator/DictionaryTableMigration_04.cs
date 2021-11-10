@@ -27,6 +27,8 @@ CREATE TABLE [dbo].[dictionaries](
 	[word_id] [uniqueidentifier] NOT NULL,
 	[word_body] [varchar](50) NOT NULL,
 	[user_id] [uniqueidentifier] NOT NULL,
+    [WordTranslation] [varchar](50) NOT NULL,
+    [WordOriginal] [varchar](50) NOT NULL,
  CONSTRAINT [PK_dictionaries] PRIMARY KEY CLUSTERED 
 (
 	[word_id] ASC

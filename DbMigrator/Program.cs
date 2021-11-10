@@ -10,7 +10,7 @@ namespace DbMigrator
         static void Main(string[] args)
         {
             MigrationRunner a = new MigrationRunner();
-            a.MigrationConnection("Server=localhost;Port=5432;Database=foreignstudy;UserId=postgres;Password=123");
+            a.MigrationConnection("Server=localhost;Port=5432;Database=foreignstudy;UserId=fs3;Password=123");
             Console.WriteLine("Successfully imported DB");
         }
     }
